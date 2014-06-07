@@ -15,7 +15,7 @@
 @property(nonatomic,assign) int memberID;//成员ID
 @property(nonatomic,strong) NSData *billImageData;//图片
 @property(nonatomic,assign) float moneyAmount;//金额
-@property(nonatomic,copy) NSDate *billTime;//时间
+@property(nonatomic,copy) NSString *billTime;//时间
 @property(nonatomic,copy) NSString *billRemarks;//备注
 @property(nonatomic,assign) BOOL isPayout;//默认是支出
 

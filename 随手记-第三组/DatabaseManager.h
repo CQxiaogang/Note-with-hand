@@ -26,7 +26,6 @@
 -(BOOL)modifyBill:(Bill *)aBill;//修改
 
 -(NSMutableDictionary *)billListWithDate:(NSDate *)startDate toDate:(NSDate *)endDate inType:(spendingType *)aType inMember:(member *)amember isPayout:(BOOL)isPayout;//根据时间和type查询账单(分为收入、支出)
--(NSMutableDictionary *)billListByDate:(NSDate *)date andIsPayout:(BOOL)isPayout isWeek:(NSString *)string;//按日期分别查询本周、本月的所有账单，以供分组tableView显示
 
 //分开写的账单查询语句
 -(NSMutableArray *)billListInDay:(NSString *)day InWeek:(NSString *)week InMonth:(NSString *)month;
@@ -39,6 +38,7 @@
 -(BOOL)addNewSpendType:(spendingType *)aSpengType;//添加
 -(BOOL)deleteSpendType:(spendingType *)aSpengType;//删除
 -(BOOL)modifySpendType:(spendingType *)aSpengType;//修改
+-(spendingType *)selectTypeByTypeID:(NSString *)typeID andIsPayout:(BOOL)isPayout;//根据fahterID查找
 -(NSMutableDictionary *)readSpendTypeList:(spendingType *)aSpendType andIsPayout:(BOOL)isPayout;//用字典返回类别表中的所有类别
 -(spendingType *)selectTypeByTypeName:(NSString *)typeName;//按照类别名称
 -(NSMutableArray *)selectTypeListByFatherTypeID:(int)fatherTypeID andIsPayout:(BOOL)isPayout;

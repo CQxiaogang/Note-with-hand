@@ -11,7 +11,7 @@
 #import "ZenKeyboard.h"
 #import "RBCustomDatePickerView.h" //自定义的datePickerView
 
-@interface AddBillViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate>{
+@interface AddBillViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate/*相机协议*/,UIActionSheetDelegate>{
     NSString *_fatherTypeStr;//存放大type的string
     NSString *_typeStr;//存放小type的string
     NSString *_memberStr;//存放成员的string

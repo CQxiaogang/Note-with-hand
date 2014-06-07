@@ -42,7 +42,7 @@
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
     
-    self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
+    self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:NO];
     self.fatherType = [self.typeDic objectForKey:@"big"];
     
     //自定义键盘
@@ -78,10 +78,13 @@
     UILabel *balanceLabel = (UILabel *)[cell viewWithTag:3];//余额
     balanceLabel.text = @"得到本月消费进行操作";
     
+    float totalMoney = [self balanceCompute:aType];
+    
     //自定义progressView
     self.progressViews = [NSMutableArray array];
     LDProgressView *progressView = [[LDProgressView alloc] initWithFrame:CGRectMake(120, 14, self.view.frame.size.width-200, 15)];
     //    progressView.showText = @NO;//progressView中得值
+    
     
 //    progressView.progress = 0.80;//设置值
     _budgetTotalMoney=aType.budgetMoneyValue.floatValue;
@@ -92,6 +95,8 @@
     progressView.color = [UIColor greenColor];
     [self.progressViews addObject:progressView];
     [cell addSubview:progressView];
+    
+    
     
     return cell;
 }
@@ -148,8 +153,8 @@
             //清空所以的预算数据
             for (spendingType *aType in self.fatherType) {
         
-                aType.budgetMoneyValue = 0;
-            
+//                aType.budgetMoneyValue = 0;//不能直接这么赋值，这样赋值会让number为nil
+                aType.budgetMoneyValue = [NSNumber numberWithInt:0];
                 [[DatabaseManager ShareDBManager] modifySpendType:aType];
             }
             
@@ -157,4 +162,18 @@
         }
     }
 }
+
+#pragma mark - 计算函数
+
+-(float)balanceCompute:(spendingType *)aType{
+    NSMutableDictionary *billDic = [[DatabaseManager ShareDBManager] billListWithDate:nil toDate:nil inType:aType inMember:nil isPayout:YES];
+    NSArray *billList = billDic[aType.spendName];
+    float totalNum = 0.0;
+    for (Bill *aBill in billList) {
+        totalNum+=aBill.moneyAmount;
+    }
+    return totalNum;
+}
+
+
 @end

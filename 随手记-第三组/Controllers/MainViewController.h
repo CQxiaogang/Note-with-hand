@@ -13,6 +13,7 @@
 #import "ZenKeyboard.h"
 //---------------
 #import "RBCustomDatePickerView.h" //自定义的datePickerView
+#import <KeyboardManager/IQKeyboardManager.h>//第三方引用，对键盘的操作
 
 @interface MainViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate,UITableViewDataSource,UITableViewDelegate, UIImagePickerControllerDelegate/*相机协议*/,UINavigationControllerDelegate,UIActionSheetDelegate,UITextFieldDelegate>{
     NSString *_fatherTypeStr;
@@ -21,7 +22,7 @@
     float _weekTotal;
     float _monthTotal;
 }
-@property (nonatomic,strong) NSMutableArray *fatherType;
+
 
 @property(nonatomic,strong)ZenKeyboard *keyboardView;
 

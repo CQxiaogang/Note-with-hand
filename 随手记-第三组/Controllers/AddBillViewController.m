@@ -9,6 +9,8 @@
 #import "AddBillViewController.h"
 #import "DatabaseManager.h"
 
+#define kDicOfTypeKey @"big"
+
 @interface AddBillViewController ()
 
 //弹出的视图（pickerView和buttons）
@@ -30,13 +32,24 @@
 @property (weak, nonatomic) IBOutlet UITextView *remarksTextView;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *isPayoutSegment;//支出和收入选择
+- (IBAction)isPayoutSegmentButton:(UISegmentedControl *)sender;
+
 - (IBAction)saveBillToDatabase:(UIButton *)sender;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (assign ,nonatomic) NSInteger rowInProvince;//全局,picker中得到位置
 
 @property(nonatomic,strong)ZenKeyboard *keyboardView;//键盘
 
 @property(nonatomic,strong)UIDatePicker *TimePicker;//自定义datePicker
+
+- (IBAction)edit:(id)sender;//编辑按钮
+
+@property (nonatomic,strong)NSMutableDictionary *typeDic;//从数据库中读出type字典
+@property (nonatomic,strong)NSMutableDictionary *budgetDic;//从数据库中读出type字典
+@property (nonatomic,strong) NSMutableArray *fatherType;
+
 
 @end
 
@@ -67,7 +80,7 @@
     self.pickerView.dataSource=self;
 //    NSString *path = [[NSBundle mainBundle] pathForResource:@"ProvincesAndCities" ofType:@"plist"];
 //    self.typeList=[NSMutableArray arrayWithContentsOfFile:path];
-//    
+    
 //    self.memberList = [[NSMutableArray alloc] initWithObjects:@"自己",@"老婆",@"幺儿",@"侄儿",@"爸妈",@"朋友",nil];
 //    for (int i=0;i<self.memberList.count;i++) {
 //        NSString *nameStr = self.memberList[i];
@@ -76,16 +89,16 @@
 ////        aMemer.memberID=i;
 //        [[DatabaseManager ShareDBManager] addNewMember:aMemer];
 //    }
-//    //收入数组
-//    self.budgetClasslist=[[NSMutableArray alloc]initWithObjects:@"工资",@"证劵",@"银行利息",@"意外收获",@"外债",nil];
-//    for (int i=0; i<self.budgetClasslist.count; i++) {
-//        NSString *budgetClassStr=self.budgetClasslist[i];
-//        spendingType *aSpendingType=[[spendingType alloc]init];
-//        aSpendingType.spendName=budgetClassStr;
-//        aSpendingType.spendID=i+24;
-//        [[DatabaseManager ShareDBManager]addNewSpendType:aSpendingType];
-//    }
-    //
+    //收入数组
+    self.budgetClasslist=[[NSMutableArray alloc]initWithObjects:@"工资",@"证劵",@"银行利息",@"意外收获",@"外债",nil];
+    for (int i=0; i<self.budgetClasslist.count; i++) {
+        NSString *budgetClassStr=self.budgetClasslist[i];
+        spendingType *aSpendingType=[[spendingType alloc]init];
+        aSpendingType.spendName=budgetClassStr;
+        aSpendingType.spendID=i+24;
+        aSpendingType.isPayout=NO;
+        [[DatabaseManager ShareDBManager]addNewSpendType:aSpendingType];
+    }
     
     //自定义键盘
     _keyboardView= [[ZenKeyboard alloc] initWithFrame:CGRectMake(0, 0, 320, 216)];
@@ -109,13 +122,35 @@
     self.dateText.inputView=self.TimePicker;//修改inputView，没有修改inputView时系统会弹出自定义键盘
     [self dateChoose];//第一次进入显示时间
     [self.TimePicker addTarget:self action:@selector(dateChoose) forControlEvents:UIControlEventValueChanged];//发送一条消息 pickerDate的值发生改变，textFild的也紧随发生改变
+    
+    self.memberList = [[DatabaseManager ShareDBManager] readAllMemberList];
+    
+    self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
+    self.typeList = self.typeDic[kDicOfTypeKey];
+    
+    self.budgetDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:NO];
+    self.budgetClasslist = self.budgetDic[kDicOfTypeKey];
+    
+    _isTypePicker = YES;
 }
 
+//- (void)viewWillAppear:(BOOL)animated {//此方法为 当push时调用
+//    
+//    [self.pickerView reloadAllComponents];
+//}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//选择收入支出按钮值改变时响应函数
+- (IBAction)isPayoutSegmentButton:(UISegmentedControl *)sender {
+    self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:[sender selectedSegmentIndex]];
+    self.typeList = self.typeDic[kDicOfTypeKey];
+    
+    [self.pickerView reloadAllComponents];
 }
 
 //保存bill按钮
@@ -138,17 +173,18 @@
     aMember=[[DatabaseManager ShareDBManager] selectMember:self.memberText.text];
     //string转换为date
     NSString *timeStr=self.dateText.text;
-    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
-    //    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm a"];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy"];//转换时间格式
-    NSDate *date=[dateFormatter dateFromString:timeStr];
+//    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+//    //    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm a"];
+//    [dateFormatter setDateFormat:@"MM/dd/yyyy"];//转换时间格式
+//    NSDate *date=[dateFormatter dateFromString:timeStr];
     
-    aBill.billTime=date;
+    aBill.billTime=[timeStr substringToIndex:10];
     aBill.memberID = aMember.memberID;
     aBill.moneyAmount=self.tfIncomeText.text.floatValue;
     aBill.billRemarks=self.remarksTextView.text;
     aBill.isPayout = self.isPayoutSegment.selectedSegmentIndex;
     aBill.spendID = aSpendType.spendID;
+    aBill.billImageData = UIImageJPEGRepresentation(self.imageView.image, 0.5);
     
     [[DatabaseManager ShareDBManager] addNewBill:aBill];
     
@@ -205,13 +241,15 @@
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     if (_isTypePicker == YES) {
         if (self.isPayoutSegment.selectedSegmentIndex==0) {
-                if (component==0) {
+            if (component==0) {
                 return self.typeList.count;
             }else{
-                return [[[self.typeList objectAtIndex:self.rowInProvince] objectForKey:@"childType"] count];
+                spendingType *aType = self.fatherType[self.rowInProvince];
+                NSArray *subTypeList = [self.typeDic objectForKey:aType.spendName];
+                return subTypeList.count;
             }
         }else{
-            return self.budgetClasslist.count;
+            return self.typeList.count;
         }
         
     }else{
@@ -223,15 +261,23 @@
     if (_isTypePicker == YES) {
         if (self.isPayoutSegment.selectedSegmentIndex==0) {
             if (component==0) {
-                NSString *fatherTypeStr=[[self.typeList objectAtIndex:row] objectForKey:@"fatherType"];
+                NSString *fatherTypeStr;
+                spendingType *aType = [[self.typeDic objectForKey:@"big"] objectAtIndex:row];
+                fatherTypeStr = aType.spendName;
                 _fatherTypeStr=fatherTypeStr;
+                
                 return fatherTypeStr;
-                //        return [[fatherType objectAtIndex:row]objectForKey:@"fatherType"];
+                
             }else{
-                NSString *typeStr=[[[[self.typeList objectAtIndex:self.rowInProvince] objectForKey:@"childType"] objectAtIndex:row] objectForKey:@"type"];
+                NSString *typeStr;
+                NSArray *typeList = [self.typeDic objectForKey:@"big"];
+                spendingType *aType = typeList[self.rowInProvince];
+                NSArray *subTypeList = [self.typeDic objectForKey:aType.spendName];
+                aType = subTypeList[row];
+                typeStr =aType.spendName;
                 _typeStr=typeStr;
+                
                 return typeStr;
-                //        return [[[[fatherType objectAtIndex:self.rowInProvince] objectForKey:@"childType"] objectAtIndex:row] objectForKey:@"type"];
             }
         }else{
             NSString *spendType=self.budgetClasslist[row];
@@ -239,9 +285,9 @@
             return spendType;
         }
     }else{
-        NSString *memberStr = self.memberList[row];
-        _memberStr = memberStr;
-        return memberStr;
+        member *aMember= self.memberList[row];
+        _memberStr = aMember.memberName;
+        return _memberStr;
     }
     
 }
@@ -292,5 +338,84 @@
     _isTypePicker = NO;
     [self.pickerView reloadAllComponents];
     self.subView.hidden=NO;
+}
+
+#pragma mark - 照相、相册功能实现
+- (IBAction)chooseImageBut:(UIButton *)sender {
+    
+    UIActionSheet *sheet;
+    
+    // 判断是否支持相机
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        sheet  = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照",@"从相册选择", nil];
+    }
+    else {
+        sheet = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"从相册选择", nil];
+    }
+    
+    sheet.tag = 255;
+    
+    [sheet showInView:self.view];
+    
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    //info是个字典
+    self.imageView.image = info[@"UIImagePickerControllerEditedImage"];
+    [self dismissViewControllerAnimated:YES completion:nil];//dismiss解除返回上一层
+}
+
+#pragma mark - 实现actionSheet delegate事件
+-(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == 255) {
+        
+        NSUInteger sourceType = 0;
+        
+        // 判断是否支持相机
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            
+            switch (buttonIndex) {
+                case 0:
+                    // 取消
+                    return;
+                case 1:
+                    // 相机
+                    sourceType = UIImagePickerControllerSourceTypeCamera;
+                    break;
+                    
+                case 2:
+                    // 相册
+                    sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                    break;
+            }
+        }
+        else {
+            if (buttonIndex == 0) {
+                
+                return;
+            } else {
+                sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+            }
+        }
+        // 跳转到相机或相册页面
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        
+        imagePickerController.delegate = self;
+        
+        imagePickerController.allowsEditing = YES;
+        
+        imagePickerController.sourceType = sourceType;
+        
+        [self presentViewController:imagePickerController animated:YES completion:^{}];
+    }
+}
+
+
+- (IBAction)edit:(id)sender {
+    //点击按钮调用方法进行传值
+//    [self performSegueWithIdentifier:@"Picker2Edit" sender:self.typeDic];
 }
 @end

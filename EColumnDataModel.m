@@ -19,7 +19,7 @@
     self = [super init];
     if (self)
     {
-        _label = @"Empty";
+        _label = @"";
         _value = 0;
     }
     return self;

@@ -54,7 +54,7 @@ static DatabaseManager *sharedManager=nil;
         }
         NSLog(@"成功");
         //建Bill表
-        NSString *createSql=[NSString stringWithFormat:@"create table if not exists %@(billID integer primary key autoincrement,spendID integer,memberID integer,moneyAmount integer,billImageData blob,billTime date,billRemarks text,isPayOut bool)",kBillTableName];
+        NSString *createSql=[NSString stringWithFormat:@"create table if not exists %@(billID integer primary key autoincrement,spendID integer,memberID integer,moneyAmount integer,billImageData blob,billTime text,billRemarks text,isPayOut bool)",kBillTableName];
         if (![self.databade executeUpdate:createSql]) {
             NSLog(@"建表/打开表: %@ 失败",kBillTableName);
         }
@@ -70,12 +70,6 @@ static DatabaseManager *sharedManager=nil;
         if (![self.databade executeUpdate:createSql]) {
             NSLog(@"建表/打开表: %@ 失败",kMemberName);
         }
-        //建budget表
-        createSql=[NSString stringWithFormat:@"create table if not exists %@(budgetID integer primary key autoincrement,budgetFatheID integer,budgetMoneyAmount integer)",kBudgetName];
-        if (![self.databade executeUpdate:createSql]) {
-            NSLog(@"建表/打开表: %@ 失败",kBudgetName);
-        }
-        NSLog(@"成功");
     }
     return self;
 }
@@ -95,11 +89,11 @@ static DatabaseManager *sharedManager=nil;
 //isPayOut bool
 
 -(BOOL)addNewBill:(Bill *)aBill{
-    NSString *sqlStr = [NSString stringWithFormat:@"insert into %@ (memberID, moneyAmount, billImageData, billTime, billRemarks, isPayOut) values (?,?,?,?,?,?)",kBillTableName];
-    if ([self.databade executeUpdate:sqlStr,@(aBill.memberID),@(aBill.moneyAmount),aBill.billImageData,aBill.billTime,aBill.billRemarks,@(aBill.isPayout)]) {
-        NSLog(@"插入成功");
-    }
-    return YES;
+    NSString *sqlStr = [NSString stringWithFormat:@"insert into %@ (spendID, memberID, moneyAmount, billImageData, billTime, billRemarks, isPayOut) values (?,?,?,?,?,?,?)",kBillTableName];
+    BOOL isSucced = NO;
+    isSucced = [self.databade executeUpdate:sqlStr,@(aBill.spendID),@(aBill.memberID),@(aBill.moneyAmount),aBill.billImageData,aBill.billTime,aBill.billRemarks, @(aBill.isPayout)];
+    
+    return isSucced;
 }
 
 -(BOOL)deleteBill:(Bill *)aBill{
@@ -112,7 +106,7 @@ static DatabaseManager *sharedManager=nil;
 
 -(BOOL)modifyBill:(Bill *)aBill{
     
-    NSString *sqlStr=[NSString stringWithFormat:@"update %@ set memberID= ?,moneyAmount= ?,billImageData= ?,billTime= ?,billRemarks= ? ,isPayOut= ? where budgetID = ?",kBillTableName];
+    NSString *sqlStr=[NSString stringWithFormat:@"update %@ set memberID= ?,moneyAmount= ?,billImageData= ?,billTime= ?,billRemarks= ?, isPayOut= ? where budgetID = ?",kBillTableName];
     
     BOOL succeed=[self.databade executeUpdate:sqlStr,@(aBill.memberID),@(aBill.moneyAmount),aBill.billImageData,aBill.billTime,aBill.billRemarks,@(aBill.isPayout),@(aBill.billID)];
     
@@ -121,7 +115,7 @@ static DatabaseManager *sharedManager=nil;
 //********************************************
 //分情况查询账单
  -(NSMutableDictionary *)billListWithDate:(NSDate *)startDate toDate:(NSDate *)endDate inType:(spendingType *)aType inMember:(member *)amember isPayout:(BOOL)isPayout{
-     NSMutableDictionary *billList=[[NSMutableDictionary alloc] init];
+     NSMutableDictionary *billDic=[[NSMutableDictionary alloc] init];
      NSString *SQLStr;
      if (startDate==nil && endDate==nil && aType==nil && amember ==  nil) {//返回所有的bill
          SQLStr=[NSString stringWithFormat:@"select * from %@ ",kBillTableName];
@@ -134,11 +128,12 @@ static DatabaseManager *sharedManager=nil;
              aBill.memberID=[rs intForColumn:@"memberID"];
              aBill.moneyAmount = [rs doubleForColumn:@"moneyAmount"];
              aBill.billImageData=[rs dataForColumn:@"billImageData"];
-             aBill.billTime=[rs dateForColumn:@"billTime"];
+             aBill.billTime=[rs stringForColumn:@"billTime"];
              aBill.billRemarks=[rs stringForColumn:@"billRemarks"];
+             aBill.isPayout = [rs boolForColumn:@"isPayOut"];
              [array addObject:aBill];
          }
-         [billList setObject:array forKey:@"allBills"];
+         [billDic setObject:array forKey:@"allBills"];
      }else{
          if (startDate == nil && endDate == nil && amember == nil) {//只按类别查询
              SQLStr=[NSString stringWithFormat:@"select * from %@ where spendID = %d and isPayOut = %@",kBillTableName,aType.spendID,@(isPayout)];//按类别ID查询（类别不分大小）
@@ -150,11 +145,11 @@ static DatabaseManager *sharedManager=nil;
                  aBill.spendID=[rs intForColumn:@"spendID"];
                  aBill.memberID=[rs intForColumn:@"memberID"];
                  aBill.billImageData=[rs dataForColumn:@"billImageData"];
-                 aBill.billTime=[rs dateForColumn:@"billTime"];
+                 aBill.billTime=[rs stringForColumn:@"billTime"];
                  aBill.billRemarks=[rs stringForColumn:@"billRemarks"];
                  [array addObject:aBill];
              }
-             [billList setObject:array forKey:aType.spendName];
+             [billDic setObject:array forKey:aType.spendName];
          }else{
              if (startDate==nil && endDate==nil && aType == nil) {//只按成员查询
                  SQLStr=[NSString stringWithFormat:@"select * from %@ where memberID = %d and isPayOut = %@",kBillTableName,amember.memberID,@(isPayout)];//按成员ID查询
@@ -166,9 +161,9 @@ static DatabaseManager *sharedManager=nil;
                  aBill.spendID=[rs intForColumn:@"spendID"];
                  aBill.memberID=[rs intForColumn:@"memberID"];
                  aBill.billImageData=[rs dataForColumn:@"billImageData"];
-                 aBill.billTime=[rs dateForColumn:@"billTime"];
+                 aBill.billTime=[rs stringForColumn:@"billTime"];
                  aBill.billRemarks=[rs stringForColumn:@"billRemarks"];
-                 [billList setObject:aBill forKey:amember.memberName];
+                 [billDic setObject:aBill forKey:amember.memberName];
              }
          
          }else if (aType == nil && amember == nil){//按时间查询
@@ -191,32 +186,16 @@ static DatabaseManager *sharedManager=nil;
                  aBill.spendID=[rs intForColumn:@"spendID"];
                  aBill.memberID=[rs intForColumn:@"memberID"];
                  aBill.billImageData=[rs dataForColumn:@"billImageData"];
-                 aBill.billTime=[rs dateForColumn:@"billTime"];
+                 aBill.billTime=[rs stringForColumn:@"billTime"];
                  aBill.billRemarks=[rs stringForColumn:@"billRemarks"];
                  [array addObject:aBill];
-                 
-                }
-             [billList setObject:array forKey:[startDate description]];
+             }
+             
+             [billDic setObject:array forKey:[startDate description]];
             }
          }
      }
-     return billList;
-}
-
--(NSMutableDictionary *)billListByDate:(NSDate *)date andIsPayout:(BOOL)isPayout isWeek:(NSString *)string{
-    NSString *SQLStr;
-    if ([string isEqualToString:@"week"]) {
-        SQLStr=[NSString stringWithFormat:@"select * from %@ where strftime('%%Y-%%m',billDate)=='%@' and isPayout = %@",kBillTableName,date,@(isPayout)];//按月查找
-        
-    }else if ([string isEqualToString:@"month"]){
-        
-        SQLStr=[NSString stringWithFormat:@"select * from %@ where strftime('%%Y-%%m',billDate)=='%@' and isPayout = %@",kBillTableName,date,@(isPayout)];//按月查找
-    }
-    
-    NSMutableDictionary *billDic;
-    
-    
-    return billDic;
+     return billDic;
 }
 
 /*
@@ -235,7 +214,7 @@ static DatabaseManager *sharedManager=nil;
         abill.billID=[rs intForColumn:@"billID"];
         abill.memberID=[rs intForColumn:@"memberID"];
         abill.spendID=[rs intForColumn:@"spendID"];
-        abill.billTime=[rs dateForColumn:@"billTime"];
+        abill.billTime=[rs stringForColumn:@"billTime"];
         abill.moneyAmount=[rs intForColumn:@"moneyAmount"];
         abill.isPayout=[rs boolForColumn:@"isPayout"];
         abill.billImageData=[rs dataForColumn:@"billImageData"];
@@ -243,7 +222,7 @@ static DatabaseManager *sharedManager=nil;
         
         [array addObject:abill];
     }
-    if (array.count==0) {
+    if (array.count == 0) {
         [array addObject:@"没有记录"];
     }
     NSDictionary *dic=[[NSDictionary alloc]initWithObjectsAndKeys:array,@"billList",month,@"name", nil];
@@ -270,7 +249,7 @@ static DatabaseManager *sharedManager=nil;
         abill.billID=[rs intForColumn:@"billID"];
         abill.memberID=[rs intForColumn:@"memberID"];
         abill.spendID=[rs intForColumn:@"spendID"];
-        abill.billTime=[rs dateForColumn:@"billTime"];
+        abill.billTime=[rs stringForColumn:@"billTime"];
         abill.moneyAmount=[rs intForColumn:@"moneyAmount"];
         abill.isPayout=[rs boolForColumn:@"isPayout"];
         abill.billImageData=[rs dataForColumn:@"billImageData"];
@@ -311,7 +290,7 @@ static DatabaseManager *sharedManager=nil;
         abill.billID=[rs intForColumn:@"billID"];
         abill.memberID=[rs intForColumn:@"memberID"];
         abill.spendID=[rs intForColumn:@"spendID"];
-        abill.billTime=[rs dateForColumn:@"billTime"];
+        abill.billTime=[rs stringForColumn:@"billTime"];
         abill.moneyAmount=[rs intForColumn:@"moneyAmount"];
         abill.isPayout=[rs boolForColumn:@"isPayout"];
         abill.billImageData=[rs dataForColumn:@"billImageData"];
@@ -355,7 +334,24 @@ static DatabaseManager *sharedManager=nil;
 }
 
 -(spendingType *)selectTypeByTypeName:(NSString *)typeName{//根据名字查找
-    NSString *SQLStr=[NSString stringWithFormat:@"select * from %@ where spendName= %@",kSpendTypeName,typeName];
+    NSString *SQLStr=[NSString stringWithFormat:@"select * from %@ where spendName= '%@'",kSpendTypeName,typeName];
+    FMResultSet *rs=[self.databade executeQuery:SQLStr];
+    spendingType *aType;
+    while ([rs next]) {
+        aType=[[spendingType alloc]init];
+        aType.spendID=[rs intForColumn:@"spendID"];
+        aType.spendName=[rs stringForColumn:@"spendName"];
+        int fatherTypeID=[rs intForColumn:@"spendfatherID"];
+        spendingType *subType = [[spendingType alloc] init];
+        subType.spendID = fatherTypeID;
+        aType.fatherType = subType;
+        aType.isPayout = [rs boolForColumn:@"isPayout"];
+    }
+    return aType;
+}
+
+-(spendingType *)selectTypeByTypeID:(NSString *)typeID andIsPayout:(BOOL)isPayout{//根据fahterID查找
+    NSString *SQLStr=[NSString stringWithFormat:@"select * from %@ where spendfatherID= %@ and isPayout = %@",kSpendTypeName,typeID,@(isPayout)];
     FMResultSet *rs=[self.databade executeQuery:SQLStr];
     spendingType *aType;
     while ([rs next]) {

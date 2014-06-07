@@ -12,7 +12,7 @@
 #import "EFloatBox.h"
 #define BOTTOM_LINE_HEIGHT 2
 #define HORIZONTAL_LINE_HEIGHT 0.5
-#define Y_COORDINATE_LABEL_WIDTH 30
+#define Y_COORDINATE_LABEL_WIDTH 40
 #define DIRECTION  (_columnsIndexStartFromLeft? - 1 : 1)
 
 
@@ -131,7 +131,7 @@
                 UIView *horizontalLine = [[UIView alloc] initWithFrame:CGRectMake(0, heightGap * i, self.frame.size.width, HORIZONTAL_LINE_HEIGHT)];
                 horizontalLine.backgroundColor = ELightGrey;
                 [self addSubview:horizontalLine];
-                
+                //TODO:改变左边的label的大小
                 EColumnChartLabel *eColumnChartLabel = [[EColumnChartLabel alloc] initWithFrame:CGRectMake(-1 * Y_COORDINATE_LABEL_WIDTH, -heightGap / 2.0 + heightGap * i, Y_COORDINATE_LABEL_WIDTH, heightGap)];
                 [eColumnChartLabel setTextAlignment:NSTextAlignmentCenter];
                 eColumnChartLabel.text = [[NSString stringWithFormat:@"%.1f ", valueGap * (10 - i)] stringByAppendingString:[_dataSource highestValueEColumnChart:self].unit];;
@@ -209,7 +209,7 @@
     int totalColumnsRequired = 0;
     totalColumnsRequired = [_dataSource numberOfColumnsPresentedEveryTime:self];
     float highestValueEColumnChart = [_dataSource highestValueEColumnChart:self].value * 1.1;
-    
+    //TODO:改变柱状图 宽的比例
     float widthOfTheColumnShouldBe = self.frame.size.width / (float)(totalColumnsRequired + (totalColumnsRequired + 1) * 0.5);
     float minValue = 1000000.0;
     float maxValue = 0.0;
@@ -251,7 +251,8 @@
         EColumnChartLabel *eColumnChartLabel = [_eLabels objectForKey:[NSNumber numberWithInteger:(currentIndex)]];
         if (nil == eColumnChartLabel)
         {
-            eColumnChartLabel = [[EColumnChartLabel alloc] initWithFrame:CGRectMake(widthOfTheColumnShouldBe * 0.5 + (i * widthOfTheColumnShouldBe * 1.5), self.frame.size.height, widthOfTheColumnShouldBe, 20)];
+            //TODO:改变下面的label
+            eColumnChartLabel = [[EColumnChartLabel alloc] initWithFrame:CGRectMake(widthOfTheColumnShouldBe * 0.3 + (i * widthOfTheColumnShouldBe * 1.5), self.frame.size.height, widthOfTheColumnShouldBe+10, 20+10)];
             [eColumnChartLabel setTextAlignment:NSTextAlignmentCenter];
             eColumnChartLabel.text = eColumnDataModel.label;
             //eColumnChartLabel.backgroundColor = ELightBlue;

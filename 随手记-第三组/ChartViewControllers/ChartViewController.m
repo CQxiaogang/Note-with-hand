@@ -20,11 +20,12 @@
 - (IBAction)leftButton:(UIButton *)sender;
 - (IBAction)rightButton:(UIButton *)sender;
 
-@property (nonatomic, strong) NSArray *data; //存储数据的数组
+@property (nonatomic, strong) NSMutableArray *billData; //存储数据的数组
 @property (nonatomic, strong) EFloatBox *eFloatBox;//弹出的详细信息
 
 @property (nonatomic, strong) EColumn *eColumnSelected;//view
 @property (nonatomic, strong) UIColor *tempColor;//零时的颜色
+
 
 @end
 
@@ -43,18 +44,37 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.billData = [NSMutableArray array];
+    NSDate *now=[NSDate date];
+    NSString *date;
+    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM"];
+    date = [formatter stringFromDate:now];
+    
+    NSMutableDictionary *dic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
+    NSArray *bigArray = dic[@"big"];
+    for (spendingType *aType in bigArray) {
+        NSArray *subArray = dic[aType.spendName];
+        
+        for (spendingType *subType in subArray) {
+            NSDictionary *dic = [[DatabaseManager ShareDBManager] billListWithDate:nil toDate:nil inType:subType inMember:nil isPayout:YES];
+            
+            [self.billData addObject:dic[subType.spendName]];
+        }
+        
+    }
     
     NSMutableArray *temp=[NSMutableArray array];
-    NSMutableDictionary *typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
-    NSArray *nameList = [typeDic objectForKey:@"big"];
-    for (int i=0;i<nameList.count; i++) {
-        spendingType *aType = nameList[i];
+    NSArray *billList = [dic objectForKey:@"billList"];
+    for (int i=0;i<billList.count; i++) {
+        Bill *aBill = billList[i];
         //生成对应的柱状图
-        int value = aType.budgetMoneyValue.intValue;
+        int value = aBill.moneyAmount;
+        spendingType *aType = [[DatabaseManager ShareDBManager] selectTypeByTypeID:[NSString stringWithFormat:@"%d",aBill.spendID] andIsPayout:YES];
         EColumnDataModel *eColumnDataModel = [[EColumnDataModel alloc] initWithLabel:[NSString stringWithFormat:@"%@",aType.spendName] value:value index:i unit:@"￥"];//根据柱状图的X坐标名称、对应的值、ID、单位 对一条柱状图进行赋值
         [temp addObject:eColumnDataModel];//添加柱形到数组中
     }
-    self.data = [NSArray arrayWithArray:temp];
+    self.billData = [NSArray arrayWithArray:temp];
     
     self.eColumnChart = [[EColumnChart alloc] initWithFrame:CGRectMake(40, 150, 250, 200)];
     [self.eColumnChart setColumnsIndexStartFromLeft:YES];//默认从左到右排序
@@ -67,6 +87,18 @@
 //    self.valueLabel.layer.borderColor=[UIColor blackColor].CGColor;//定义边框颜色
 //    self.valueLabel.layer.borderWidth=0.5;//定义边框大小
 //    self.valueLabel.layer.masksToBounds=YES;//定义边界 不越界
+    
+    //TODO:柱状图左右滑动手势
+    //向左
+    UISwipeGestureRecognizer *oneFingerSwipeLeft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(Swipe:)];
+    oneFingerSwipeLeft.direction=UISwipeGestureRecognizerDirectionLeft;
+    oneFingerSwipeLeft.delegate=self;
+    [self.eColumnChart addGestureRecognizer:oneFingerSwipeLeft];
+    //向右
+    UISwipeGestureRecognizer *oneFingerSwipeRight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(Swipe:)];
+    oneFingerSwipeRight.direction=UISwipeGestureRecognizerDirectionRight;
+    oneFingerSwipeRight.delegate=self;
+    [self.eColumnChart addGestureRecognizer:oneFingerSwipeRight];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,14 +106,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 #pragma -mark- EColumnChartDataSource 类似tableview的显示
 //条形图的个数
 - (NSInteger)numberOfColumnsInEColumnChart:(EColumnChart *)eColumnChart
 {
-    return [_data count];
+    return [self.billData count];
 }
 
-//最小显示多少个柱形
+//最多显示多少个柱形
 - (NSInteger)numberOfColumnsPresentedEveryTime:(EColumnChart *)eColumnChart
 {
     return 5;
@@ -92,7 +125,7 @@
 {
     EColumnDataModel *maxDataModel = nil;
     float maxValue = -FLT_MIN;//FLT_MIN是一个常量，代表了FLOAT所能表示的最小值
-    for (EColumnDataModel *dataModel in _data)
+    for (EColumnDataModel *dataModel in self.billData)
     {
         if (dataModel.value > maxValue)
         {
@@ -106,8 +139,8 @@
 //得到index相对应的一条柱型
 - (EColumnDataModel *)eColumnChart:(EColumnChart *)eColumnChart valueForIndex:(NSInteger)index
 {
-    if (index >= [_data count] || index < 0) return nil;
-    return [_data objectAtIndex:index];
+    if (index >= [self.billData count] || index < 0) return nil;
+    return [self.billData objectAtIndex:index];
 }
 
 
@@ -151,7 +184,7 @@ fingerDidEnterColumn:(EColumn *)eColumn
     }
     else
     {
-        _eFloatBox = [[EFloatBox alloc] initWithPosition:CGPointMake(eFloatBoxX, eFloatBoxY) value:eColumn.eColumnDataModel.value unit:@"kWh" title:@"Title"];
+        _eFloatBox = [[EFloatBox alloc] initWithPosition:CGPointMake(eFloatBoxX, eFloatBoxY) value:eColumn.eColumnDataModel.value unit:@"￥" title:@"Title"];
         _eFloatBox.alpha = 0.0;
         [eColumnChart addSubview:_eFloatBox];
         
@@ -188,19 +221,35 @@ fingerDidLeaveColumn:(EColumn *)eColumn
             [_eFloatBox removeFromSuperview];
             _eFloatBox = nil;
         }];
-        
     }
-    
 }
 
 //调用向左、右移动的函数
+-(void)Swipe:(UISwipeGestureRecognizer *)sender{
+    if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+        if (self.eColumnChart == nil) return;
+        [self.eColumnChart moveRight];
+        
+    }
+    if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
+        if (self.eColumnChart == nil) return;
+        [self.eColumnChart moveLeft];
+    }
+}
+
+
 - (IBAction)leftButton:(UIButton *)sender {
-    if (self.eColumnChart == nil) return;
-    [self.eColumnChart moveLeft];
+    //上个月
 }
 
 - (IBAction)rightButton:(UIButton *)sender {
-    if (self.eColumnChart == nil) return;
-    [self.eColumnChart moveRight];
+    //下个月
 }
+
+- (NSMutableDictionary *)getBillTotalMoneyByMonth:(NSString *)month{
+    NSMutableDictionary *dic;
+    
+    return dic;
+}
+
 @end

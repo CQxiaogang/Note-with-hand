@@ -27,6 +27,7 @@
 @property (nonatomic,strong)UIImagePickerController *imagePicker;//创建图片选择器
 @property (nonatomic,strong)Bill *aBill;
 @property (nonatomic,strong)NSMutableDictionary *typeDic;//从数据库中读出type字典
+@property (nonatomic,strong) NSMutableArray *fatherType;
 
 @end
 
@@ -47,40 +48,45 @@
     [super viewDidLoad];
     self.aBill=[[Bill alloc]init];
 	// Do any additional setup after loading the view.
+    //对第三方控件
+    [IQKeyboardManager sharedManager].enableAutoToolbar=NO;
+    
     //PickerView操作
     self.subView.hidden=YES;
     self.PickerView.delegate=self;
     self.PickerView.dataSource=self;
-
-//    self.TableView.separatorStyle=NO;
+    //plist数据读入数据库中
+    /*
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"ProvincesAndCities" ofType:@"plist"];
     
-//     NSString *path = [[NSBundle mainBundle] pathForResource:@"ProvincesAndCities" ofType:@"plist"];
-//    
-//    self.fatherType=[NSMutableArray arrayWithContentsOfFile:path];
-//    
-//    spendingType *aSpendingType = [[spendingType alloc] init];
-//    for (int i=0; i<self.fatherType.count; i++) {
-//        NSString *SpendFahterTypeNameStr = [self.fatherType[i] objectForKey:@"fatherType"];
-//        NSMutableArray *childType=[[NSMutableArray alloc]init];
-//        aSpendingType.spendID=i+1;
-//        aSpendingType.spendName=SpendFahterTypeNameStr;
-//        spendingType *parentsType=[[spendingType alloc]init];
-//        aSpendingType.fatherType=parentsType;
-//        [[DatabaseManager ShareDBManager]addNewSpendType:aSpendingType];
-//        childType=[self.fatherType[i]objectForKey:@"childType"];
-//        for (int j=0; j<childType.count; j++) {
-//            aSpendingType = [[spendingType alloc] init];
-//            NSString *SpendChildTypeNameStr =[childType[j]objectForKey:@"type"];
-//            NSNumber *SpendChildTypeIDStr =[childType[j]objectForKey:@"id"];
-//            aSpendingType.spendID=SpendChildTypeIDStr.intValue;
-//            aSpendingType.spendName=SpendChildTypeNameStr;
-//            spendingType *parentsType=[[spendingType alloc]init];
-//            parentsType.spendID=i+1;
-//            aSpendingType.fatherType=parentsType;
-//            [[DatabaseManager ShareDBManager]addNewSpendType:aSpendingType];
-//        }
-//    }
-//    //plist数据读入数据库中
+    self.fatherType=[NSMutableArray arrayWithContentsOfFile:path];
+    
+    spendingType *aSpendingType = [[spendingType alloc] init];
+    for (int i=0; i<self.fatherType.count; i++) {
+        NSString *SpendFahterTypeNameStr = [self.fatherType[i] objectForKey:@"fatherType"];
+        aSpendingType.spendID=i+1;
+        aSpendingType.spendName=SpendFahterTypeNameStr;
+        spendingType *parentsType=[[spendingType alloc]init];
+        aSpendingType.fatherType=parentsType;
+        aSpendingType.isPayout = YES;
+        [[DatabaseManager ShareDBManager]addNewSpendType:aSpendingType];
+        
+        NSMutableArray *childType=[[NSMutableArray alloc]init];
+        childType=[self.fatherType[i]objectForKey:@"childType"];
+        for (int j=0; j<childType.count; j++) {
+            aSpendingType = [[spendingType alloc] init];
+            NSString *SpendChildTypeNameStr =[childType[j]objectForKey:@"type"];
+            NSNumber *SpendChildTypeIDStr =[childType[j]objectForKey:@"id"];
+            aSpendingType.spendID=SpendChildTypeIDStr.intValue;
+            aSpendingType.spendName=SpendChildTypeNameStr;
+            spendingType *parentsType=[[spendingType alloc]init];
+            parentsType.spendID=i+1;
+            aSpendingType.fatherType=parentsType;
+            aSpendingType.isPayout = YES;
+            [[DatabaseManager ShareDBManager] addNewSpendType:aSpendingType];
+        }
+    }
+     */
     
     //tableView操作
     self.TableView.delegate=self;
@@ -96,12 +102,9 @@
     
     //自定义键盘
     _keyboardView= [[ZenKeyboard alloc] initWithFrame:CGRectMake(0, 0, 320, 216)];
-//    [self.tfIncome setFont:[UIFont fontWithName:@"DBLCDTempBlack" size:24]];
-    
     self.keyboardView.textField = self.tfIncome;
     self.automaticallyAdjustsScrollViewInsets=NO;
     self. extendedLayoutIncludesOpaqueBars=NO;
-//    [_tfIncome becomeFirstResponder];//某个输入框变为第一响应者，准备接受输入
     
     //定义view的外形
     self.imageView.layer.cornerRadius=15;//定义控件的圆角
@@ -134,12 +137,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark - PickerView
+#pragma mark - PickerView 类别默认为支出
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 2;
 }
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-       if (component==0) {
+    
+    if (component==0) {
         return self.fatherType.count;
         
     }else{
@@ -194,55 +198,55 @@
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     static NSString *CellIdentifier1 = @"cell1";
     static NSString *CellIdentifier2 = @"cell2";
     static NSString *CellIdentifier3 = @"cell3";
     UITableViewCell *cell;
-    if (indexPath.section==0) {
+    if (indexPath.section==0) {//今天的所有支出
         cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier1 forIndexPath:indexPath];
         UILabel *todayTotalLabel=(UILabel *)[cell viewWithTag:1];
         
-        NSMutableDictionary *dic = [[DatabaseManager ShareDBManager] billListWithDate:nil toDate:nil inType:nil inMember:nil isPayout:YES];
-        NSArray *array = [dic objectForKey:@"allBills"];
-        for (Bill *aBill in array) {
-            _todayTotal +=aBill.moneyAmount;
-        }
-        float todayTotal;
-        todayTotal=_todayTotal;
-        todayTotalLabel.text=[NSString stringWithFormat:@"%.2f",todayTotal];
-        _weekTotal=todayTotal;
-        _todayTotal = 0;
-        
         NSDate *now=[NSDate date];
         NSString *date;
-        
         NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
-        [formatter setDateFormat:@"MM/dd/yyyy"];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
         date = [formatter stringFromDate:now];
-        NSLog(@"%@",date);
         
-
-        [[DatabaseManager ShareDBManager]billInDay:nil InWeek:nil InMonth:nil IsPayOut:YES];
+        double totalMoney =[[DatabaseManager ShareDBManager] billInDay:date InWeek:nil InMonth:nil IsPayOut:YES];
+        NSLog(@"%.2f",totalMoney);
+        todayTotalLabel.text = [NSString stringWithFormat:@"%.2f",totalMoney];
         
     }
-    if (indexPath.section==1) {
+    if (indexPath.section==1) {//这周的所有支出
          cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier2 forIndexPath:indexPath];
         NSDate *nowDate = [[NSDate alloc] init];
-        NSTimeInterval secondsPerDay1 = 24*60*60*7;
-        NSDate *endDate = [nowDate addTimeInterval:-secondsPerDay1];
-        NSLog(@"yesterDay = %@",endDate);
+        NSString *weekStr = [self stringWeekForDate:nowDate];
         
         UILabel *weekTotalLabel=(UILabel *)[cell viewWithTag:2];
-        _weekTotal+=_todayTotal;
-        weekTotalLabel.text=[NSString stringWithFormat:@"%.2f",_weekTotal];
+        float weekMoney = [[DatabaseManager ShareDBManager] billInDay:nil InWeek:weekStr InMonth:nil IsPayOut:YES];
         
-        [[DatabaseManager ShareDBManager] billListWithDate:nowDate toDate:endDate inType:nil inMember:nil isPayout:YES];
+        weekTotalLabel.text=[NSString stringWithFormat:@"%.2f",weekMoney];
         
     }
-    if (indexPath.section==2) {
+    if (indexPath.section==2) {//这月的所有支出
         cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier3 forIndexPath:indexPath];
         UILabel *monthTotalLabel=(UILabel *)[cell viewWithTag:3];
-        monthTotalLabel.text=@"1000";
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDate *nowDate;
+        NSDateComponents *comps = [[NSDateComponents alloc] init];
+        NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit |
+        NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;//分别修改为 NSDayCalendarUnit NSWeekCalendarUnit NSYearCalendarUnit 可查年、月、周开始结束 “某个时间点”所在的“单元”的起始时间，以及起始时间距离“某个时间点”的时差（单位秒）
+        nowDate=[NSDate date];
+        comps = [calendar components:unitFlags fromDate:nowDate];
+//        NSInteger month = [comps month];
+//        NSInteger week = [comps week];
+//        NSInteger day = [comps day];
+//        NSInteger hour = [comps hour];
+//        NSInteger min = [comps minute];
+//        NSInteger sec = [comps second];
+        NSString *monthStr = [self stringMonthForDate:nowDate];
+        monthTotalLabel.text = [NSString stringWithFormat:@"%.2f",[[DatabaseManager ShareDBManager] billInDay:nil InWeek:nil InMonth:monthStr IsPayOut:YES]] ;
     }
     
     return cell;
@@ -253,7 +257,7 @@
     if (self.tfIncome.text.length == 0) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"不能保存" message:@"金额为空,请输入金额" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
-        [alertView show];
+        return;
     }
     Bill *aBill = [[Bill alloc] init];
     spendingType *aSpendType=[[spendingType alloc]init];
@@ -264,48 +268,49 @@
     
     aSpendType = [[DatabaseManager ShareDBManager] selectTypeByTypeName:_typeStr];//查询小类别
     aBill.spendID = aSpendType.spendID;
+    aBill.memberID = 0;
     //string转换为date
     NSString *timeStr=self.dateLabel.text;
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
     //    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm a"];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    NSDate *date;
-    date=[dateFormatter dateFromString:timeStr];
-    aBill.billTime=date;
+    aBill.billTime=timeStr;
     aBill.isPayout=YES;
     
-    [self.TableView reloadData];
     [[DatabaseManager ShareDBManager] addNewBill:aBill];
+    [self.TableView reloadData];
     
 }
+//TODO:再记一笔按钮，先保存在清空
 - (IBAction)comeBackButton:(UIButton *)sender {
     if (self.tfIncome.text.length == 0) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"不能保存" message:@"金额为空,请输入金额" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
+        return;
     }
-    //在记一笔，先保存在清空
+    
     Bill *aBill = [[Bill alloc] init];
     spendingType *aSpendType=[[spendingType alloc]init];
     
     aBill.moneyAmount=self.tfIncome.text.floatValue;
     aBill.billRemarks=self.remarksText.text;
     aBill.billImageData = UIImageJPEGRepresentation(self.imageView.image, 0.5);
-    aSpendType.spendName=self.classLabel.text;
     
+    aSpendType = [[DatabaseManager ShareDBManager] selectTypeByTypeName:_typeStr];//查询小类别
+    aBill.spendID = aSpendType.spendID;
+    aBill.memberID = 0;
     //string转换为date
     NSString *timeStr=self.dateLabel.text;
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
     //    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm a"];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    NSDate *date;
-    date=[dateFormatter dateFromString:timeStr];
-    aBill.billTime=date;
+    aBill.billTime=timeStr;
     aBill.isPayout=YES;
     
-    [self.TableView reloadData];
     [[DatabaseManager ShareDBManager] addNewBill:aBill];
+    [self.TableView reloadData];
     
-    //数据清空
+    //显示数据清空
     self.tfIncome.text = nil;
     self.remarksText.text=nil;
     self.imageView.image=[UIImage imageNamed:@"camera"];
@@ -313,9 +318,11 @@
     NSString *todayDate=[[now description] substringWithRange:NSMakeRange(0, 10)];
     self.dateLabel.text=todayDate;
 }
+
 - (IBAction)TimeChooseButton:(UIButton *)sender {
 }
 
+//@TODO:类别选择
 - (IBAction)ClassChooseButton:(UIButton *)sender {
     self.subView.hidden=NO;
 
@@ -415,6 +422,65 @@
     }
 }
 
+#pragma mark - 日期操作函数
+
+//date装换为str
+- (NSString *)stringMonthForDate:(NSDate *)date{
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM"];
+    NSString *dateStr=[dateFormatter stringFromDate:date];
+    return dateStr;
+}
+
+- (NSString *)stringDayForDate:(NSDate *)date{
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateStr=[dateFormatter stringFromDate:date];
+    return dateStr;
+}
+
+//给定一个日期，得到它处于一年的那一周
+- (NSString *)stringWeekForDate:(NSDate *)date{
+    NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSWeekOfYearCalendarUnit fromDate:date];
+    int weekday = [componets weekOfYear];
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy"];
+    NSString *dateStr=[dateFormatter stringFromDate:date];
+    NSString *str=[NSString stringWithFormat:@"%@-%@",dateStr,@(weekday-1)];
+    return str;
+}
+
+- (NSString *)getBeginAndEndWithMonth:(NSString *)month andWeek:(NSString *)week{
+    
+    NSDate *newDate = [NSDate date];
+    double interval = 0;
+    NSDate *beginDate = nil;
+    NSDate *endDate = nil;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    [calendar setFirstWeekday:2];//设定周一为周首日
+    BOOL ok;
+    if (month!=nil)
+    {
+        ok = [calendar rangeOfUnit:NSMonthCalendarUnit startDate:&beginDate interval:&interval forDate:newDate];
+    }else{
+        ok = [calendar rangeOfUnit:NSWeekCalendarUnit startDate:&beginDate interval:&interval forDate:newDate];
+    }
+    //分别修改为 NSDayCalendarUnit NSWeekCalendarUnit NSYearCalendarUnit 可查年、月、周开始结束 “某个时间点”所在的“单元”的起始时间，以及起始时间距离“某个时间点”的时差（单位秒）
+    if (ok) {
+        endDate = [beginDate dateByAddingTimeInterval:interval-1];
+    }else {
+        return nil;
+    }
+    NSDateFormatter *myDateFormatter = [[NSDateFormatter alloc] init];
+    [myDateFormatter setDateFormat:@"MM月dd日"];
+    NSString *beginString = [myDateFormatter stringFromDate:beginDate];
+    NSString *endString = [myDateFormatter stringFromDate:endDate];
+    
+    return [NSString stringWithFormat:@"%@-%@",beginString,endString];
+}
+
+
 #pragma mark - 传值
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSObject *nextVC=[segue destinationViewController];
@@ -423,10 +489,5 @@
     }
 }
 
-//- (void)viewDidUnload {
-//    self.keyboardView = nil;
-//    self.tfIncome = nil;
-//    [super viewDidUnload];
-//}
 
 @end

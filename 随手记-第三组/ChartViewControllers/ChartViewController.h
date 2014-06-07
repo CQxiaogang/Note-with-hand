@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EColumnChart.h"
 
-@interface ChartViewController : UIViewController<EColumnChartDataSource,EColumnChartDelegate>
+@interface ChartViewController : UIViewController<EColumnChartDataSource,EColumnChartDelegate,UIGestureRecognizerDelegate>
 @property (strong, nonatomic) EColumnChart *eColumnChart;
 
 @end
