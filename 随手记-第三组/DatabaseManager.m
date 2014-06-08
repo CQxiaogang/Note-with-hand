@@ -225,7 +225,7 @@ static DatabaseManager *sharedManager=nil;
     if (array.count == 0) {
         [array addObject:@"没有记录"];
     }
-    NSDictionary *dic=[[NSDictionary alloc]initWithObjectsAndKeys:array,@"billList",month,@"name", nil];
+    NSDictionary *dic=[[NSDictionary alloc] initWithObjectsAndKeys:array,@"billList",month,@"name", nil];
     return dic;
 }
 

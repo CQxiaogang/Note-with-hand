@@ -218,7 +218,7 @@
         todayTotalLabel.text = [NSString stringWithFormat:@"%.2f",totalMoney];
         
     }
-    if (indexPath.section==1) {//这周的所有支出
+    if (indexPath.section==1) {//这周的所有支出，因为将每周的第一天当成星期天，所以在星期天是会置为0.0的
          cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier2 forIndexPath:indexPath];
         NSDate *nowDate = [[NSDate alloc] init];
         NSString *weekStr = [self stringWeekForDate:nowDate];
