@@ -19,45 +19,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/DatabaseManager.m"
-            timestampString = "423719460.208201"
+            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/ChartViewControllers/ChartViewController.m"
+            timestampString = "424237409.965132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "421"
-            endingLineNumber = "421"
-            landmarkName = "-readSpendTypeList:andIsPayout:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/Controllers/MainViewController.m"
-            timestampString = "423718845.396713"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "-pickerView:numberOfRowsInComponent:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/BillShowViewControllers/BillShowViewController.m"
-            timestampString = "423624384.681567"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "462"
+            endingLineNumber = "462"
+            landmarkName = "-isPayoutSegmented:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -67,169 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/BudgetControllers/BudgetViewController.m"
-            timestampString = "423628817.805277"
+            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/Controllers/AddBillViewController.m"
+            timestampString = "424237708.955005"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "-balanceCompute:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/BudgetControllers/BudgetViewController.m"
-            timestampString = "423628814.145728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/Controllers/MainViewController.m"
-            timestampString = "423718845.396713"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-pickerView:titleForRow:forComponent:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/DatabaseManager.m"
-            timestampString = "423719460.208201"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "477"
-            endingLineNumber = "477"
-            landmarkName = "-readSpendTypeList:andIsPayout:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DatabaseManager readSpendTypeList:andIsPayout:]"
-                  moduleName = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;"
-                  urlString = "file:///Users/student/Desktop/%E9%9A%8F%E6%89%8B%E8%AE%B0%20/%E9%9A%8F%E6%89%8B%E8%AE%B0-%E7%AC%AC%E4%B8%89%E7%BB%84/DatabaseManager.m"
-                  timestampString = "423709511.879979"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "476"
-                  endingLineNumber = "476"
-                  offsetFromSymbolStart = "3645">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DatabaseManager readSpendTypeList:andIsPayout:]"
-                  moduleName = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;"
-                  urlString = "file:///Users/student/Desktop/%E9%9A%8F%E6%89%8B%E8%AE%B0%20/%E9%9A%8F%E6%89%8B%E8%AE%B0-%E7%AC%AC%E4%B8%89%E7%BB%84/DatabaseManager.m"
-                  timestampString = "423709511.880153"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "476"
-                  endingLineNumber = "476"
-                  offsetFromSymbolStart = "4226">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/DatabaseManager.m"
-            timestampString = "423719460.208201"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "-billListWithDate:toDate:inType:inMember:isPayout:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/ChartViewControllers/ChartViewController.m"
-            timestampString = "423719181.551144"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ChartViewController viewDidLoad]"
-                  moduleName = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;"
-                  urlString = "file:///Users/student/Desktop/%E9%9A%8F%E6%89%8B%E8%AE%B0%20/%E9%9A%8F%E6%89%8B%E8%AE%B0-%E7%AC%AC%E4%B8%89%E7%BB%84/ChartViewControllers/ChartViewController.m"
-                  timestampString = "423719460.490332"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "487">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ChartViewController viewDidLoad]"
-                  moduleName = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;"
-                  urlString = "file:///Users/student/Desktop/%E9%9A%8F%E6%89%8B%E8%AE%B0%20/%E9%9A%8F%E6%89%8B%E8%AE%B0-%E7%AC%AC%E4%B8%89%E7%BB%84/ChartViewControllers/ChartViewController.m"
-                  timestampString = "423719460.490521"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "1054">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/Controllers/MainViewController.m"
-            timestampString = "423719361.729831"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "-saveBillToDatabase:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -63,6 +63,8 @@
         NSArray *list = dic[@"billList"];
         [self.billList addObject:list];
     }
+    
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -336,12 +338,14 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
 //    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];//根据tableView的cell(sender)来找到你所点击的行。
-    NSArray *billArr = self.billList[self.selectIndex.section];
-    Bill *aBill = billArr[self.selectIndex.row];
+    
+    NSIndexPath  *indexpath = [self.tableView indexPathForCell:sender];
+    NSArray *billArr = self.billList[indexpath.section];
+    Bill *aBill = billArr[indexpath.row-1];
     
     NSObject *nextVC=[segue destinationViewController];
     if ([segue.identifier isEqualToString:@"billShow2Modify"]) {
-        [nextVC setValue:aBill forKey:@"typeDic"];
+        [nextVC setValue:aBill forKey:@"aBill"];
     }
 }
 @end

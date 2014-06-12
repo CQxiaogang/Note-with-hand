@@ -10,6 +10,8 @@
 #import "Config.h"
 #import "ZenKeyboard.h"
 #import "RBCustomDatePickerView.h" //自定义的datePickerView
+#import "Bill.h"
+#import "spendingType.h"
 
 @interface AddBillViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate/*相机协议*/,UIActionSheetDelegate>{
     NSString *_fatherTypeStr;//存放大type的string
@@ -17,12 +19,12 @@
     NSString *_memberStr;//存放成员的string
     NSString *_spendName;//类别名称
     NSString *_dateStr;//存放时间的string
-    BOOL _isTypePicker;
+    BOOL _isTypePicker;//重用一个pickerView
     NSDate *_date;
 }
 
-@property (nonatomic,strong) NSMutableArray *typeList;//存放type
-@property (nonatomic,strong) NSMutableArray *memberList;//存放成员
-@property (nonatomic,strong) NSMutableArray *budgetClasslist;//消费类别数组
+@property (nonatomic,strong) Bill *aBill;
+@property (nonatomic,strong) spendingType *aType;
+@property (nonatomic,strong) NSMutableArray *array;
 
 @end

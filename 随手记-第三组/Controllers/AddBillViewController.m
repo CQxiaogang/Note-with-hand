@@ -46,11 +46,17 @@
 
 - (IBAction)edit:(id)sender;//编辑按钮
 
+
+
+@property (nonatomic,strong) NSMutableArray *fatherTypeList;
+
 @property (nonatomic,strong)NSMutableDictionary *typeDic;//从数据库中读出type字典
-@property (nonatomic,strong)NSMutableDictionary *budgetDic;//从数据库中读出type字典
-@property (nonatomic,strong) NSMutableArray *fatherType;
+@property (nonatomic,strong) NSMutableArray *typeList;//存放type
 
+@property (nonatomic,strong) NSMutableArray *memberList;//存放成员
 
+@property (nonatomic,strong) NSMutableDictionary *incomeDic;//收入
+@property (nonatomic,strong) NSMutableArray *incomeList;//收入
 @end
 
 @implementation AddBillViewController
@@ -72,6 +78,7 @@
     self.remarksTextView.layer.borderColor = [UIColor blackColor].CGColor;
     self.remarksTextView.layer.borderWidth = 5;
     self.remarksTextView.delegate = self;
+    
     _isTypePicker = YES;
     
     //PickerView操作
@@ -90,15 +97,15 @@
 //        [[DatabaseManager ShareDBManager] addNewMember:aMemer];
 //    }
     //收入数组
-    self.budgetClasslist=[[NSMutableArray alloc]initWithObjects:@"工资",@"证劵",@"银行利息",@"意外收获",@"外债",nil];
-    for (int i=0; i<self.budgetClasslist.count; i++) {
-        NSString *budgetClassStr=self.budgetClasslist[i];
-        spendingType *aSpendingType=[[spendingType alloc]init];
-        aSpendingType.spendName=budgetClassStr;
-        aSpendingType.spendID=i+24;
-        aSpendingType.isPayout=NO;
-        [[DatabaseManager ShareDBManager]addNewSpendType:aSpendingType];
-    }
+//    self.incomeList=[[NSMutableArray alloc]initWithObjects:@"工资",@"证劵",@"银行利息",@"意外收获",@"外债",nil];
+//    for (int i=0; i<self.incomeList.count; i++) {
+//        NSString *budgetClassStr=self.incomeList[i];
+//        spendingType *aSpendingType=[[spendingType alloc]init];
+//        aSpendingType.spendName=budgetClassStr;
+//        aSpendingType.spendID=i+24;
+//        aSpendingType.isPayout=NO;
+//        [[DatabaseManager ShareDBManager]addNewSpendType:aSpendingType];
+//    }
     
     //自定义键盘
     _keyboardView= [[ZenKeyboard alloc] initWithFrame:CGRectMake(0, 0, 320, 216)];
@@ -125,13 +132,21 @@
     
     self.memberList = [[DatabaseManager ShareDBManager] readAllMemberList];
     
+    //支出数据
     self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
     self.typeList = self.typeDic[kDicOfTypeKey];
     
-    self.budgetDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:NO];
-    self.budgetClasslist = self.budgetDic[kDicOfTypeKey];
+    //收入数据
+    self.incomeDic = [[DatabaseManager ShareDBManager]readSpendTypeList:nil andIsPayout:NO];
+    self.incomeList = self.incomeDic[kDicOfTypeKey];
     
-    _isTypePicker = YES;
+    _isTypePicker = YES;//判断是支出还是收入，好多picker的重用
+    
+    //判断，添加bill时不调用此函数，修改bill时调用此函数。
+    if (!self.aBill.moneyAmount == 0) {
+        [self editAbill];
+    }
+    
 }
 
 //- (void)viewWillAppear:(BOOL)animated {//此方法为 当push时调用
@@ -147,6 +162,7 @@
 
 //选择收入支出按钮值改变时响应函数
 - (IBAction)isPayoutSegmentButton:(UISegmentedControl *)sender {
+    
     self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:[sender selectedSegmentIndex]];
     self.typeList = self.typeDic[kDicOfTypeKey];
     
@@ -173,21 +189,60 @@
     aMember=[[DatabaseManager ShareDBManager] selectMember:self.memberText.text];
     //string转换为date
     NSString *timeStr=self.dateText.text;
-//    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
-//    //    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm a"];
-//    [dateFormatter setDateFormat:@"MM/dd/yyyy"];//转换时间格式
-//    NSDate *date=[dateFormatter dateFromString:timeStr];
     
     aBill.billTime=[timeStr substringToIndex:10];
     aBill.memberID = aMember.memberID;
     aBill.moneyAmount=self.tfIncomeText.text.floatValue;
     aBill.billRemarks=self.remarksTextView.text;
-    aBill.isPayout = self.isPayoutSegment.selectedSegmentIndex;
+    BOOL isPayout;
+    if (self.isPayoutSegment.selectedSegmentIndex == 0) {
+        isPayout = YES;
+    }else{
+        isPayout = NO;
+    }
+    aBill.isPayout = isPayout;
     aBill.spendID = aSpendType.spendID;
     aBill.billImageData = UIImageJPEGRepresentation(self.imageView.image, 0.5);
     
     [[DatabaseManager ShareDBManager] addNewBill:aBill];
     
+}
+// 在记一笔
+- (IBAction)comeBackButton:(id)sender {
+    //判断金额是否为空
+    if (self.tfIncomeText.text.length == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"不能保存" message:@"金额为空,请输入金额" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    
+    Bill *aBill = [[Bill alloc]init];
+    spendingType *aType = [[spendingType alloc]init];
+    aBill.moneyAmount=self.tfIncomeText.text.floatValue;
+    aBill.billRemarks=self.remarksTextView.text;
+    aBill.billImageData = UIImageJPEGRepresentation(self.imageView.image, 0.5);
+    
+    aType = [[DatabaseManager ShareDBManager] selectTypeByTypeName:_typeStr];//查询小类别
+    aBill.spendID = aType.spendID;
+    aBill.memberID = 0;
+    //string转换为date
+    NSString *timeStr=self.dateText.text;
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+    //    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm a"];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    aBill.billTime=timeStr;
+    aBill.isPayout=YES;
+    
+    [[DatabaseManager ShareDBManager] addNewBill:aBill];
+    
+    //数据清空
+    self.tfIncomeText.text = nil;
+    self.remarksTextView.text=nil;
+    self.imageView.image=[UIImage imageNamed:@"camera"];
+    NSDate *now=[[NSDate alloc]init];
+    NSString *todayDate=[[now description] substringWithRange:NSMakeRange(0, 10)];
+    self.dateText.text=todayDate;
+
 }
 
 #pragma mark - datePicker
@@ -231,12 +286,12 @@
         
         if (self.isPayoutSegment.selectedSegmentIndex==0) {
             return 2;
-        }else{
+        }else{//end 收入pickerView中显示多少列
             return 1;
-        }
+        }//end 支出pickerView中显示多少列
     }else{
         return 1;
-    }
+    }//end---member
 }
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     if (_isTypePicker == YES) {
@@ -244,32 +299,36 @@
             if (component==0) {
                 return self.typeList.count;
             }else{
-                spendingType *aType = self.fatherType[self.rowInProvince];
+                spendingType *aType = self.typeList[self.rowInProvince];
                 NSArray *subTypeList = [self.typeDic objectForKey:aType.spendName];
                 return subTypeList.count;
-            }
+            }//end 收入pickerView中每个component的个数
         }else{
-            return self.typeList.count;
-        }
+            
+            return self.incomeList.count;
+         
+        }//end pickerView中每个component的个数
         
     }else{
         return self.memberList.count;
-    }
+    }//end---member
     
 }
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    
+    NSString *typeStr;
+    NSString *fatherTypeStr;
     if (_isTypePicker == YES) {
         if (self.isPayoutSegment.selectedSegmentIndex==0) {
             if (component==0) {
-                NSString *fatherTypeStr;
-                spendingType *aType = [[self.typeDic objectForKey:@"big"] objectAtIndex:row];
+                NSArray *array = [self.typeDic objectForKey:@"big"];
+                spendingType *aType = array[row];
                 fatherTypeStr = aType.spendName;
                 _fatherTypeStr=fatherTypeStr;
                 
                 return fatherTypeStr;
                 
             }else{
-                NSString *typeStr;
                 NSArray *typeList = [self.typeDic objectForKey:@"big"];
                 spendingType *aType = typeList[self.rowInProvince];
                 NSArray *subTypeList = [self.typeDic objectForKey:aType.spendName];
@@ -278,18 +337,17 @@
                 _typeStr=typeStr;
                 
                 return typeStr;
-            }
+            }//end 收入pickerView的component值显示
         }else{
-            NSString *spendType=self.budgetClasslist[row];
-            _spendName=spendType;
-            return spendType;
-        }
+            spendingType *spendType=self.incomeList[row];
+            _spendName=spendType.spendName;
+            return _spendName;
+        }//end 支出pickerView的component值显示
     }else{
         member *aMember= self.memberList[row];
         _memberStr = aMember.memberName;
         return _memberStr;
-    }
-    
+    }//end---member
 }
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.rowInProvince=row;
@@ -300,7 +358,7 @@
             }
         }
     }
-    
+
 }
 
 
@@ -418,4 +476,22 @@
     //点击按钮调用方法进行传值
 //    [self performSegueWithIdentifier:@"Picker2Edit" sender:self.typeDic];
 }
+
+#pragma mark - 修改bill
+-(void)editAbill;
+{
+    //TODO:传来的数据，显示数据
+    //第一次进入视图时间，类别为空。原因：一下代码再次吧时间和类别赋值为nil所有未出现此情况。
+    //bug等待解决
+    self.imageView.image = [UIImage imageWithData:self.aBill.billImageData];
+    self.tfIncomeText.text = [NSString stringWithFormat:@"%.2f",self.aBill.moneyAmount];
+    self.dateText.text = self.aBill.billTime;
+    self.remarksTextView.text = self.aBill.billRemarks;
+    
+    spendingType *aSpendType =  [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",self.aType.fatherType.spendID] andIsPayout:self.isPayoutSegment.selectedSegmentIndex];
+    self.classText.text = [NSString stringWithFormat:@"%@>%@",aSpendType.spendName,self.aType.spendName];
+    
+    //member对象没有传过来，原因：memberID为0不知道怎么操作
+}
+
 @end

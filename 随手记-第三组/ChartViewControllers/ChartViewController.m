@@ -14,17 +14,26 @@
 #import "EColor.h" //显示的颜色类别，用宏名定义所有要用的颜色
 #include <stdlib.h>
 
-@interface ChartViewController ()
+@interface ChartViewController (){
+    NSString *_currentMonthStr;//月份
+    int _monthNumber;//月份的Number
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
-- (IBAction)leftButton:(UIButton *)sender;
-- (IBAction)rightButton:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *isPayoutSegmented;
+- (IBAction)lastMonth:(id)sender;
+- (IBAction)nextMonth:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *eColumnView;
+- (IBAction)isPayoutSegmented:(UISegmentedControl *)sender;
 
 @property (nonatomic, strong) NSMutableArray *columnDataList; //存储数据的数组
+@property (nonatomic, strong) NSMutableArray *bigTypeList;//存放大类别的数组
 @property (nonatomic, strong) EFloatBox *eFloatBox;//弹出的详细信息
 
 @property (nonatomic, strong) EColumn *eColumnSelected;//view
 @property (nonatomic, strong) UIColor *tempColor;//零时的颜色
+
+
 
 
 @end
@@ -44,6 +53,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.eColumnView.hidden = YES;
+    
     NSDate *now=[NSDate date];
     NSString *date;
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
@@ -51,21 +63,37 @@
     date = [formatter stringFromDate:now];
     
     NSDate *nowDate = [NSDate new];
-    NSString *monthStr = [self stringMonthForDate:nowDate];
-    NSMutableDictionary *moneyValueDic = [self getBillTotalMoneyByMonth:monthStr andIsPayout:YES];//得到每个类别的账单总额
+    NSString *nowStr = [self stringMonthForDate:nowDate];
+    _currentMonthStr = nowStr;
+    NSArray *timeList = [nowStr componentsSeparatedByString:@"-"];
+    NSString *monthStr = timeList[1];
+    int month = monthStr.intValue;
+    _monthNumber = month;
+    
+    NSMutableDictionary *moneyValueDic = [self getBillTotalMoneyByMonth:_currentMonthStr andIsPayout:YES];//得到每个类别的账单总额
     
     NSMutableDictionary *typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];//得到所有的类别
-    NSArray *bigTypeList = typeDic[@"big"];
-    
+    self.bigTypeList = typeDic[@"big"];
     self.columnDataList = [NSMutableArray array];
+    
+    if (self.bigTypeList.count==0) {
+        spendingType *aType = [[spendingType alloc] init];
+        aType.spendName = @"无数据";
+        self.bigTypeList = [NSMutableArray arrayWithObjects:aType, nil];
+        EColumnDataModel *eColumnDataModel = [[EColumnDataModel alloc] initWithLabel:[NSString stringWithFormat:@"%@",aType.spendName] value:0 index:0 unit:@"￥"];//根据柱状图的X坐标名称、对应的值、ID、单位 对一条柱状图进行赋值
+        [self.columnDataList addObject:eColumnDataModel];
+    }else{
         
-    for (int i=0; i<bigTypeList.count; i++) {
-        spendingType *bigType = bigTypeList[i];
-        NSNumber *moneyValue = moneyValueDic[bigType.spendName];
-        float value = moneyValue.floatValue;
-        if (value != 0) {
-            EColumnDataModel *eColumnDataModel = [[EColumnDataModel alloc] initWithLabel:[NSString stringWithFormat:@"%@",bigType.spendName] value:value index:i unit:@"￥"];//根据柱状图的X坐标名称、对应的值、ID、单位 对一条柱状图进行赋值
-            [self.columnDataList addObject:eColumnDataModel];//添加柱形到数组中
+        for (int i=0; i<self.bigTypeList.count; i++) {
+            
+            spendingType *bigType = self.bigTypeList[i];
+            NSNumber *moneyValue = moneyValueDic[bigType.spendName];
+            float value = moneyValue.floatValue;
+            if (value != 0) {//
+                EColumnDataModel *eColumnDataModel = [[EColumnDataModel alloc] initWithLabel:[NSString stringWithFormat:@"%@",bigType.spendName] value:value index:i unit:@"￥"];//根据柱状图的X坐标名称、对应的值、ID、单位 对一条柱状图进行赋值
+                [self.columnDataList addObject:eColumnDataModel];//添加柱形到数组中
+                NSLog(@"i=%d",i);
+            }
         }
     }
     
@@ -101,7 +129,7 @@
 }
 
 #pragma -mark- EColumnChartDataSource 类似tableview的显示
-//条形图的个数
+//条形图的个数 控制个数
 - (NSInteger)numberOfColumnsInEColumnChart:(EColumnChart *)eColumnChart
 {
     return [self.columnDataList count];
@@ -110,7 +138,7 @@
 //最多显示多少个柱形
 - (NSInteger)numberOfColumnsPresentedEveryTime:(EColumnChart *)eColumnChart
 {
-    return 3;
+    return 5;
 }
 
 //返回柱状图中value最高的一条
@@ -154,9 +182,10 @@
     eColumn.barColor = [UIColor redColor];//barColor：选中时的颜色
     
     _valueLabel.text = [NSString stringWithFormat:@"%.1f",eColumn.eColumnDataModel.value];//试图最顶端的label显示点击的柱状的值
-    
-    
-    //    [self performSegueWithIdentifier:@"column2Viewtwo" sender:nil];
+    NSMutableDictionary *billDic = [self getBillDicTotalMoneyByMonth:@"2014-06" andIsPayout:self.isPayoutSegmented.selectedSegmentIndex];
+    spendingType *aBigType = self.bigTypeList[eColumn.eColumnDataModel.index];
+    NSArray *billList = billDic[aBigType.spendName];
+    [self performSegueWithIdentifier:@"chart2show" sender:billList];
 }
 
 //手指按住并且拖动的情况下的响应函数
@@ -178,7 +207,7 @@ fingerDidEnterColumn:(EColumn *)eColumn
     }
     else
     {
-        _eFloatBox = [[EFloatBox alloc] initWithPosition:CGPointMake(eFloatBoxX, eFloatBoxY) value:eColumn.eColumnDataModel.value unit:@"￥" title:@"Title"];
+        _eFloatBox = [[EFloatBox alloc] initWithPosition:CGPointMake(eFloatBoxX, eFloatBoxY) value:eColumn.eColumnDataModel.value unit:@"￥" title:eColumn.eColumnDataModel.label];
         _eFloatBox.alpha = 0.0;
         [eColumnChart addSubview:_eFloatBox];
         
@@ -218,7 +247,7 @@ fingerDidLeaveColumn:(EColumn *)eColumn
     }
 }
 
-//调用向左、右移动的函数
+//TODO:柱状图 滑动手势响应函数 - 调用向左、右移动的函数
 -(void)Swipe:(UISwipeGestureRecognizer *)sender{
     if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
         if (self.eColumnChart == nil) return;
@@ -231,16 +260,7 @@ fingerDidLeaveColumn:(EColumn *)eColumn
     }
 }
 
-
-- (IBAction)leftButton:(UIButton *)sender {
-    //上个月
-}
-
-- (IBAction)rightButton:(UIButton *)sender {
-    //下个月
-    
-}
-
+//TODO:得到这个月分类别下的账单金额的总和
 - (NSMutableDictionary *)getBillTotalMoneyByMonth:(NSString *)month andIsPayout:(BOOL)isPayout{
     
     NSDictionary *billDic = [[DatabaseManager ShareDBManager] billDicInMonth:month];//得到这个月所有的账单
@@ -248,27 +268,73 @@ fingerDidLeaveColumn:(EColumn *)eColumn
     
     NSMutableDictionary *typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:isPayout];//得到所有的类别
     NSArray *bigTypeList = typeDic[@"big"];
-    
-    NSMutableDictionary *billOfTypeDic = [NSMutableDictionary dictionary];//将billList按大类别组建字典
-    NSMutableArray *billofTypeList = [NSMutableArray array];
-    
+    NSMutableDictionary *billOfTypeDic = [NSMutableDictionary dictionary];//将billList按大类别组建字典;
+    self.bigTypeList = [bigTypeList mutableCopy];
     float totalMoney;
+    if (isPayout == YES) {
+        if ([billList[0] isKindOfClass:[Bill class]]) {//判断bill数组中第一个是不是Bill类型
+            for (spendingType *bigType in bigTypeList) {
+                NSArray *subList = [typeDic objectForKey:bigType.spendName];
+                totalMoney = 0.0;
+                for (spendingType *subType in subList) {
+                    for (Bill *aBill in billList) {
+                        if (aBill.spendID == subType.spendID && aBill.isPayout == isPayout) {
+                            totalMoney +=aBill.moneyAmount;
+                        }
+                    }// 3 for end
+                }
+                if (totalMoney!=0) {
+                    NSNumber *totalNum = [NSNumber numberWithFloat:totalMoney];
+                    [billOfTypeDic setObject:totalNum forKey:bigType.spendName];
+                }
+            }// 1 for end
+        }
+    }else{
+        if ([billList[0] isKindOfClass:[Bill class]]) {
+            for (spendingType *bigType in bigTypeList) {
+                totalMoney = 0.0;
+                for (Bill *aBill in billList) {
+                    if (aBill.spendID == bigType.spendID && aBill.isPayout == isPayout) {
+                        totalMoney +=aBill.moneyAmount;
+                    }
+                }// 2 for end
+                if (totalMoney!=0) {
+                    NSNumber *totalNum = [NSNumber numberWithFloat:totalMoney];
+                    [billOfTypeDic setObject:totalNum forKey:bigType.spendName];
+                }//if end
+            }
+        }//if end
+    }
+    
+    return billOfTypeDic;
+}
+
+//TODO:得到对应类别下的账单数组
+- (NSMutableDictionary *)getBillDicTotalMoneyByMonth:(NSString *)month andIsPayout:(BOOL)isPayout{
+    
+    NSDictionary *billDic = [[DatabaseManager ShareDBManager] billDicInMonth:month];//得到这个月所有的账单
+    NSArray *billList = billDic[@"billList"];//账单数组
+    
+    NSMutableDictionary *typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:isPayout];//得到所有的类别
+    NSArray *bigTypeList = typeDic[@"big"];
+    
+    NSMutableDictionary *billListOfTypeDic = [NSMutableDictionary dictionary];//将billList按大类别组建字典
+    
+    
     for (spendingType *bigType in bigTypeList) {
+        NSMutableArray *billofTypeList = [NSMutableArray array];
         NSArray *subList = [typeDic objectForKey:bigType.spendName];
-        totalMoney = 0.0;
         for (spendingType *subType in subList) {
             for (Bill *aBill in billList) {
                 if (aBill.spendID == subType.spendID) {
-                    totalMoney +=aBill.moneyAmount;
-//                    [billofTypeList addObject:aBill];
+                    [billofTypeList addObject:aBill];
                 }
             }// 3 for end
         }
-        NSNumber *totalNum = [NSNumber numberWithFloat:totalMoney];
-        [billOfTypeDic setObject:totalNum forKey:bigType.spendName];
+        [billListOfTypeDic setObject:billofTypeList forKey:bigType.spendName];
     }// 1 for end
     
-    return billOfTypeDic;
+    return billListOfTypeDic;
 }
 
 #pragma mark - 日期转换函数
@@ -279,5 +345,148 @@ fingerDidLeaveColumn:(EColumn *)eColumn
     NSString *dateStr=[dateFormatter stringFromDate:date];
     return dateStr;
 }
+
+#pragma mark - 传值
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSObject *nextVC=[segue destinationViewController];
+    
+    if ([segue.identifier isEqualToString:@"chart2show"]) {
+        [nextVC setValue:sender forKey:@"array"];
+    }
+}
+
+#pragma mark - 上、下月的切换
+- (IBAction)lastMonth:(id)sender {//上个月
+    
+    UILabel *monethLabel = (UILabel *)[self.view viewWithTag:23];
+    if (_monthNumber>1) {//点击一次加一次。
+        _monthNumber-=1;
+        
+    }
+    [self.columnDataList removeAllObjects];
+    [self.eColumnChart removeFromSuperview];
+    
+    NSString *monthStr;
+    if (_monthNumber>=1 && _monthNumber<=9) {
+        monthStr = [NSString stringWithFormat:@"2014-0%d",_monthNumber];
+    }else if(_monthNumber>=10 && _monthNumber<=12){
+        monthStr = [NSString stringWithFormat:@"2014-%d",_monthNumber];
+    }
+    monethLabel.text = monthStr;
+    NSMutableDictionary *moneyValueDic = [self getBillTotalMoneyByMonth:monthStr andIsPayout:YES];//得到每个类别的账单总额
+    if ([moneyValueDic allKeys].count == 0) {
+        self.eColumnView.hidden = NO;
+        
+    }else{
+        self.eColumnView.hidden = YES;
+        NSMutableDictionary *typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];//得到所有的类别
+        self.bigTypeList = typeDic[@"big"];
+        
+        for (int i=0; i<self.bigTypeList.count; i++) {
+            spendingType *bigType = self.bigTypeList[i];
+            NSNumber *moneyValue = moneyValueDic[bigType.spendName];
+            float value = moneyValue.floatValue;
+            if (value != 0) {//
+                EColumnDataModel *eColumnDataModel = [[EColumnDataModel alloc] initWithLabel:[NSString stringWithFormat:@"%@",bigType.spendName] value:value index:i unit:@"￥"];//根据柱状图的X坐标名称、对应的值、ID、单位 对一条柱状图进行赋值
+                [self.columnDataList addObject:eColumnDataModel];//添加柱形到数组中
+            }
+        }
+        self.eColumnChart = [[EColumnChart alloc] initWithFrame:CGRectMake(40, 200, 250, 200)];
+        [self.eColumnChart setColumnsIndexStartFromLeft:YES];//默认从左到右排序
+        [self.eColumnChart setDelegate:self];
+        [self.eColumnChart setDataSource:self];
+        
+        [self.view addSubview:self.eColumnChart];//添加外面的XY坐标系
+    }
+    
+    
+}
+
+- (IBAction)nextMonth:(id)sender {//下个月
+    UILabel *monethLabel = (UILabel *)[self.view viewWithTag:23];
+    
+    if (_monthNumber<12) {
+        _monthNumber+=1;
+    }
+    
+    [self.columnDataList removeAllObjects];
+    
+    NSString *monthStr;
+    if (_monthNumber>=1 && _monthNumber<=9) {
+        monthStr = [NSString stringWithFormat:@"2014-0%d",_monthNumber];
+    }else if(_monthNumber>=10 && _monthNumber<=12){
+        monthStr = [NSString stringWithFormat:@"2014-%d",_monthNumber];
+    }
+    monethLabel.text = monthStr;
+    NSMutableDictionary *moneyValueDic = [self getBillTotalMoneyByMonth:monthStr andIsPayout:YES];//得到每个类别的账单总额
+    
+    NSMutableDictionary *typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];//得到所有的类别
+    self.bigTypeList = typeDic[@"big"];
+    
+    for (int i=0; i<self.bigTypeList.count; i++) {
+        spendingType *bigType = self.bigTypeList[i];
+        NSNumber *moneyValue = moneyValueDic[bigType.spendName];
+        float value = moneyValue.floatValue;
+        if (value != 0) {//
+            EColumnDataModel *eColumnDataModel = [[EColumnDataModel alloc] initWithLabel:[NSString stringWithFormat:@"%@",bigType.spendName] value:value index:i unit:@"￥"];//根据柱状图的X坐标名称、对应的值、ID、单位 对一条柱状图进行赋值
+            [self.columnDataList addObject:eColumnDataModel];//添加柱形到数组中
+        }
+    }
+    
+    [self.eColumnChart reloadData];
+    
+}
+#pragma mark - 改变支出收入
+- (IBAction)isPayoutSegmented:(UISegmentedControl *)sender {
+    
+    NSMutableDictionary *moneyValueDic;
+    NSString *monthStr;
+    
+    if (_monthNumber>=1 && _monthNumber<=9) {
+        monthStr = [NSString stringWithFormat:@"2014-0%d",_monthNumber];
+    }else if(_monthNumber>=10 && _monthNumber<=12){
+        monthStr = [NSString stringWithFormat:@"2014-%d",_monthNumber];
+    }
+    BOOL isPayout;
+    if (sender.selectedSegmentIndex == 0) {
+        moneyValueDic = [self getBillTotalMoneyByMonth:monthStr andIsPayout:YES];//得到每个类别的账单总额
+        isPayout = YES;
+    }else if (sender.selectedSegmentIndex == 1){
+        moneyValueDic = [self getBillTotalMoneyByMonth:monthStr andIsPayout:NO];//得到每个类别的账单总额
+        isPayout = NO;
+    }
+    
+    [self.columnDataList removeAllObjects];
+    [self.eColumnChart removeFromSuperview];
+    
+    if ([moneyValueDic allKeys].count == 0) {
+        self.eColumnView.hidden = NO;
+        
+    }else{
+        self.eColumnView.hidden = YES;
+        NSMutableDictionary *typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:isPayout];//得到所有的类别
+        NSArray *bigTypeList = typeDic[@"big"];
+        
+        for (int i=0; i<bigTypeList.count; i++) {
+            spendingType *bigType = bigTypeList[i];
+            NSNumber *moneyValue = moneyValueDic[bigType.spendName];
+            float value = moneyValue.floatValue;
+            if (value != 0) {//
+                EColumnDataModel *eColumnDataModel = [[EColumnDataModel alloc] initWithLabel:[NSString stringWithFormat:@"%@",bigType.spendName] value:value index:i unit:@"￥"];//根据柱状图的X坐标名称、对应的值、ID、单位 对一条柱状图进行赋值
+                [self.columnDataList addObject:eColumnDataModel];//添加柱形到数组中
+            }
+        }
+        self.eColumnChart = [[EColumnChart alloc] initWithFrame:CGRectMake(40, 200, 250, 200)];
+        [self.eColumnChart setColumnsIndexStartFromLeft:YES];//默认从左到右排序
+        [self.eColumnChart setDelegate:self];
+        [self.eColumnChart setDataSource:self];
+        
+        [self.view addSubview:self.eColumnChart];//添加外面的XY坐标系
+    }
+    
+}
+
+
+
 
 @end

@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0205317E19309275000B1C5B /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0205317D19309275000B1C5B /* DatabaseManager.m */; };
+		0219E9BF194722B100142ECB /* CharShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0219E9BE194722B100142ECB /* CharShowViewController.m */; };
 		0232CE24193EF844006A9314 /* img201110111340220.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0232CE23193EF844006A9314 /* img201110111340220.jpg */; };
 		0289419C19338C2C00A07065 /* LDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0289419919338C2C00A07065 /* LDProgressView.m */; };
 		0289419D19338C2C00A07065 /* UIColor+RGBValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 0289419B19338C2C00A07065 /* UIColor+RGBValues.m */; };
 		028941A119338CAC00A07065 /* BudgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 028941A019338CAC00A07065 /* BudgetViewController.m */; };
+		02A9BCE11945E9F700543E57 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 02A9BCDF1945E9F700543E57 /* IQKeyboardManager.bundle */; };
+		02A9BCE21945E9F700543E57 /* KeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A9BCE01945E9F700543E57 /* KeyboardManager.framework */; };
 		3F04E34F191B29C900D69E0D /* ProvincesAndCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F04E34E191B29C900D69E0D /* ProvincesAndCities.plist */; };
 		3F28205A1924525D00522667 /* AddBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2820591924525D00522667 /* AddBillViewController.m */; };
 		3F323A27193EC3AA007BBCFD /* SubEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F323A26193EC3AA007BBCFD /* SubEditViewController.m */; };
@@ -26,6 +29,7 @@
 		3F4E24981918B0C500A4A12F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E24931918B0C500A4A12F /* FMResultSet.m */; };
 		3F4E249A1918B14000A4A12F /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4E24991918B14000A4A12F /* camera.png */; };
 		3F4E249D1918B20A00A4A12F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E249C1918B20A00A4A12F /* MainViewController.m */; };
+		3F69F9EB194946D6009CE261 /* zhuzhuangtu.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F69F9EA194946D6009CE261 /* zhuzhuangtu.png */; };
 		3F6BA192192C45EA00C347EB /* GenericSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F6BA18A192C45EA00C347EB /* GenericSeparator@2x.png */; };
 		3F6BA193192C45EA00C347EB /* KeyboardBackgroundTextured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F6BA18B192C45EA00C347EB /* KeyboardBackgroundTextured@2x.png */; };
 		3F6BA194192C45EA00C347EB /* BackgroundTexture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F6BA18C192C45EA00C347EB /* BackgroundTexture@2x.png */; };
@@ -35,6 +39,10 @@
 		3F6BA198192C45EA00C347EB /* KeyboardNumericEntryKeyPressedTextured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F6BA190192C45EA00C347EB /* KeyboardNumericEntryKeyPressedTextured@2x.png */; };
 		3F6BA199192C45EA00C347EB /* KeyboardNumericEntryKeyTextured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F6BA191192C45EA00C347EB /* KeyboardNumericEntryKeyTextured@2x.png */; };
 		3F6BA19D192C47D000C347EB /* ZenKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6BA19C192C47D000C347EB /* ZenKeyboard.m */; };
+		3F88B93A1945886000C5875A /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88B9391945886000C5875A /* ShowViewController.m */; };
+		3F88B93D1945A22B00C5875A /* WeekShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88B93C1945A22B00C5875A /* WeekShowViewController.m */; };
+		3F88B9401945A24600C5875A /* MonthShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88B93F1945A24600C5875A /* MonthShowViewController.m */; };
+		3F88B9431945A88100C5875A /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88B9421945A88100C5875A /* CustomViewController.m */; };
 		3F892409191C77CC00E6B429 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F892408191C77CC00E6B429 /* EditViewController.m */; };
 		3F89240C191C870300E6B429 /* EditChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F89240B191C870300E6B429 /* EditChildViewController.m */; };
 		3F92AE0D19346D650003F7B2 /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F92AE0C19346D650003F7B2 /* ChartViewController.m */; };
@@ -63,9 +71,6 @@
 		3FBCE74F191718B200B674C3 /* spendingType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE74E191718B200B674C3 /* spendingType.m */; };
 		3FBCE752191719F900B674C3 /* member.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE751191719F900B674C3 /* member.m */; };
 		3FBCE75519171A1500B674C3 /* budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE75419171A1500B674C3 /* budget.m */; };
-		9C9B22C719430A910086FCAA /* KeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9B22C519430A910086FCAA /* KeyboardManager.framework */; };
-		9C9B22C819430A910086FCAA /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B22C619430A910086FCAA /* IQKeyboardManager.bundle */; };
-		9C9B22CA1943153D0086FCAA /* shuiShouji.db in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B22C91943153D0086FCAA /* shuiShouji.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +86,8 @@
 /* Begin PBXFileReference section */
 		0205317C19309275000B1C5B /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		0205317D19309275000B1C5B /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		0219E9BD194722B100142ECB /* CharShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharShowViewController.h; path = Controllers/CharShowViewController.h; sourceTree = "<group>"; };
+		0219E9BE194722B100142ECB /* CharShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CharShowViewController.m; path = Controllers/CharShowViewController.m; sourceTree = "<group>"; };
 		0232CE23193EF844006A9314 /* img201110111340220.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img201110111340220.jpg; sourceTree = "<group>"; };
 		0289419819338C2C00A07065 /* LDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDProgressView.h; sourceTree = "<group>"; };
 		0289419919338C2C00A07065 /* LDProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDProgressView.m; sourceTree = "<group>"; };
@@ -88,6 +95,8 @@
 		0289419B19338C2C00A07065 /* UIColor+RGBValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBValues.m"; sourceTree = "<group>"; };
 		0289419F19338CAC00A07065 /* BudgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BudgetViewController.h; path = BudgetControllers/BudgetViewController.h; sourceTree = "<group>"; };
 		028941A019338CAC00A07065 /* BudgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BudgetViewController.m; path = BudgetControllers/BudgetViewController.m; sourceTree = "<group>"; };
+		02A9BCDF1945E9F700543E57 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		02A9BCE01945E9F700543E57 /* KeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeyboardManager.framework; sourceTree = "<group>"; };
 		3F04E34E191B29C900D69E0D /* ProvincesAndCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProvincesAndCities.plist; sourceTree = "<group>"; };
 		3F2820581924525D00522667 /* AddBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddBillViewController.h; path = Controllers/AddBillViewController.h; sourceTree = "<group>"; };
 		3F2820591924525D00522667 /* AddBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddBillViewController.m; path = Controllers/AddBillViewController.m; sourceTree = "<group>"; };
@@ -112,6 +121,7 @@
 		3F4E24991918B14000A4A12F /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		3F4E249B1918B20A00A4A12F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Controllers/MainViewController.h; sourceTree = "<group>"; };
 		3F4E249C1918B20A00A4A12F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Controllers/MainViewController.m; sourceTree = "<group>"; };
+		3F69F9EA194946D6009CE261 /* zhuzhuangtu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhuzhuangtu.png; sourceTree = "<group>"; };
 		3F6BA18A192C45EA00C347EB /* GenericSeparator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GenericSeparator@2x.png"; sourceTree = "<group>"; };
 		3F6BA18B192C45EA00C347EB /* KeyboardBackgroundTextured@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardBackgroundTextured@2x.png"; sourceTree = "<group>"; };
 		3F6BA18C192C45EA00C347EB /* BackgroundTexture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundTexture@2x.png"; sourceTree = "<group>"; };
@@ -123,6 +133,14 @@
 		3F6BA19A192C47D000C347EB /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		3F6BA19B192C47D000C347EB /* ZenKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenKeyboard.h; sourceTree = "<group>"; };
 		3F6BA19C192C47D000C347EB /* ZenKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenKeyboard.m; sourceTree = "<group>"; };
+		3F88B9381945886000C5875A /* ShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowViewController.h; path = Controllers/ShowViewController.h; sourceTree = "<group>"; };
+		3F88B9391945886000C5875A /* ShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowViewController.m; path = Controllers/ShowViewController.m; sourceTree = "<group>"; };
+		3F88B93B1945A22B00C5875A /* WeekShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeekShowViewController.h; path = Controllers/WeekShowViewController.h; sourceTree = "<group>"; };
+		3F88B93C1945A22B00C5875A /* WeekShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeekShowViewController.m; path = Controllers/WeekShowViewController.m; sourceTree = "<group>"; };
+		3F88B93E1945A24600C5875A /* MonthShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonthShowViewController.h; path = Controllers/MonthShowViewController.h; sourceTree = "<group>"; };
+		3F88B93F1945A24600C5875A /* MonthShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MonthShowViewController.m; path = Controllers/MonthShowViewController.m; sourceTree = "<group>"; };
+		3F88B9411945A88100C5875A /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomViewController.h; path = Controllers/CustomViewController.h; sourceTree = "<group>"; };
+		3F88B9421945A88100C5875A /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomViewController.m; path = Controllers/CustomViewController.m; sourceTree = "<group>"; };
 		3F892407191C77CC00E6B429 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditViewController.h; path = Controllers/EditViewController.h; sourceTree = "<group>"; };
 		3F892408191C77CC00E6B429 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditViewController.m; path = Controllers/EditViewController.m; sourceTree = "<group>"; };
 		3F89240A191C870300E6B429 /* EditChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditChildViewController.h; path = Controllers/EditChildViewController.h; sourceTree = "<group>"; };
@@ -170,9 +188,6 @@
 		3FBCE751191719F900B674C3 /* member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = member.m; path = Models/member.m; sourceTree = "<group>"; };
 		3FBCE75319171A1500B674C3 /* budget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = budget.h; path = Models/budget.h; sourceTree = "<group>"; };
 		3FBCE75419171A1500B674C3 /* budget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = budget.m; path = Models/budget.m; sourceTree = "<group>"; };
-		9C9B22C519430A910086FCAA /* KeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeyboardManager.framework; sourceTree = "<group>"; };
-		9C9B22C619430A910086FCAA /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
-		9C9B22C91943153D0086FCAA /* shuiShouji.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = shuiShouji.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C9B22C719430A910086FCAA /* KeyboardManager.framework in Frameworks */,
+				02A9BCE21945E9F700543E57 /* KeyboardManager.framework in Frameworks */,
 				3F48C17B19175E8A007DF8FC /* libsqlite3.dylib in Frameworks */,
 				3FBCE7141917168100B674C3 /* CoreGraphics.framework in Frameworks */,
 				3FBCE7161917168100B674C3 /* UIKit.framework in Frameworks */,
@@ -235,8 +250,8 @@
 		3F04E34D191B23A000D69E0D /* IQKeyBoardManager */ = {
 			isa = PBXGroup;
 			children = (
-				9C9B22C519430A910086FCAA /* KeyboardManager.framework */,
-				9C9B22C619430A910086FCAA /* IQKeyboardManager.bundle */,
+				02A9BCDF1945E9F700543E57 /* IQKeyboardManager.bundle */,
+				02A9BCE01945E9F700543E57 /* KeyboardManager.framework */,
 			);
 			name = IQKeyBoardManager;
 			path = "随手记-第三组";
@@ -254,20 +269,24 @@
 		3F4E24891918B05E00A4A12F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3F4E249B1918B20A00A4A12F /* MainViewController.h */,
-				3F4E249C1918B20A00A4A12F /* MainViewController.m */,
-				3F892407191C77CC00E6B429 /* EditViewController.h */,
-				3F892408191C77CC00E6B429 /* EditViewController.m */,
-				3F89240A191C870300E6B429 /* EditChildViewController.h */,
-				3F89240B191C870300E6B429 /* EditChildViewController.m */,
-				3F2820581924525D00522667 /* AddBillViewController.h */,
-				3F2820591924525D00522667 /* AddBillViewController.m */,
-				3F323A25193EC3AA007BBCFD /* SubEditViewController.h */,
-				3F323A26193EC3AA007BBCFD /* SubEditViewController.m */,
-				3F323A28193EC3CD007BBCFD /* SubEcitChildViewController.h */,
-				3F323A29193EC3CD007BBCFD /* SubEcitChildViewController.m */,
+				3F88B9451945A8A300C5875A /* MainViewController */,
+				3F4B9644193582F7005794D0 /* BillShowViewController */,
+				3F92AE0A19346D1E0003F7B2 /* ChartControllers */,
+				028941A219338CB300A07065 /* BudgetControllers */,
+				3F88B9441945A88500C5875A /* CustomViewController */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3F69F9EC194946E8009CE261 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3F4E24991918B14000A4A12F /* camera.png */,
+				0232CE23193EF844006A9314 /* img201110111340220.jpg */,
+				3F4AA97B19380C7D00D1A505 /* icon.png */,
+				3F69F9EA194946D6009CE261 /* zhuzhuangtu.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		3F6A379F1921FA3F0094AA49 /* Resource */ = {
@@ -296,6 +315,40 @@
 			name = ZenKeyboard;
 			sourceTree = "<group>";
 		};
+		3F88B9441945A88500C5875A /* CustomViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F88B9411945A88100C5875A /* CustomViewController.h */,
+				3F88B9421945A88100C5875A /* CustomViewController.m */,
+			);
+			name = CustomViewController;
+			sourceTree = "<group>";
+		};
+		3F88B9451945A8A300C5875A /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F4E249B1918B20A00A4A12F /* MainViewController.h */,
+				3F4E249C1918B20A00A4A12F /* MainViewController.m */,
+				3F88B9381945886000C5875A /* ShowViewController.h */,
+				3F88B9391945886000C5875A /* ShowViewController.m */,
+				3F88B93B1945A22B00C5875A /* WeekShowViewController.h */,
+				3F88B93C1945A22B00C5875A /* WeekShowViewController.m */,
+				3F88B93E1945A24600C5875A /* MonthShowViewController.h */,
+				3F88B93F1945A24600C5875A /* MonthShowViewController.m */,
+				3F892407191C77CC00E6B429 /* EditViewController.h */,
+				3F892408191C77CC00E6B429 /* EditViewController.m */,
+				3F89240A191C870300E6B429 /* EditChildViewController.h */,
+				3F89240B191C870300E6B429 /* EditChildViewController.m */,
+				3F2820581924525D00522667 /* AddBillViewController.h */,
+				3F2820591924525D00522667 /* AddBillViewController.m */,
+				3F323A25193EC3AA007BBCFD /* SubEditViewController.h */,
+				3F323A26193EC3AA007BBCFD /* SubEditViewController.m */,
+				3F323A28193EC3CD007BBCFD /* SubEcitChildViewController.h */,
+				3F323A29193EC3CD007BBCFD /* SubEcitChildViewController.m */,
+			);
+			name = MainViewController;
+			sourceTree = "<group>";
+		};
 		3F92AE0919346CCA0003F7B2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +373,8 @@
 			children = (
 				3F92AE0B19346D650003F7B2 /* ChartViewController.h */,
 				3F92AE0C19346D650003F7B2 /* ChartViewController.m */,
+				0219E9BD194722B100142ECB /* CharShowViewController.h */,
+				0219E9BE194722B100142ECB /* CharShowViewController.m */,
 			);
 			name = ChartControllers;
 			sourceTree = "<group>";
@@ -364,19 +419,13 @@
 		3FBCE7171917168100B674C3 /* 随手记-第三组 */ = {
 			isa = PBXGroup;
 			children = (
-				3F4AA97B19380C7D00D1A505 /* icon.png */,
+				3F69F9EC194946E8009CE261 /* Images */,
 				3FBCE7201917168100B674C3 /* AppDelegate.h */,
 				3FBCE7211917168100B674C3 /* AppDelegate.m */,
 				3FBCE7231917168100B674C3 /* Main.storyboard */,
-				3F4E24991918B14000A4A12F /* camera.png */,
-				0232CE23193EF844006A9314 /* img201110111340220.jpg */,
 				3F04E34E191B29C900D69E0D /* ProvincesAndCities.plist */,
-				9C9B22C91943153D0086FCAA /* shuiShouji.db */,
 				3FBCE7461917168D00B674C3 /* Models */,
 				3F4E24891918B05E00A4A12F /* Controllers */,
-				3F4B9644193582F7005794D0 /* BillShowViewController */,
-				3F92AE0A19346D1E0003F7B2 /* ChartControllers */,
-				028941A219338CB300A07065 /* BudgetControllers */,
 				3FBCE7291917168100B674C3 /* Images.xcassets */,
 				3FBCE7181917168100B674C3 /* Supporting Files */,
 			);
@@ -526,6 +575,7 @@
 				3F6BA199192C45EA00C347EB /* KeyboardNumericEntryKeyTextured@2x.png in Resources */,
 				3FBCE71C1917168100B674C3 /* InfoPlist.strings in Resources */,
 				3F6BA195192C45EA00C347EB /* KeyboardNumericEntryKeyBackspaceGlyphTextured@2x.png in Resources */,
+				3F69F9EB194946D6009CE261 /* zhuzhuangtu.png in Resources */,
 				3F6BA197192C45EA00C347EB /* KeyboardTopShadow@2x.png in Resources */,
 				3F4E249A1918B14000A4A12F /* camera.png in Resources */,
 				3F6BA198192C45EA00C347EB /* KeyboardNumericEntryKeyPressedTextured@2x.png in Resources */,
@@ -535,9 +585,8 @@
 				3F4AA97C19380C7D00D1A505 /* icon.png in Resources */,
 				0232CE24193EF844006A9314 /* img201110111340220.jpg in Resources */,
 				3F6BA192192C45EA00C347EB /* GenericSeparator@2x.png in Resources */,
-				9C9B22CA1943153D0086FCAA /* shuiShouji.db in Resources */,
 				3FBCE7251917168100B674C3 /* Main.storyboard in Resources */,
-				9C9B22C819430A910086FCAA /* IQKeyboardManager.bundle in Resources */,
+				02A9BCE11945E9F700543E57 /* IQKeyboardManager.bundle in Resources */,
 				3F6BA196192C45EA00C347EB /* KeyboardNumericEntryViewGridLinesTextured@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +612,7 @@
 				3FBCE752191719F900B674C3 /* member.m in Sources */,
 				3FBCE74F191718B200B674C3 /* spendingType.m in Sources */,
 				0289419D19338C2C00A07065 /* UIColor+RGBValues.m in Sources */,
+				3F88B9401945A24600C5875A /* MonthShowViewController.m in Sources */,
 				3F323A2A193EC3CD007BBCFD /* SubEcitChildViewController.m in Sources */,
 				3F28205A1924525D00522667 /* AddBillViewController.m in Sources */,
 				3FAD301119259331003B1792 /* MXSCycleScrollView.m in Sources */,
@@ -571,6 +621,7 @@
 				0289419C19338C2C00A07065 /* LDProgressView.m in Sources */,
 				3FAC17CF194024A20051E6BC /* EColumnChartLabel.m in Sources */,
 				0205317E19309275000B1C5B /* DatabaseManager.m in Sources */,
+				3F88B93A1945886000C5875A /* ShowViewController.m in Sources */,
 				3FAC17D2194024AF0051E6BC /* EColumnChart.m in Sources */,
 				3F4E249D1918B20A00A4A12F /* MainViewController.m in Sources */,
 				3FBCE75519171A1500B674C3 /* budget.m in Sources */,
@@ -578,13 +629,16 @@
 				3FAC17CC194024A20051E6BC /* EColumn.m in Sources */,
 				3F4E24981918B0C500A4A12F /* FMResultSet.m in Sources */,
 				3FBCE71E1917168100B674C3 /* main.m in Sources */,
+				0219E9BF194722B100142ECB /* CharShowViewController.m in Sources */,
 				3F4B9643193582EA005794D0 /* BillShowViewController.m in Sources */,
 				3FAD301219259331003B1792 /* RBCustomDatePickerView.m in Sources */,
 				3F92AE0D19346D650003F7B2 /* ChartViewController.m in Sources */,
+				3F88B93D1945A22B00C5875A /* WeekShowViewController.m in Sources */,
 				3FAC17CB194024A20051E6BC /* EColor.m in Sources */,
 				3FAC17CE194024A20051E6BC /* EColumnDataModel.m in Sources */,
 				3F323A27193EC3AA007BBCFD /* SubEditViewController.m in Sources */,
 				3F4E24961918B0C500A4A12F /* FMDatabasePool.m in Sources */,
+				3F88B9431945A88100C5875A /* CustomViewController.m in Sources */,
 				3F4E24971918B0C500A4A12F /* FMDatabaseQueue.m in Sources */,
 				3F89240C191C870300E6B429 /* EditChildViewController.m in Sources */,
 				028941A119338CAC00A07065 /* BudgetViewController.m in Sources */,
@@ -727,6 +781,8 @@
 					"/Users/xiaogang/Desktop/随手记\\ /随手记-第三组/IQKeyboardManager\\ Framework",
 					/Users/love/.Trash,
 					"/Users/love/Desktop/随手记\\ /随手记-第三组",
+					"/Users/student/Desktop/随手记\\ /随手记-第三组",
+					"/Users/xiaogang/Desktop/随手记\\ /随手记-第三组",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "随手记-第三组/随手记-第三组-Prefix.pch";
@@ -754,6 +810,8 @@
 					"/Users/xiaogang/Desktop/随手记\\ /随手记-第三组/IQKeyboardManager\\ Framework",
 					/Users/love/.Trash,
 					"/Users/love/Desktop/随手记\\ /随手记-第三组",
+					"/Users/student/Desktop/随手记\\ /随手记-第三组",
+					"/Users/xiaogang/Desktop/随手记\\ /随手记-第三组",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "随手记-第三组/随手记-第三组-Prefix.pch";

@@ -49,7 +49,7 @@
     self.aBill=[[Bill alloc]init];
 	// Do any additional setup after loading the view.
     //对第三方控件
-    [IQKeyboardManager sharedManager].enableAutoToolbar=NO;
+//    [IQKeyboardManager sharedManager].enableAutoToolbar=NO;
     
     //PickerView操作
     self.subView.hidden=YES;
@@ -111,6 +111,7 @@
     self.imageView.layer.borderColor=[UIColor blackColor].CGColor;//定义边框颜色
     self.imageView.layer.borderWidth=0.5;//定义边框大小
     self.imageView.layer.masksToBounds=YES;//定义边界 不越界
+    
     
 }
 
@@ -246,7 +247,7 @@
 //        NSInteger min = [comps minute];
 //        NSInteger sec = [comps second];
         NSString *monthStr = [self stringMonthForDate:nowDate];
-        monthTotalLabel.text = [NSString stringWithFormat:@"%.2f",[[DatabaseManager ShareDBManager] billInDay:nil InWeek:nil InMonth:monthStr IsPayOut:YES]] ;
+        monthTotalLabel.text = [NSString stringWithFormat:@"%.2f",[[DatabaseManager ShareDBManager] billInDay:nil InWeek:nil InMonth:monthStr IsPayOut:YES]];
     }
     
     return cell;

@@ -350,14 +350,15 @@ static DatabaseManager *sharedManager=nil;
     return aType;
 }
 
+//此处已修改spendfatherID改为spendID。请审核。。。。。
 -(spendingType *)selectTypeByTypeID:(NSString *)typeID andIsPayout:(BOOL)isPayout{//根据fahterID查找
-    NSString *SQLStr=[NSString stringWithFormat:@"select * from %@ where spendfatherID= %@ and isPayout = %@",kSpendTypeName,typeID,@(isPayout)];
+    NSString *SQLStr=[NSString stringWithFormat:@"select * from %@ where spendID= %@ and isPayout = %@",kSpendTypeName,typeID,@(isPayout)];
     FMResultSet *rs=[self.databade executeQuery:SQLStr];
     spendingType *aType;
     while ([rs next]) {
         aType=[[spendingType alloc]init];
-        aType.spendID=[rs intForColumn:@"memberID"];
-        aType.spendName=[rs stringForColumn:@"memberName"];
+        aType.spendID=[rs intForColumn:@"spendID"];
+        aType.spendName=[rs stringForColumn:@"spendName"];
         int fatherTypeID=[rs intForColumn:@"spendfatherID"];
         spendingType *subType = [[spendingType alloc] init];
         subType.spendID = fatherTypeID;
@@ -424,39 +425,59 @@ static DatabaseManager *sharedManager=nil;
         
         NSMutableArray *typeList = [NSMutableArray array];
         NSMutableArray *subTypeList = [NSMutableArray array];
-        while ([rs next]) {
-            spendingType *aType=[[spendingType alloc]init];
-            aType.spendID=[rs intForColumn:@"spendID"];
-            aType.spendName=[rs stringForColumn:@"spendName"];
-            aType.isPayout = [rs boolForColumn:@"isPayOut"];
-            aType.budgetMoneyValue = @([rs intForColumn:@"budgetMoneyValue"]);
-            int fatherTypeID = [rs intForColumn:@"spendfatherID"];
-            spendingType *fatherType = [[spendingType alloc] init];
-            fatherType.spendID = fatherTypeID;
-            aType.fatherType = fatherType;
-            if (fatherTypeID == 0) {
-                [typeList addObject:aType];//主类别
-            }else{
-                [subTypeList addObject:aType];
-            }
-        }
-        [list setObject:typeList forKey:@"big"];//添加大类别数组
-        for (spendingType *type in typeList) {
-            
-            NSMutableArray *array = [NSMutableArray array];
-            
-            for (spendingType *subType in subTypeList) {
-                if (subType.fatherType.spendID == type.spendID) {
-                    [array addObject:subType];
+        if (isPayout == YES) {
+            while ([rs next]) {
+                spendingType *aType=[[spendingType alloc]init];
+                aType.spendID=[rs intForColumn:@"spendID"];
+                aType.spendName=[rs stringForColumn:@"spendName"];
+                aType.isPayout = [rs boolForColumn:@"isPayOut"];
+                aType.budgetMoneyValue = @([rs intForColumn:@"budgetMoneyValue"]);
+                int fatherTypeID = [rs intForColumn:@"spendfatherID"];
+                spendingType *fatherType = [[spendingType alloc] init];
+                fatherType.spendID = fatherTypeID;
+                aType.fatherType = fatherType;
+                if (fatherTypeID == 0) {
+                    [typeList addObject:aType];//主类别
+                }else{
+                    [subTypeList addObject:aType];
                 }
             }
-            
-            [list setObject:array forKey:type.spendName];//分类别将数据存入字典，取得时候根据主类别取出
-        }//for end
+            [list setObject:typeList forKey:@"big"];//添加大类别数组
+            for (spendingType *type in typeList) {
+                
+                NSMutableArray *array = [NSMutableArray array];
+                
+                for (spendingType *subType in subTypeList) {
+                    if (subType.fatherType.spendID == type.spendID) {
+                        [array addObject:subType];
+                    }
+                }
+                
+                [list setObject:array forKey:type.spendName];//分类别将数据存入字典，取得时候根据主类别取出
+            }//for end
+        }else{
+            while ([rs next]) {
+                spendingType *aType=[[spendingType alloc]init];
+                aType.spendID=[rs intForColumn:@"spendID"];
+                aType.spendName=[rs stringForColumn:@"spendName"];
+                aType.isPayout = [rs boolForColumn:@"isPayOut"];
+                aType.budgetMoneyValue = @([rs intForColumn:@"budgetMoneyValue"]);
+                int fatherTypeID = [rs intForColumn:@"spendfatherID"];
+                spendingType *fatherType = [[spendingType alloc] init];
+                fatherType.spendID = fatherTypeID;
+                aType.fatherType = fatherType;
+                [typeList addObject:aType];
+            }
+            [list setObject:typeList forKey:@"big"];//添加大类别数组
+        }
+        
     }//else end
     
     return list;
 }
+
+
+
 /*
  *TODO:对成员表的操作
  */
