@@ -104,6 +104,19 @@
     return cell;
 }
 
+//TODO:删除tableView
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Bill *aBill = self.billArray[indexPath.row];
+        [[DatabaseManager ShareDBManager]deleteBill:aBill];
+        [self.billArray removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    [tableView reloadData];
+}
 
 //给定一个日期，得到它处于一年的那一周
 - (NSString *)stringWeekForDate:(NSDate *)date{

@@ -104,14 +104,36 @@
     return cell;
 }
 
+//TODO:删除tableView
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Bill *aBill = self.array[indexPath.row];
+        [[DatabaseManager ShareDBManager]deleteBill:aBill];
+        [self.array removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    [tableView reloadData];
+}
+
 #pragma mark - 传值
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];//根据tableView的cell(sender)来找到你所点击的行。
     Bill *aBill = self.array[indexPath.row];
     
+    spendingType *aType = self.typeList[indexPath.row];
+    NSArray *subTypeList = [self.typeDic objectForKey:aType.spendName];
+    aType = subTypeList[indexPath.row];
+    
+    member *aMember = [[DatabaseManager ShareDBManager] selectMemberID:aBill.memberID];
+    
     NSObject *nextVC=[segue destinationViewController];//destinationViewController找你到你要传值的controller
-    if ([segue.identifier isEqualToString:@"char2Edit"]) {
+    if ([segue.identifier isEqualToString:@"show2edit"]) {
         [nextVC setValue:aBill forKey:@"aBill"];
+        [nextVC setValue:aType forKey:@"aType"];
+        [nextVC setValue:aMember forKey:@"aMember"];
     }
 }
 

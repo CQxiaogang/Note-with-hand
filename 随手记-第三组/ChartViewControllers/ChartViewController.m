@@ -182,7 +182,13 @@
     eColumn.barColor = [UIColor redColor];//barColor：选中时的颜色
     
     _valueLabel.text = [NSString stringWithFormat:@"%.1f",eColumn.eColumnDataModel.value];//试图最顶端的label显示点击的柱状的值
-    NSMutableDictionary *billDic = [self getBillDicTotalMoneyByMonth:@"2014-06" andIsPayout:self.isPayoutSegmented.selectedSegmentIndex];
+    BOOL isPayout;
+    if (self.isPayoutSegmented.selectedSegmentIndex == 0) {
+        isPayout = YES;
+    }else{
+        isPayout = NO;
+    }
+    NSMutableDictionary *billDic = [self getBillDicTotalMoneyByMonth:@"2014-06" andIsPayout:isPayout];
     spendingType *aBigType = self.bigTypeList[eColumn.eColumnDataModel.index];
     NSArray *billList = billDic[aBigType.spendName];
     [self performSegueWithIdentifier:@"chart2show" sender:billList];
@@ -346,15 +352,6 @@ fingerDidLeaveColumn:(EColumn *)eColumn
     return dateStr;
 }
 
-#pragma mark - 传值
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    NSObject *nextVC=[segue destinationViewController];
-    
-    if ([segue.identifier isEqualToString:@"chart2show"]) {
-        [nextVC setValue:sender forKey:@"array"];
-    }
-}
-
 #pragma mark - 上、下月的切换
 - (IBAction)lastMonth:(id)sender {//上个月
     
@@ -486,7 +483,14 @@ fingerDidLeaveColumn:(EColumn *)eColumn
     
 }
 
-
+#pragma mark - 传值
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSObject *nextVC=[segue destinationViewController];
+    
+    if ([segue.identifier isEqualToString:@"chart2show"]) {
+        [nextVC setValue:sender forKey:@"array"];
+    }
+}
 
 
 @end
