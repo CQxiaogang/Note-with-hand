@@ -63,8 +63,6 @@
         NSArray *list = dic[@"billList"];
         [self.billList addObject:list];
     }
-    
-   
 }
 
 - (void)didReceiveMemoryWarning
@@ -165,9 +163,12 @@
             }
             
         }
+        //获得大类别显示在typeLabel上
         UILabel *typeLabel = (UILabel *)[cell viewWithTag:4];//类别
+        //查出小类别
         spendingType *aType = [[DatabaseManager ShareDBManager] selectTypeByTypeID:[NSString stringWithFormat:@"%d",aBill.spendID] andIsPayout:YES];
-        
+        //在根据小类别的id查到大类别。因为大类别是一样的
+        aType =  [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",aType.fatherType.spendID] andIsPayout:YES];
         typeLabel.text = aType.spendName;
         
         UILabel *spendLabel = (UILabel *)[cell viewWithTag:6];//支出
@@ -313,6 +314,23 @@
     //选中后的反显颜色即刻消失 一切操作结束才取消反映色
 }
 
+//TODO:tableView的删除
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //从数组删除
+        NSMutableArray *array = self.billList[indexPath.section];
+        Bill *aBill = array[indexPath.row-1];
+        //从数据库删除
+        [[DatabaseManager ShareDBManager] deleteBill:aBill];
+        [array removeObjectAtIndex:indexPath.row-1];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    [self.tableView reloadData];
+}
+
 //对日期进行排序
 -(NSMutableArray*)billListPaixu:(NSMutableArray*)list{
     int count = list.count;
@@ -337,15 +355,19 @@
 #pragma mark - 传值
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];//根据tableView的cell(sender)来找到你所点击的行。
+    NSIndexPath  *indexPath = [self.tableView indexPathForCell:sender];//根据tableView的cell(sender)来找到你所点击的行
+    NSArray *billArr = self.billList[indexPath.section];
+    Bill *aBill = billArr[indexPath.row-1];
     
-    NSIndexPath  *indexpath = [self.tableView indexPathForCell:sender];
-    NSArray *billArr = self.billList[indexpath.section];
-    Bill *aBill = billArr[indexpath.row-1];
+    spendingType *aType = [[DatabaseManager ShareDBManager] selectTypeByTypeID:[NSString stringWithFormat:@"%d",aBill.spendID] andIsPayout:YES];
+    
+    member *aMember = [[DatabaseManager ShareDBManager] selectMemberID:aBill.memberID];
     
     NSObject *nextVC=[segue destinationViewController];
     if ([segue.identifier isEqualToString:@"billShow2Modify"]) {
         [nextVC setValue:aBill forKey:@"aBill"];
+        [nextVC setValue:aType forKey:@"aType"];
+        [nextVC setValue:aMember forKey:@"aMember"];
     }
 }
 @end

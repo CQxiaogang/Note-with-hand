@@ -12,6 +12,7 @@
 #import "RBCustomDatePickerView.h" //自定义的datePickerView
 #import "Bill.h"
 #import "spendingType.h"
+#import "member.h"
 
 @interface AddBillViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate/*相机协议*/,UIActionSheetDelegate>{
     NSString *_fatherTypeStr;//存放大type的string
@@ -25,6 +26,7 @@
 
 @property (nonatomic,strong) Bill *aBill;
 @property (nonatomic,strong) spendingType *aType;
+@property (nonatomic,strong) member *aMember;
 @property (nonatomic,strong) NSMutableArray *array;
 
 @end

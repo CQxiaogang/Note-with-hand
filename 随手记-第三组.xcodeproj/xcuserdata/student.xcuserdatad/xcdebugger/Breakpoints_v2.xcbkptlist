@@ -32,16 +32,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/Controllers/AddBillViewController.m"
-            timestampString = "424237708.955005"
+            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/DatabaseManager.m"
+            timestampString = "424317149.514042"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
-            landmarkName = "-saveBillToDatabase:"
+            startingLineNumber = "521"
+            endingLineNumber = "521"
+            landmarkName = "-selectMemberID:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

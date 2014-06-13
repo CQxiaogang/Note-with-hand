@@ -10,6 +10,11 @@
 #import "Bill.h"
 
 @interface MainViewController ()
+{
+    double todayMoney;
+    double weekMoney;
+    double monthMoney;
+}
 @property (weak, nonatomic) IBOutlet UITextField *tfIncome;//金额
 @property (weak, nonatomic) IBOutlet UITextField *remarksText;//备注
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;//时间
@@ -120,6 +125,32 @@
     self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
     self.fatherType = [self.typeDic objectForKey:@"big"];
     
+    //得到今天的bill金额
+    NSDate *now=[NSDate date];
+    NSString *date;
+    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    date = [formatter stringFromDate:now];
+    
+    todayMoney =[[DatabaseManager ShareDBManager] billInDay:date InWeek:nil InMonth:nil IsPayOut:YES];
+    
+    //得到本周bill金额
+    NSDate *nowDate = [[NSDate alloc] init];
+    NSString *weekStr = [self stringWeekForDate:nowDate];
+    weekMoney = [[DatabaseManager ShareDBManager] billInDay:nil InWeek:weekStr InMonth:nil IsPayOut:YES];
+    
+    //得到本月bill金额
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *monthDate;
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit |
+    NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;//分别修改为 NSDayCalendarUnit NSWeekCalendarUnit NSYearCalendarUnit 可查年、月、周开始结束 “某个时间点”所在的“单元”的起始时间，以及起始时间距离“某个时间点”的时差（单位秒）
+    monthDate=[NSDate date];
+    comps = [calendar components:unitFlags fromDate:monthDate];
+    NSString *monthStr = [self stringMonthForDate:monthDate];
+    monthMoney = [[DatabaseManager ShareDBManager]billInDay:nil InWeek:nil InMonth:monthStr IsPayOut:YES];
+    
+    [self.TableView reloadData];
     [self.PickerView reloadAllComponents];
 }
 
@@ -207,47 +238,44 @@
     if (indexPath.section==0) {//今天的所有支出
         cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier1 forIndexPath:indexPath];
         UILabel *todayTotalLabel=(UILabel *)[cell viewWithTag:1];
-        
         NSDate *now=[NSDate date];
         NSString *date;
         NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
         [formatter setDateFormat:@"yyyy-MM-dd"];
         date = [formatter stringFromDate:now];
         
-        double totalMoney =[[DatabaseManager ShareDBManager] billInDay:date InWeek:nil InMonth:nil IsPayOut:YES];
-        NSLog(@"%.2f",totalMoney);
-        todayTotalLabel.text = [NSString stringWithFormat:@"%.2f",totalMoney];
+        todayMoney =[[DatabaseManager ShareDBManager] billInDay:date InWeek:nil InMonth:nil IsPayOut:YES];
+        todayTotalLabel.text = [NSString stringWithFormat:@"%.2f",todayMoney];
         
     }
     if (indexPath.section==1) {//这周的所有支出，因为将每周的第一天当成星期天，所以在星期天是会置为0.0的
          cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier2 forIndexPath:indexPath];
+        
+        //得到本周bill金额
         NSDate *nowDate = [[NSDate alloc] init];
         NSString *weekStr = [self stringWeekForDate:nowDate];
+        weekMoney = [[DatabaseManager ShareDBManager] billInDay:nil InWeek:weekStr InMonth:nil IsPayOut:YES];
         
         UILabel *weekTotalLabel=(UILabel *)[cell viewWithTag:2];
-        float weekMoney = [[DatabaseManager ShareDBManager] billInDay:nil InWeek:weekStr InMonth:nil IsPayOut:YES];
-        
         weekTotalLabel.text=[NSString stringWithFormat:@"%.2f",weekMoney];
         
     }
     if (indexPath.section==2) {//这月的所有支出
         cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier3 forIndexPath:indexPath];
         UILabel *monthTotalLabel=(UILabel *)[cell viewWithTag:3];
+        
+        //得到本月bill金额
         NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        NSDate *nowDate;
+        NSDate *monthDate;
         NSDateComponents *comps = [[NSDateComponents alloc] init];
         NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit |
         NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;//分别修改为 NSDayCalendarUnit NSWeekCalendarUnit NSYearCalendarUnit 可查年、月、周开始结束 “某个时间点”所在的“单元”的起始时间，以及起始时间距离“某个时间点”的时差（单位秒）
-        nowDate=[NSDate date];
-        comps = [calendar components:unitFlags fromDate:nowDate];
-//        NSInteger month = [comps month];
-//        NSInteger week = [comps week];
-//        NSInteger day = [comps day];
-//        NSInteger hour = [comps hour];
-//        NSInteger min = [comps minute];
-//        NSInteger sec = [comps second];
-        NSString *monthStr = [self stringMonthForDate:nowDate];
-        monthTotalLabel.text = [NSString stringWithFormat:@"%.2f",[[DatabaseManager ShareDBManager] billInDay:nil InWeek:nil InMonth:monthStr IsPayOut:YES]];
+        monthDate=[NSDate date];
+        comps = [calendar components:unitFlags fromDate:monthDate];
+        NSString *monthStr = [self stringMonthForDate:monthDate];
+        monthMoney = [[DatabaseManager ShareDBManager]billInDay:nil InWeek:nil InMonth:monthStr IsPayOut:YES];
+        
+        monthTotalLabel.text = [NSString stringWithFormat:@"%.2f",monthMoney];
     }
     
     return cell;

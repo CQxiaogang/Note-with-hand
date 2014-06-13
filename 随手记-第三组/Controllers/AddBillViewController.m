@@ -224,7 +224,10 @@
     
     aType = [[DatabaseManager ShareDBManager] selectTypeByTypeName:_typeStr];//查询小类别
     aBill.spendID = aType.spendID;
-    aBill.memberID = 0;
+    
+    member *aMember = [[member alloc] init];
+    aMember=[[DatabaseManager ShareDBManager] selectMember:self.memberText.text];
+    aBill.memberID = aMember.memberID;
     //string转换为date
     NSString *timeStr=self.dateText.text;
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
@@ -481,17 +484,15 @@
 -(void)editAbill;
 {
     //TODO:传来的数据，显示数据
-    //第一次进入视图时间，类别为空。原因：一下代码再次吧时间和类别赋值为nil所有未出现此情况。
-    //bug等待解决
     self.imageView.image = [UIImage imageWithData:self.aBill.billImageData];
     self.tfIncomeText.text = [NSString stringWithFormat:@"%.2f",self.aBill.moneyAmount];
     self.dateText.text = self.aBill.billTime;
     self.remarksTextView.text = self.aBill.billRemarks;
     
-    spendingType *aSpendType =  [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",self.aType.fatherType.spendID] andIsPayout:self.isPayoutSegment.selectedSegmentIndex];
+    spendingType *aSpendType =  [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",self.aType.fatherType.spendID] andIsPayout:YES];
     self.classText.text = [NSString stringWithFormat:@"%@>%@",aSpendType.spendName,self.aType.spendName];
     
-    //member对象没有传过来，原因：memberID为0不知道怎么操作
+    self.memberText.text = self.aMember.memberName;
 }
 
 @end

@@ -49,6 +49,7 @@
 -(BOOL)deleteMenber:(member*)aMember;//删除
 -(BOOL)modifyMember:(member *)aMember;//修改
 -(member *)selectMember:(NSString *)memberName;//按照名字查询
+-(member *)selectMemberID:(int )memberID;//按照ID查询
 -(NSMutableArray *)readAllMemberList;
 
 //计算函数  每个类别在支出时占这个月的比例

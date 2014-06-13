@@ -9,6 +9,7 @@
 #import "ShowViewController.h"
 #import "DatabaseManager.h"
 #import "Bill.h"
+#import "member.h"
 
 @interface ShowViewController ()
 
@@ -108,6 +109,19 @@
     return cell;
 }
 
+//TODO:删除tableView
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Bill *aBill = self.billArray[indexPath.row];
+        [[DatabaseManager ShareDBManager]deleteBill:aBill];
+        [self.billArray removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    [tableView reloadData];
+}
 
 //给定一个日期，得到它处于一年的那一周
 - (NSString *)stringWeekForDate:(NSDate *)date{
@@ -124,17 +138,18 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];//根据tableView的cell(sender)来找到你所点击的行。
     Bill *aBill = self.billArray[indexPath.row];
-    spendingType *aType = self.typeList[indexPath.row];
     
+    spendingType *aType = self.typeList[indexPath.row];
     NSArray *subTypeList = [self.typeDic objectForKey:aType.spendName];
     aType = subTypeList[indexPath.row];
     
-//    NSArray *array = [self.typeDic objectForKey:aType.spendName];
+    member *aMember = [[DatabaseManager ShareDBManager] selectMemberID:aBill.memberID];
     
     NSObject *nextVC=[segue destinationViewController];//destinationViewController找你到你要传值的controller
     if ([segue.identifier isEqualToString:@"show2edit"]) {
         [nextVC setValue:aBill forKey:@"aBill"];
         [nextVC setValue:aType forKey:@"aType"];
+        [nextVC setValue:aMember forKey:@"aMember"];
     }
 }
 

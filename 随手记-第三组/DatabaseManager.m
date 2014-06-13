@@ -506,7 +506,20 @@ static DatabaseManager *sharedManager=nil;
 }
 
 -(member *)selectMember:(NSString *)memberName{
-    NSString *deleteSQL=[NSString stringWithFormat:@"select * from %@ where memberName=%@",kMemberName,memberName];
+    NSString *deleteSQL=[NSString stringWithFormat:@"select * from %@ where memberName='%@'",kMemberName,memberName];
+    FMResultSet *rs=[self.databade executeQuery:deleteSQL];
+    member *aMember;
+    while ([rs next]) {
+        aMember=[[member alloc]init];
+        aMember.memberID=[rs intForColumn:@"memberID"];
+        aMember.memberName=[rs stringForColumn:@"memberName"];
+    }
+    return aMember;
+    
+}
+
+-(member *)selectMemberID:(int)memberID{
+    NSString *deleteSQL=[NSString stringWithFormat:@"select * from %@ where memberID=%d",kMemberName,memberID];
     FMResultSet *rs=[self.databade executeQuery:deleteSQL];
     member *aMember;
     while ([rs next]) {

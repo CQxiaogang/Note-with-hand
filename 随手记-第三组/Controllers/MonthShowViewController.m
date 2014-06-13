@@ -14,7 +14,6 @@
 
 @property(nonatomic,strong)NSMutableArray *billArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong) NSMutableDictionary *typeDic;
 @property (nonatomic,strong) NSArray *typeList;
 
 @end
@@ -46,17 +45,9 @@
     NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;//分别修改为 NSDayCalendarUnit NSWeekCalendarUnit NSYearCalendarUnit 可查年、月、周开始结束 “某个时间点”所在的“单元”的起始时间，以及起始时间距离“某个时间点”的时差（单位秒）
     nowDate=[NSDate date];
     comps = [calendar components:unitFlags fromDate:nowDate];
-    //        NSInteger month = [comps month];
-    //        NSInteger week = [comps week];
-    //        NSInteger day = [comps day];
-    //        NSInteger hour = [comps hour];
-    //        NSInteger min = [comps minute];
-    //        NSInteger sec = [comps second];
     NSString *monthStr = [self stringMonthForDate:nowDate];
     
     self.billArray = [[DatabaseManager ShareDBManager]billListInDay:nil InWeek:nil InMonth:monthStr];
-    
-    self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,8 +72,10 @@
     Bill *aBill = self.billArray[indexPath.row];
     
     UILabel *typeLabel = (UILabel *)[cell viewWithTag:1];
-    self.typeList = [self.typeDic objectForKey:@"big"];
-    spendingType *aType = self.typeList[indexPath.row];
+    //找到子类别
+    spendingType *aType =  [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",aBill.spendID] andIsPayout:YES];
+    //找到父类别
+    aType = [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",aType.fatherType.spendID] andIsPayout:YES];
     typeLabel.text =aType.spendName;
     
     UILabel *moneyAmountLabel = (UILabel *)[cell viewWithTag:2];
@@ -131,11 +124,17 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];//根据tableView的cell(sender)来找到你所点击的行。
     Bill *aBill = self.billArray[indexPath.row];
-    //    NSArray *array = [self.typeDic objectForKey:aType.spendName];
+    
+    //找到子类别
+    spendingType *aType =  [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",aBill.spendID] andIsPayout:YES];
+    
+    member *aMember = [[DatabaseManager ShareDBManager] selectMemberID:aBill.memberID];
     
     NSObject *nextVC=[segue destinationViewController];//destinationViewController找你到你要传值的controller
     if ([segue.identifier isEqualToString:@"show2edit"]) {
         [nextVC setValue:aBill forKey:@"aBill"];
+        [nextVC setValue:aType forKey:@"aType"];
+        [nextVC setValue:aMember forKey:@"aMember"];
     }
 }
 

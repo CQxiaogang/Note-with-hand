@@ -14,7 +14,6 @@
 
 @property(nonatomic,strong)NSMutableArray *billArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong) NSMutableDictionary *typeDic;
 @property (nonatomic,strong) NSArray *typeList;
 
 @end
@@ -42,8 +41,6 @@
     NSDate *nowDate = [[NSDate alloc] init];
     NSString *weekStr = [self stringWeekForDate:nowDate];
     self.billArray = [[DatabaseManager ShareDBManager]billListInDay:nil InWeek:weekStr InMonth:nil];
-    
-    self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,8 +65,10 @@
     Bill *aBill = self.billArray[indexPath.row];
     
     UILabel *typeLabel = (UILabel *)[cell viewWithTag:1];
-    self.typeList = [self.typeDic objectForKey:@"big"];
-    spendingType *aType = self.typeList[indexPath.row];
+    //找到子类别
+    spendingType *aType =  [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",aBill.spendID] andIsPayout:YES];
+    //找到父类别
+    aType = [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",aType.fatherType.spendID] andIsPayout:YES];
     typeLabel.text =aType.spendName;
     
     UILabel *moneyAmountLabel = (UILabel *)[cell viewWithTag:2];
@@ -122,9 +121,16 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];//根据tableView的cell(sender)来找到你所点击的行。
     Bill *aBill = self.billArray[indexPath.row];
     
+    //找到子类别
+    spendingType *aType =  [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",aBill.spendID] andIsPayout:YES];
+    
+    member *aMember = [[DatabaseManager ShareDBManager] selectMemberID:aBill.memberID];
+    
     NSObject *nextVC=[segue destinationViewController];//destinationViewController找你到你要传值的controller
     if ([segue.identifier isEqualToString:@"show2edit"]) {
         [nextVC setValue:aBill forKey:@"aBill"];
+        [nextVC setValue:aType forKey:@"aType"];
+        [nextVC setValue:aMember forKey:@"aMember"];
     }
 }
 
