@@ -516,6 +516,10 @@
     if ([segue.identifier isEqualToString:@"Picker2Edit"]) {
         [nextVC setValue:sender forKey:@"typeDic"];
     }
+    if ([segue.identifier isEqualToString:@"main2add"]) {
+        NSString *identifierStr = @"main2add";
+        [nextVC setValue:identifierStr forKey:@"identifierStr"];
+    }
 }
 
 

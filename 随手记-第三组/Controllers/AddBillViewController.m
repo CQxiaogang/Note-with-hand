@@ -11,12 +11,19 @@
 
 #define kDicOfTypeKey @"big"
 
+#define kMainShowIdentifier @"main2add"
+#define kCharShowIdentifier @"char2Edit"
+#define kDayShowIdentifier @"dayShow2Edit"
+#define kWeekShowIdentifier @"weekShow2Edit"
+#define kMonthShowIdentifier @"monthShow2Edit"
+#define kBillShowIdentifier @"billShow2Modify"
+
+
 @interface AddBillViewController ()
 
 //弹出的视图（pickerView和buttons）
 @property (weak, nonatomic) IBOutlet UIView *subView;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;//pickerView的输出口
-- (IBAction)editButton:(UIBarButtonItem *)sender;//编辑按钮
 - (IBAction)chooseButton:(UIBarButtonItem *)sender;//选择确认按钮
 
 - (IBAction)calssText:(UITextField *)sender;
@@ -35,6 +42,10 @@
 - (IBAction)isPayoutSegmentButton:(UISegmentedControl *)sender;
 
 - (IBAction)saveBillToDatabase:(UIButton *)sender;
+- (IBAction)editBillButton:(id)sender;//修改bill
+@property (weak, nonatomic) IBOutlet UIButton *editBill;
+@property (weak, nonatomic) IBOutlet UIButton *comeBackBill;
+@property (weak, nonatomic) IBOutlet UIButton *saveBill;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
@@ -146,7 +157,29 @@
     if (!self.aBill.moneyAmount == 0) {
         [self editAbill];
     }
-    
+    if ([self.identifierStr isEqualToString:kMainShowIdentifier]) {
+        self.editBill.hidden = YES;
+    }
+    if ([self.identifierStr isEqualToString:kCharShowIdentifier]) {
+        self.saveBill.hidden = YES;
+        self.comeBackBill.hidden =YES;
+    }
+    if ([self.identifierStr isEqualToString:kDayShowIdentifier]) {
+        self.saveBill.hidden = YES;
+        self.comeBackBill.hidden =YES;
+    }
+    if ([self.identifierStr isEqualToString:kWeekShowIdentifier]) {
+        self.saveBill.hidden = YES;
+        self.comeBackBill.hidden =YES;
+    }
+    if ([self.identifierStr isEqualToString:kMonthShowIdentifier]) {
+        self.saveBill.hidden = YES;
+        self.comeBackBill.hidden =YES;
+    }
+    if ([self.identifierStr isEqualToString:kBillShowIdentifier]) {
+        self.saveBill.hidden = YES;
+        self.comeBackBill.hidden =YES;
+    }
 }
 
 //- (void)viewWillAppear:(BOOL)animated {//此方法为 当push时调用
@@ -207,6 +240,26 @@
     [[DatabaseManager ShareDBManager] addNewBill:aBill];
     
 }
+
+//TODO:修改账单属性
+- (IBAction)editBillButton:(id)sender {
+    Bill *aBill = [[Bill alloc]init];
+    aBill.billID = self.aBill.billID;
+    aBill.billImageData = UIImageJPEGRepresentation(self.imageView.image, 0.7);
+    aBill.moneyAmount = self.tfIncomeText.text.intValue;
+    aBill.billTime = self.dateText.text;
+    aBill.billRemarks = self.remarksTextView.text;
+    
+    member *aMember =  [[DatabaseManager ShareDBManager]selectMember:self.memberText.text];
+    aBill.memberID = aMember.memberID;
+    
+    NSArray *TypeList = [self.classText.text componentsSeparatedByString:@">"];
+    NSString *TypeStr = TypeList[1];
+    spendingType *aType =  [[DatabaseManager ShareDBManager]selectTypeByTypeName:TypeStr];
+    aBill.spendID = aType.spendID;
+    
+    [[DatabaseManager ShareDBManager]modifyBill:aBill];
+}
 // 在记一笔
 - (IBAction)comeBackButton:(id)sender {
     //判断金额是否为空
@@ -252,7 +305,7 @@
 - (void)dateChoose{
     _date=[self.TimePicker date];  //创建时间格式化实例对象
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];//设置时间格式
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dates=[dateFormatter stringFromDate:_date];
     self.dateText.text=dates;
     
@@ -472,12 +525,6 @@
         
         [self presentViewController:imagePickerController animated:YES completion:^{}];
     }
-}
-
-
-- (IBAction)edit:(id)sender {
-    //点击按钮调用方法进行传值
-//    [self performSegueWithIdentifier:@"Picker2Edit" sender:self.typeDic];
 }
 
 #pragma mark - 修改bill

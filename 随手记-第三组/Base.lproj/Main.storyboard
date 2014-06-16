@@ -248,7 +248,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="mNa-CH-w97" kind="push" identifier="show2edit" id="Hbe-pA-TgX"/>
+                                            <segue destination="mNa-CH-w97" kind="push" identifier="dayShow2Edit" id="Hbe-pA-TgX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -407,7 +407,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="9EC-KQ-i3Y" kind="push" id="pnG-4w-mfH"/>
+                                            <segue destination="9EC-KQ-i3Y" kind="push" identifier="week2Show" id="pnG-4w-mfH"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell3" id="RVQ-sl-OWz">
@@ -1161,6 +1161,26 @@
                                     <action selector="saveBillToDatabase:" destination="mNa-CH-w97" eventType="touchUpInside" id="1Fa-SR-UIm"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FE4-S7-gGV">
+                                <rect key="frame" x="125" y="418" width="61" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="修       改">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editBillButton:" destination="mNa-CH-w97" eventType="touchUpInside" id="Oj5-Uu-AeC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dG-m4-msf">
+                                <rect key="frame" x="195" y="404" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="在记一笔">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="comeBackButton:" destination="mNa-CH-w97" eventType="touchUpInside" id="8fV-hC-mh5"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="成员：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fk2-LU-Lsz">
                                 <rect key="frame" x="31" y="214" width="67" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1185,18 +1205,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dG-m4-msf">
-                                <rect key="frame" x="195" y="404" width="60" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="在记一笔">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="comeBackButton:" destination="mNa-CH-w97" eventType="touchUpInside" id="8fV-hC-mh5"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UPz-4t-mTE">
-                                <rect key="frame" x="0.0" y="275" width="320" height="293"/>
+                                <rect key="frame" x="0.0" y="276" width="320" height="293"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2m-id-SRh">
@@ -1261,12 +1271,15 @@
                     <navigationItem key="navigationItem" title="编辑账务" id="zqJ-87-4Si"/>
                     <connections>
                         <outlet property="classText" destination="bd9-l3-UB5" id="MNo-2q-EMV"/>
+                        <outlet property="comeBackBill" destination="1dG-m4-msf" id="csd-iT-XwE"/>
                         <outlet property="dateText" destination="N80-CA-AyC" id="Bqs-yQ-WqR"/>
+                        <outlet property="editBill" destination="FE4-S7-gGV" id="LSe-dg-reD"/>
                         <outlet property="imageView" destination="0XT-Wi-O3N" id="DYF-ph-gzQ"/>
                         <outlet property="isPayoutSegment" destination="0UF-l9-2z4" id="ZV2-eV-jtH"/>
                         <outlet property="memberText" destination="ioJ-hQ-KM5" id="zWu-Vn-eJD"/>
                         <outlet property="pickerView" destination="S2m-id-SRh" id="nsg-mk-D5K"/>
                         <outlet property="remarksTextView" destination="cZH-2n-Whh" id="Q8I-vd-YXN"/>
+                        <outlet property="saveBill" destination="eTb-G0-TmA" id="pbN-xC-eNn"/>
                         <outlet property="subView" destination="UPz-4t-mTE" id="ImF-sv-jRY"/>
                         <outlet property="tfIncomeText" destination="q84-zx-A1b" id="eBV-4n-6qj"/>
                     </connections>
@@ -1346,7 +1359,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="mNa-CH-w97" kind="push" identifier="show2edit" id="cc7-AQ-FN0"/>
+                                            <segue destination="mNa-CH-w97" kind="push" identifier="monthShow2Edit" id="cc7-AQ-FN0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1414,7 +1427,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="mNa-CH-w97" kind="push" identifier="show2edit" id="pnB-Zz-Ysr"/>
+                                            <segue destination="mNa-CH-w97" kind="push" identifier="weekShow2Edit" id="pnB-Zz-Ysr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

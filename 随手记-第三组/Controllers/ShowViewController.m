@@ -40,6 +40,18 @@
     self.tableView.dataSource = self;
     
     //TODO:今天的bill数据
+//    NSDate *now=[NSDate date];
+//    NSString *date;
+//    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+//    [formatter setDateFormat:@"yyyy-MM-dd"];
+//    date = [formatter stringFromDate:now];
+//    self.billArray = [[DatabaseManager ShareDBManager]billListInDay:date InWeek:nil InMonth:nil];
+//    
+//    self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    //TODO:今天的bill数据
     NSDate *now=[NSDate date];
     NSString *date;
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
@@ -48,6 +60,8 @@
     self.billArray = [[DatabaseManager ShareDBManager]billListInDay:date InWeek:nil InMonth:nil];
     
     self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -146,10 +160,13 @@
     member *aMember = [[DatabaseManager ShareDBManager] selectMemberID:aBill.memberID];
     
     NSObject *nextVC=[segue destinationViewController];//destinationViewController找你到你要传值的controller
-    if ([segue.identifier isEqualToString:@"show2edit"]) {
+    if ([segue.identifier isEqualToString:@"dayShow2Edit"]) {
         [nextVC setValue:aBill forKey:@"aBill"];
         [nextVC setValue:aType forKey:@"aType"];
         [nextVC setValue:aMember forKey:@"aMember"];
+        
+        NSString *identifierStr = @"dayShow2Edit";
+        [nextVC setValue:identifierStr forKey:@"identifierStr"];
     }
 }
 

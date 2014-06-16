@@ -36,6 +36,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
     NSDate *now=[NSDate date];
     NSString *date;
     self.billList = [[NSMutableArray alloc]init];
@@ -56,13 +61,14 @@
         
         NSDictionary *dic = [[DatabaseManager ShareDBManager] billDicInMonth:[NSString stringWithFormat:@"2014-%@",time]];
         
-//        NSLog(@"%@",dic);
+        //        NSLog(@"%@",dic);
         
-//        NSDictionary *dic = [[DatabaseManager ShareDBManager] billDicInMonth:date];
+        //        NSDictionary *dic = [[DatabaseManager ShareDBManager] billDicInMonth:date];
         [self.timeList addObject:[NSString stringWithFormat:@"%i",i]];
         NSArray *list = dic[@"billList"];
         [self.billList addObject:list];
     }
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -368,6 +374,9 @@
         [nextVC setValue:aBill forKey:@"aBill"];
         [nextVC setValue:aType forKey:@"aType"];
         [nextVC setValue:aMember forKey:@"aMember"];
+        
+        NSString *identifierStr = @"billShow2Modify";
+        [nextVC setValue:identifierStr forKey:@"identifierStr"];
     }
 }
 @end

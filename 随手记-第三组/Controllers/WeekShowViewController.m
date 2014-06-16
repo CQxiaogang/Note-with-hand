@@ -37,10 +37,16 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+   
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     //TODO:今天的bill数据
     NSDate *nowDate = [[NSDate alloc] init];
     NSString *weekStr = [self stringWeekForDate:nowDate];
     self.billArray = [[DatabaseManager ShareDBManager]billListInDay:nil InWeek:weekStr InMonth:nil];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -140,10 +146,13 @@
     member *aMember = [[DatabaseManager ShareDBManager] selectMemberID:aBill.memberID];
     
     NSObject *nextVC=[segue destinationViewController];//destinationViewController找你到你要传值的controller
-    if ([segue.identifier isEqualToString:@"show2edit"]) {
+    if ([segue.identifier isEqualToString:@"weekShow2Edit"]) {
         [nextVC setValue:aBill forKey:@"aBill"];
         [nextVC setValue:aType forKey:@"aType"];
         [nextVC setValue:aMember forKey:@"aMember"];
+        
+        NSString *identifierStr = @"weekShow2Edit";
+        [nextVC setValue:identifierStr forKey:@"identifierStr"];
     }
 }
 

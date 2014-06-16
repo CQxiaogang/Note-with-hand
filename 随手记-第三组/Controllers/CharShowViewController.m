@@ -129,11 +129,15 @@
     
     member *aMember = [[DatabaseManager ShareDBManager] selectMemberID:aBill.memberID];
     
+    
+    
     NSObject *nextVC=[segue destinationViewController];//destinationViewController找你到你要传值的controller
-    if ([segue.identifier isEqualToString:@"show2edit"]) {
+    if ([segue.identifier isEqualToString:@"char2Edit"]) {
+        NSString *identifierStr = @"char2Edit";
         [nextVC setValue:aBill forKey:@"aBill"];
         [nextVC setValue:aType forKey:@"aType"];
         [nextVC setValue:aMember forKey:@"aMember"];
+        [nextVC setValue:identifierStr forKey:@"identifierStr"];
     }
 }
 

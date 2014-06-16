@@ -106,9 +106,9 @@ static DatabaseManager *sharedManager=nil;
 
 -(BOOL)modifyBill:(Bill *)aBill{
     
-    NSString *sqlStr=[NSString stringWithFormat:@"update %@ set memberID= ?,moneyAmount= ?,billImageData= ?,billTime= ?,billRemarks= ?, isPayOut= ? where budgetID = ?",kBillTableName];
+    NSString *sqlStr=[NSString stringWithFormat:@"update %@ set  spendID=?,memberID= ?,moneyAmount= ?,billImageData= ?,billTime= ?,billRemarks= ?, isPayOut= ? where BillID = ?",kBillTableName];
     
-    BOOL succeed=[self.databade executeUpdate:sqlStr,@(aBill.memberID),@(aBill.moneyAmount),aBill.billImageData,aBill.billTime,aBill.billRemarks,@(aBill.isPayout),@(aBill.billID)];
+    BOOL succeed=[self.databade executeUpdate:sqlStr,@(aBill.spendID), @(aBill.memberID),@(aBill.moneyAmount),aBill.billImageData,aBill.billTime,aBill.billRemarks,@(aBill.isPayout),@(aBill.billID)];
     
     return succeed;
 }
@@ -302,7 +302,7 @@ static DatabaseManager *sharedManager=nil;
 }
 
 /*
- *TODO:对消费类别的操作
+ *TODO:对消费类别的操
  */
 //消费类别
 

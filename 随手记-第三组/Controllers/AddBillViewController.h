@@ -28,5 +28,6 @@
 @property (nonatomic,strong) spendingType *aType;
 @property (nonatomic,strong) member *aMember;
 @property (nonatomic,strong) NSMutableArray *array;
+@property (nonatomic,copy)   NSString *identifierStr;
 
 @end

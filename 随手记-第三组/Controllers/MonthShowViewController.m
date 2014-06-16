@@ -37,6 +37,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     //TODO:今天的bill数据
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDate *nowDate;
@@ -48,6 +51,8 @@
     NSString *monthStr = [self stringMonthForDate:nowDate];
     
     self.billArray = [[DatabaseManager ShareDBManager]billListInDay:nil InWeek:nil InMonth:monthStr];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,10 +149,13 @@
     member *aMember = [[DatabaseManager ShareDBManager] selectMemberID:aBill.memberID];
     
     NSObject *nextVC=[segue destinationViewController];//destinationViewController找你到你要传值的controller
-    if ([segue.identifier isEqualToString:@"show2edit"]) {
+    if ([segue.identifier isEqualToString:@"monthShow2Edit"]) {
         [nextVC setValue:aBill forKey:@"aBill"];
         [nextVC setValue:aType forKey:@"aType"];
         [nextVC setValue:aMember forKey:@"aMember"];
+        
+        NSString *identifierStr = @"monthShow2Edit";
+        [nextVC setValue:identifierStr forKey:@"identifierStr"];
     }
 }
 
