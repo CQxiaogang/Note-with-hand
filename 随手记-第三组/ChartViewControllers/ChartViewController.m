@@ -401,27 +401,51 @@ fingerDidLeaveColumn:(EColumn *)eColumn
 
 - (IBAction)nextMonth:(id)sender {//下个月
     
-//    //判断月份不超过12月;
-//    if (_monthNumber<12) {
-//        _monthNumber+=1;
-//    }
-//    NSString *montherStr = [NSString stringWithFormat:@"2014-%d",_monthNumber];
-//    NSMutableArray *billList = [[DatabaseManager ShareDBManager] billListInMonth:montherStr IsPayOut:YES];
-//    
-//    NSMutableDictionary *dic = [[DatabaseManager ShareDBManager]readSpendTypeList:nil andIsPayout:YES];
-//    
-//    
-//    
-//    for (int i=1; i<billList.count; i++) {
-//         EColumnDataModel *eColumnDataModel = [[EColumnDataModel alloc] initWithLabel:[NSString stringWithFormat:@"%@",bigType.spendName] value:value index:i unit:@"￥"];//根据柱状图的X坐标名称、对应的值、ID、单位 对一条柱状图进行赋值
-//        [self.columnDataList addObject:eColumnDataModel];//添加柱形到数组中
-//    }
-//    self.eColumnChart = [[EColumnChart alloc] initWithFrame:CGRectMake(40, 200, 250, 200)];
-//    [self.eColumnChart setColumnsIndexStartFromLeft:YES];//默认从左到右排序
-//    [self.eColumnChart setDelegate:self];
-//    [self.eColumnChart setDataSource:self];
-//    
-//    [self.view addSubview:self.eColumnChart];//添加外面的XY坐标系
+    UILabel *monethLabel = (UILabel *)[self.view viewWithTag:23];
+    
+    //判断月份不超过12月;
+    if (_monthNumber<12) {
+        _monthNumber+=1;
+    }
+    
+    [self.columnDataList removeAllObjects];
+    [self.eColumnChart removeFromSuperview];
+    
+    NSString *monthStr;
+    if (_monthNumber>=1 && _monthNumber<=9) {
+        monthStr = [NSString stringWithFormat:@"2014-0%d",_monthNumber];
+    }else if(_monthNumber>=10 && _monthNumber<=12){
+        monthStr = [NSString stringWithFormat:@"2014-%d",_monthNumber];
+    }
+    
+    monethLabel.text = monthStr;
+    
+    NSMutableDictionary *moneyValueDic = [self getBillTotalMoneyByMonth:monthStr andIsPayout:YES];//得到每个类别的账单总额
+    if ([moneyValueDic allKeys].count == 0) {
+        self.eColumnView.hidden = NO;
+        
+    }else{
+        self.eColumnView.hidden = YES;
+        NSMutableDictionary *typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];//得到所有的类别
+        self.bigTypeList = typeDic[@"big"];
+        
+        for (int i=0; i<self.bigTypeList.count; i++) {
+            spendingType *bigType = self.bigTypeList[i];
+            NSNumber *moneyValue = moneyValueDic[bigType.spendName];
+            float value = moneyValue.floatValue;
+            if (value != 0) {//
+                EColumnDataModel *eColumnDataModel = [[EColumnDataModel alloc] initWithLabel:[NSString stringWithFormat:@"%@",bigType.spendName] value:value index:i unit:@"￥"];//根据柱状图的X坐标名称、对应的值、ID、单位 对一条柱状图进行赋值
+                [self.columnDataList addObject:eColumnDataModel];//添加柱形到数组中
+            }
+        }
+        self.eColumnChart = [[EColumnChart alloc] initWithFrame:CGRectMake(40, 200, 250, 200)];
+        [self.eColumnChart setColumnsIndexStartFromLeft:YES];//默认从左到右排序
+        [self.eColumnChart setDelegate:self];
+        [self.eColumnChart setDataSource:self];
+        
+        [self.view addSubview:self.eColumnChart];//添加外面的XY坐标系
+    }
+    
     
 }
 #pragma mark - 改变支出收入

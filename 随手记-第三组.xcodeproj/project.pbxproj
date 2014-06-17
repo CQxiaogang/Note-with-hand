@@ -44,6 +44,7 @@
 		3F892409191C77CC00E6B429 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F892408191C77CC00E6B429 /* EditViewController.m */; };
 		3F89240C191C870300E6B429 /* EditChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F89240B191C870300E6B429 /* EditChildViewController.m */; };
 		3F92AE0D19346D650003F7B2 /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F92AE0C19346D650003F7B2 /* ChartViewController.m */; };
+		3FA06F95195029BF003456E4 /* CustomShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA06F94195029BF003456E4 /* CustomShowViewController.m */; };
 		3FAC17CB194024A20051E6BC /* EColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC17C2194024A20051E6BC /* EColor.m */; };
 		3FAC17CC194024A20051E6BC /* EColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC17C4194024A20051E6BC /* EColumn.m */; };
 		3FAC17CD194024A20051E6BC /* EFloatBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC17C6194024A20051E6BC /* EFloatBox.m */; };
@@ -145,6 +146,8 @@
 		3F89240B191C870300E6B429 /* EditChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditChildViewController.m; path = Controllers/EditChildViewController.m; sourceTree = "<group>"; };
 		3F92AE0B19346D650003F7B2 /* ChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartViewController.h; path = ChartViewControllers/ChartViewController.h; sourceTree = "<group>"; };
 		3F92AE0C19346D650003F7B2 /* ChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartViewController.m; path = ChartViewControllers/ChartViewController.m; sourceTree = "<group>"; };
+		3FA06F93195029BF003456E4 /* CustomShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomShowViewController.h; path = Controllers/CustomShowViewController.h; sourceTree = "<group>"; };
+		3FA06F94195029BF003456E4 /* CustomShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomShowViewController.m; path = Controllers/CustomShowViewController.m; sourceTree = "<group>"; };
 		3FAC17C1194024A20051E6BC /* EColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EColor.h; sourceTree = "<group>"; };
 		3FAC17C2194024A20051E6BC /* EColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EColor.m; sourceTree = "<group>"; };
 		3FAC17C3194024A20051E6BC /* EColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EColumn.h; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 			children = (
 				3F88B9411945A88100C5875A /* CustomViewController.h */,
 				3F88B9421945A88100C5875A /* CustomViewController.m */,
+				3FA06F93195029BF003456E4 /* CustomShowViewController.h */,
+				3FA06F94195029BF003456E4 /* CustomShowViewController.m */,
 			);
 			name = CustomViewController;
 			sourceTree = "<group>";
@@ -622,6 +627,7 @@
 				3FAC17CF194024A20051E6BC /* EColumnChartLabel.m in Sources */,
 				0205317E19309275000B1C5B /* DatabaseManager.m in Sources */,
 				3F88B93A1945886000C5875A /* ShowViewController.m in Sources */,
+				3FA06F95195029BF003456E4 /* CustomShowViewController.m in Sources */,
 				3FAC17D2194024AF0051E6BC /* EColumnChart.m in Sources */,
 				3F4E249D1918B20A00A4A12F /* MainViewController.m in Sources */,
 				3FBCE75519171A1500B674C3 /* budget.m in Sources */,

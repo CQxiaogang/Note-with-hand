@@ -19,22 +19,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/ChartViewControllers/ChartViewController.m"
-            timestampString = "424602374.440561"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "460"
-            endingLineNumber = "460"
-            landmarkName = "-isPayoutSegmented:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/DatabaseManager.m"
             timestampString = "424317149.514042"
             startingColumnNumber = "9223372036854775807"
@@ -52,13 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/ChartViewControllers/ChartViewController.m"
-            timestampString = "424602374.440561"
+            timestampString = "424678720.209662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
-            landmarkName = "-prepareForSegue:sender:"
-            landmarkType = "5">
+            startingLineNumber = "516"
+            endingLineNumber = "516">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
