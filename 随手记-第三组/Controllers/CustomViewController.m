@@ -95,6 +95,7 @@
     
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     if ([segue.identifier isEqualToString:@"cell2view"]) {
+        NSLog(@"section=%d,row=%d",indexPath.section,indexPath.row);
         if (indexPath.section==0 && indexPath.row == 1) {
             NSString *password = @"password";
             [nextVC setValue:password forKey:@"password"];

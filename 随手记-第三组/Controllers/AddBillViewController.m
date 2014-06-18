@@ -38,7 +38,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *tfIncomeText;
 @property (weak, nonatomic) IBOutlet UITextView *remarksTextView;
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *isPayoutSegment;//支出和收入选择
+@property (weak, nonatomic) IBOutlet UISegmentedControl *isPayoutSegment;//支出b和收入选择
 - (IBAction)isPayoutSegmentButton:(UISegmentedControl *)sender;
 
 - (IBAction)saveBillToDatabase:(UIButton *)sender;

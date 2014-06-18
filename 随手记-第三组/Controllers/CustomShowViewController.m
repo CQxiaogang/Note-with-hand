@@ -34,25 +34,31 @@
     }
     if ([self.aboutUs isEqualToString:kAboutUsIdentifier]) {
      
-        UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(126, 189, 68, 21)];
+        UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(126, 200, 68, 21)];
         nameLabel.text = @"关于我们";
-        UILabel *nameLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(90, 244, 89, 21)];
-        nameLabel1.text = @"指导老师";
-        UILabel *nameLabel11 = [[UILabel alloc]initWithFrame:CGRectMake(190, 240, 89, 21)];
+        UILabel *nameLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(90, 240, 89, 21)];
+        nameLabel1.text = @"指导老师:";
+        UILabel *nameLabel11 = [[UILabel alloc]initWithFrame:CGRectMake(172, 240, 89, 21)];
         nameLabel11.text = @"廖";
         
         UILabel *nameLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(90, 280, 89, 21)];
-        nameLabel2.text = @"组长";
-        UILabel *nameLabel21 = [[UILabel alloc]initWithFrame:CGRectMake(230, 240, 89, 21)];
+        nameLabel2.text = @"组长:";
+        UILabel *nameLabel21 = [[UILabel alloc]initWithFrame:CGRectMake(172, 280, 89, 21)];
         nameLabel21.text = @"蒋龙";
         
         UILabel *nameLabel3 = [[UILabel alloc]initWithFrame:CGRectMake(90, 320, 89, 21)];
-        nameLabel3.text = @"小组成员";
-        UILabel *nameLabel31 = [[UILabel alloc]initWithFrame:CGRectMake(270, 240, 89, 21)];
-        nameLabel31.text = @"向江英，杨玲，蒋龙，王孝刚";
+        nameLabel3.text = @"小组成员:";
+        UILabel *nameLabel31 = [[UILabel alloc]initWithFrame:CGRectMake(172, 320, 200, 21)];
+        nameLabel31.text = @"向江英,杨玲,王孝刚";
+        
         
         [self.view addSubview:nameLabel];
-        
+        [self.view addSubview:nameLabel1];
+        [self.view addSubview:nameLabel11];
+        [self.view addSubview:nameLabel2];
+        [self.view addSubview:nameLabel21];
+        [self.view addSubview:nameLabel3];
+        [self.view addSubview:nameLabel31];
     }
 }
 

@@ -14,6 +14,9 @@
 		0289419D19338C2C00A07065 /* UIColor+RGBValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 0289419B19338C2C00A07065 /* UIColor+RGBValues.m */; };
 		028941A119338CAC00A07065 /* BudgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 028941A019338CAC00A07065 /* BudgetViewController.m */; };
 		3F04E34F191B29C900D69E0D /* ProvincesAndCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F04E34E191B29C900D69E0D /* ProvincesAndCities.plist */; };
+		3F1FBC7219511F1E003FEE26 /* shuiShouji.db in Resources */ = {isa = PBXBuildFile; fileRef = 3F1FBC7119511F1E003FEE26 /* shuiShouji.db */; };
+		3F1FBC7519512682003FEE26 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3F1FBC7319512682003FEE26 /* IQKeyboardManager.bundle */; };
+		3F1FBC7619512682003FEE26 /* KeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1FBC7419512682003FEE26 /* KeyboardManager.framework */; };
 		3F28205A1924525D00522667 /* AddBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2820591924525D00522667 /* AddBillViewController.m */; };
 		3F323A27193EC3AA007BBCFD /* SubEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F323A26193EC3AA007BBCFD /* SubEditViewController.m */; };
 		3F323A2A193EC3CD007BBCFD /* SubEcitChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F323A29193EC3CD007BBCFD /* SubEcitChildViewController.m */; };
@@ -70,8 +73,6 @@
 		3FBCE74F191718B200B674C3 /* spendingType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE74E191718B200B674C3 /* spendingType.m */; };
 		3FBCE752191719F900B674C3 /* member.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE751191719F900B674C3 /* member.m */; };
 		3FBCE75519171A1500B674C3 /* budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE75419171A1500B674C3 /* budget.m */; };
-		3FF2A5D5194A80D100981CCF /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3FF2A5D3194A80D100981CCF /* IQKeyboardManager.bundle */; };
-		3FF2A5D6194A80D100981CCF /* KeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF2A5D4194A80D100981CCF /* KeyboardManager.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,9 @@
 		0289419F19338CAC00A07065 /* BudgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BudgetViewController.h; path = BudgetControllers/BudgetViewController.h; sourceTree = "<group>"; };
 		028941A019338CAC00A07065 /* BudgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BudgetViewController.m; path = BudgetControllers/BudgetViewController.m; sourceTree = "<group>"; };
 		3F04E34E191B29C900D69E0D /* ProvincesAndCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProvincesAndCities.plist; sourceTree = "<group>"; };
+		3F1FBC7119511F1E003FEE26 /* shuiShouji.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = shuiShouji.db; sourceTree = "<group>"; };
+		3F1FBC7319512682003FEE26 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		3F1FBC7419512682003FEE26 /* KeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeyboardManager.framework; sourceTree = "<group>"; };
 		3F2820581924525D00522667 /* AddBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddBillViewController.h; path = Controllers/AddBillViewController.h; sourceTree = "<group>"; };
 		3F2820591924525D00522667 /* AddBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddBillViewController.m; path = Controllers/AddBillViewController.m; sourceTree = "<group>"; };
 		3F323A25193EC3AA007BBCFD /* SubEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubEditViewController.h; path = Controllers/SubEditViewController.h; sourceTree = "<group>"; };
@@ -189,8 +193,6 @@
 		3FBCE751191719F900B674C3 /* member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = member.m; path = Models/member.m; sourceTree = "<group>"; };
 		3FBCE75319171A1500B674C3 /* budget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = budget.h; path = Models/budget.h; sourceTree = "<group>"; };
 		3FBCE75419171A1500B674C3 /* budget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = budget.m; path = Models/budget.m; sourceTree = "<group>"; };
-		3FF2A5D3194A80D100981CCF /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
-		3FF2A5D4194A80D100981CCF /* KeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeyboardManager.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FF2A5D6194A80D100981CCF /* KeyboardManager.framework in Frameworks */,
+				3F1FBC7619512682003FEE26 /* KeyboardManager.framework in Frameworks */,
 				3F48C17B19175E8A007DF8FC /* libsqlite3.dylib in Frameworks */,
 				3FBCE7141917168100B674C3 /* CoreGraphics.framework in Frameworks */,
 				3FBCE7161917168100B674C3 /* UIKit.framework in Frameworks */,
@@ -253,8 +255,8 @@
 		3F04E34D191B23A000D69E0D /* IQKeyBoardManager */ = {
 			isa = PBXGroup;
 			children = (
-				3FF2A5D3194A80D100981CCF /* IQKeyboardManager.bundle */,
-				3FF2A5D4194A80D100981CCF /* KeyboardManager.framework */,
+				3F1FBC7319512682003FEE26 /* IQKeyboardManager.bundle */,
+				3F1FBC7419512682003FEE26 /* KeyboardManager.framework */,
 			);
 			name = IQKeyBoardManager;
 			path = "随手记-第三组";
@@ -429,6 +431,7 @@
 				3FBCE7211917168100B674C3 /* AppDelegate.m */,
 				3FBCE7231917168100B674C3 /* Main.storyboard */,
 				3F04E34E191B29C900D69E0D /* ProvincesAndCities.plist */,
+				3F1FBC7119511F1E003FEE26 /* shuiShouji.db */,
 				3FBCE7461917168D00B674C3 /* Models */,
 				3F4E24891918B05E00A4A12F /* Controllers */,
 				3FBCE7291917168100B674C3 /* Images.xcassets */,
@@ -584,14 +587,15 @@
 				3F6BA197192C45EA00C347EB /* KeyboardTopShadow@2x.png in Resources */,
 				3F4E249A1918B14000A4A12F /* camera.png in Resources */,
 				3F6BA198192C45EA00C347EB /* KeyboardNumericEntryKeyPressedTextured@2x.png in Resources */,
+				3F1FBC7519512682003FEE26 /* IQKeyboardManager.bundle in Resources */,
 				3F6BA194192C45EA00C347EB /* BackgroundTexture@2x.png in Resources */,
 				3F04E34F191B29C900D69E0D /* ProvincesAndCities.plist in Resources */,
 				3F6BA193192C45EA00C347EB /* KeyboardBackgroundTextured@2x.png in Resources */,
 				3F4AA97C19380C7D00D1A505 /* icon.png in Resources */,
 				0232CE24193EF844006A9314 /* img201110111340220.jpg in Resources */,
 				3F6BA192192C45EA00C347EB /* GenericSeparator@2x.png in Resources */,
+				3F1FBC7219511F1E003FEE26 /* shuiShouji.db in Resources */,
 				3FBCE7251917168100B674C3 /* Main.storyboard in Resources */,
-				3FF2A5D5194A80D100981CCF /* IQKeyboardManager.bundle in Resources */,
 				3F6BA196192C45EA00C347EB /* KeyboardNumericEntryViewGridLinesTextured@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,19 +781,34 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/student/Desktop/随手记-第三组/IQKeyboardManager\\ Framework",
+					"/Users/student/Desktop/随手记-第三组/IQKeyboardManager",
+					Framework,
 					"/Users/xiaogang/Desktop/随手记-第三组/随手记-第三组",
-					"/Users/xiaogang/Desktop/随手记-第三组/随手记-第三组/IQKeyboardManager\\ Framework",
-					"/Users/student/Desktop/随手记-第三组/随手记-第三组/IQKeyboardManager\\ Framework",
-					"/Users/xiaogang/Desktop/随手记-第三组\\ /随手记-第三组/IQKeyboardManager\\ Framework",
-					"/Users/student/Desktop/随手记-第三组\\ /随手记-第三组/IQKeyboardManager\\ Framework",
-					"/Users/student/Desktop/随手记\\ /随手记-第三组/IQKeyboardManager\\ Framework",
-					"/Users/xiaogang/Desktop/随手记\\ /随手记-第三组/IQKeyboardManager\\ Framework",
+					"/Users/xiaogang/Desktop/随手记-第三组/随手记-第三组/IQKeyboardManager",
+					Framework,
+					"/Users/student/Desktop/随手记-第三组/随手记-第三组/IQKeyboardManager",
+					Framework,
+					"/Users/xiaogang/Desktop/随手记-第三组",
+					"/随手记-第三组/IQKeyboardManager",
+					Framework,
+					"/Users/student/Desktop/随手记-第三组",
+					"/随手记-第三组/IQKeyboardManager",
+					Framework,
+					"/Users/student/Desktop/随手记",
+					"/随手记-第三组/IQKeyboardManager",
+					Framework,
+					"/Users/xiaogang/Desktop/随手记",
+					"/随手记-第三组/IQKeyboardManager",
+					Framework,
 					/Users/love/.Trash,
-					"/Users/love/Desktop/随手记\\ /随手记-第三组",
-					"/Users/student/Desktop/随手记\\ /随手记-第三组",
-					"/Users/xiaogang/Desktop/随手记\\ /随手记-第三组",
+					"/Users/love/Desktop/随手记",
+					"/随手记-第三组",
+					"/Users/student/Desktop/随手记",
+					"/随手记-第三组",
+					"/Users/xiaogang/Desktop/随手记",
+					"/随手记-第三组",
 					"/Users/student/Desktop/iBill/随手记-第三组",
+					"$(PROJECT_DIR)/随手记-第三组",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "随手记-第三组/随手记-第三组-Prefix.pch";
@@ -807,19 +826,34 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/student/Desktop/随手记-第三组/IQKeyboardManager\\ Framework",
+					"/Users/student/Desktop/随手记-第三组/IQKeyboardManager",
+					Framework,
 					"/Users/xiaogang/Desktop/随手记-第三组/随手记-第三组",
-					"/Users/xiaogang/Desktop/随手记-第三组/随手记-第三组/IQKeyboardManager\\ Framework",
-					"/Users/student/Desktop/随手记-第三组/随手记-第三组/IQKeyboardManager\\ Framework",
-					"/Users/xiaogang/Desktop/随手记-第三组\\ /随手记-第三组/IQKeyboardManager\\ Framework",
-					"/Users/student/Desktop/随手记-第三组\\ /随手记-第三组/IQKeyboardManager\\ Framework",
-					"/Users/student/Desktop/随手记\\ /随手记-第三组/IQKeyboardManager\\ Framework",
-					"/Users/xiaogang/Desktop/随手记\\ /随手记-第三组/IQKeyboardManager\\ Framework",
+					"/Users/xiaogang/Desktop/随手记-第三组/随手记-第三组/IQKeyboardManager",
+					Framework,
+					"/Users/student/Desktop/随手记-第三组/随手记-第三组/IQKeyboardManager",
+					Framework,
+					"/Users/xiaogang/Desktop/随手记-第三组",
+					"/随手记-第三组/IQKeyboardManager",
+					Framework,
+					"/Users/student/Desktop/随手记-第三组",
+					"/随手记-第三组/IQKeyboardManager",
+					Framework,
+					"/Users/student/Desktop/随手记",
+					"/随手记-第三组/IQKeyboardManager",
+					Framework,
+					"/Users/xiaogang/Desktop/随手记",
+					"/随手记-第三组/IQKeyboardManager",
+					Framework,
 					/Users/love/.Trash,
-					"/Users/love/Desktop/随手记\\ /随手记-第三组",
-					"/Users/student/Desktop/随手记\\ /随手记-第三组",
-					"/Users/xiaogang/Desktop/随手记\\ /随手记-第三组",
+					"/Users/love/Desktop/随手记",
+					"/随手记-第三组",
+					"/Users/student/Desktop/随手记",
+					"/随手记-第三组",
+					"/Users/xiaogang/Desktop/随手记",
+					"/随手记-第三组",
 					"/Users/student/Desktop/iBill/随手记-第三组",
+					"$(PROJECT_DIR)/随手记-第三组",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "随手记-第三组/随手记-第三组-Prefix.pch";
