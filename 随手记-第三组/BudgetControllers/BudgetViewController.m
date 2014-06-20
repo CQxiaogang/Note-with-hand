@@ -76,9 +76,9 @@
     moneyLabel.text=aType.budgetMoneyValue.stringValue;
     
     UILabel *balanceLabel = (UILabel *)[cell viewWithTag:3];//余额
-    balanceLabel.text = @"得到本月消费进行操作";
+    balanceLabel.text = @"";
     
-    float totalMoney = [self balanceCompute:aType];
+//    float totalMoney = [self balanceCompute:aType];
     
     //自定义progressView
     self.progressViews = [NSMutableArray array];

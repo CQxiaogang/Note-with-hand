@@ -7,6 +7,7 @@
 //
 
 #import "CustomViewController.h"
+#import "TestViewController.h"
 
 @interface CustomViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -83,9 +84,19 @@
 - (IBAction)switchOfPassword:(UISwitch *)sender {
     if (sender.on == YES) {//on为Yes时switch为打开状态
         //输入新密码
+        TestViewController *lockVc = [[TestViewController alloc]init];
+        lockVc.infoLabelStatus = InfoStatusFirstTimeSetting;
+        [self.navigationController presentViewController:lockVc animated:YES completion:^{
+            //
+        }];
         
     }else{
         //输入原密码，并关闭
+        TestViewController *lockVc = [[TestViewController alloc]init];
+        lockVc.infoLabelStatus = InfoStatusNormal;
+        [self.navigationController presentViewController:lockVc animated:YES completion:^{
+            
+        }];
         
     }
 }

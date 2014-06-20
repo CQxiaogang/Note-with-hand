@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "TestViewController.h"
 
 @implementation AppDelegate
 
@@ -36,6 +37,14 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    BOOL isPatternSet = ([[NSUserDefaults standardUserDefaults] valueForKey:kCurrentPattern]) ? YES: NO;
+    if(self.window.rootViewController.presentingViewController == nil && isPatternSet){
+        TestViewController *lockVc = [[TestViewController alloc]init];
+        lockVc.infoLabelStatus = InfoStatusNormal;
+        [self.window.rootViewController presentViewController:lockVc animated:YES completion:^{
+            //
+        }];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

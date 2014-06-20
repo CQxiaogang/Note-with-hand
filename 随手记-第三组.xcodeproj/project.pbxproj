@@ -20,6 +20,11 @@
 		3F28205A1924525D00522667 /* AddBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2820591924525D00522667 /* AddBillViewController.m */; };
 		3F323A27193EC3AA007BBCFD /* SubEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F323A26193EC3AA007BBCFD /* SubEditViewController.m */; };
 		3F323A2A193EC3CD007BBCFD /* SubEcitChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F323A29193EC3CD007BBCFD /* SubEcitChildViewController.m */; };
+		3F38DDA51953C42E00BADCC8 /* NormalCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F38DD9E1953C42E00BADCC8 /* NormalCircle.m */; };
+		3F38DDA61953C42E00BADCC8 /* SPLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F38DDA01953C42E00BADCC8 /* SPLine.m */; };
+		3F38DDA71953C42E00BADCC8 /* SPLockOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F38DDA21953C42E00BADCC8 /* SPLockOverlay.m */; };
+		3F38DDA81953C42E00BADCC8 /* SPLockScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F38DDA41953C42E00BADCC8 /* SPLockScreen.m */; };
+		3F38DDB41953C4FF00BADCC8 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F38DDB31953C4FF00BADCC8 /* TestViewController.m */; };
 		3F48C17B19175E8A007DF8FC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F48C17A19175E8A007DF8FC /* libsqlite3.dylib */; };
 		3F4AA97C19380C7D00D1A505 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4AA97B19380C7D00D1A505 /* icon.png */; };
 		3F4B9643193582EA005794D0 /* BillShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4B9642193582EA005794D0 /* BillShowViewController.m */; };
@@ -107,6 +112,16 @@
 		3F323A26193EC3AA007BBCFD /* SubEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubEditViewController.m; path = Controllers/SubEditViewController.m; sourceTree = "<group>"; };
 		3F323A28193EC3CD007BBCFD /* SubEcitChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubEcitChildViewController.h; path = Controllers/SubEcitChildViewController.h; sourceTree = "<group>"; };
 		3F323A29193EC3CD007BBCFD /* SubEcitChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubEcitChildViewController.m; path = Controllers/SubEcitChildViewController.m; sourceTree = "<group>"; };
+		3F38DD9D1953C42E00BADCC8 /* NormalCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalCircle.h; sourceTree = "<group>"; };
+		3F38DD9E1953C42E00BADCC8 /* NormalCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalCircle.m; sourceTree = "<group>"; };
+		3F38DD9F1953C42E00BADCC8 /* SPLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPLine.h; sourceTree = "<group>"; };
+		3F38DDA01953C42E00BADCC8 /* SPLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLine.m; sourceTree = "<group>"; };
+		3F38DDA11953C42E00BADCC8 /* SPLockOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPLockOverlay.h; sourceTree = "<group>"; };
+		3F38DDA21953C42E00BADCC8 /* SPLockOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLockOverlay.m; sourceTree = "<group>"; };
+		3F38DDA31953C42E00BADCC8 /* SPLockScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPLockScreen.h; sourceTree = "<group>"; };
+		3F38DDA41953C42E00BADCC8 /* SPLockScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLockScreen.m; sourceTree = "<group>"; };
+		3F38DDB21953C4FF00BADCC8 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		3F38DDB31953C4FF00BADCC8 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		3F48C17A19175E8A007DF8FC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		3F4AA97B19380C7D00D1A505 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		3F4B9641193582EA005794D0 /* BillShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BillShowViewController.h; path = BillShowViewControllers/BillShowViewController.h; sourceTree = "<group>"; };
@@ -262,6 +277,21 @@
 			path = "随手记-第三组";
 			sourceTree = "<group>";
 		};
+		3F38DD9C1953C42E00BADCC8 /* SPLockScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3F38DD9D1953C42E00BADCC8 /* NormalCircle.h */,
+				3F38DD9E1953C42E00BADCC8 /* NormalCircle.m */,
+				3F38DD9F1953C42E00BADCC8 /* SPLine.h */,
+				3F38DDA01953C42E00BADCC8 /* SPLine.m */,
+				3F38DDA11953C42E00BADCC8 /* SPLockOverlay.h */,
+				3F38DDA21953C42E00BADCC8 /* SPLockOverlay.m */,
+				3F38DDA31953C42E00BADCC8 /* SPLockScreen.h */,
+				3F38DDA41953C42E00BADCC8 /* SPLockScreen.m */,
+			);
+			path = SPLockScreen;
+			sourceTree = "<group>";
+		};
 		3F4B9644193582F7005794D0 /* BillShowViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +357,8 @@
 				3F88B9421945A88100C5875A /* CustomViewController.m */,
 				3FA06F93195029BF003456E4 /* CustomShowViewController.h */,
 				3FA06F94195029BF003456E4 /* CustomShowViewController.m */,
+				3F38DDB21953C4FF00BADCC8 /* TestViewController.h */,
+				3F38DDB31953C4FF00BADCC8 /* TestViewController.m */,
 			);
 			name = CustomViewController;
 			sourceTree = "<group>";
@@ -390,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				3FBCE7171917168100B674C3 /* 随手记-第三组 */,
+				3F38DD9C1953C42E00BADCC8 /* SPLockScreen */,
 				023FA960192502EC00340EA6 /* DatePickerView */,
 				3F92AE0919346CCA0003F7B2 /* Components */,
 				3F6A37C71921FA540094AA49 /* ZenKeyboard */,
@@ -562,6 +595,11 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				es,
+				fr,
+				it,
+				"zh-Hans-CN",
 			);
 			mainGroup = 3FBCE7051917168100B674C3;
 			productRefGroup = 3FBCE70F1917168100B674C3 /* Products */;
@@ -618,8 +656,10 @@
 				3FBCE74C1917181A00B674C3 /* Bill.m in Sources */,
 				3FBCE7221917168100B674C3 /* AppDelegate.m in Sources */,
 				3F6BA19D192C47D000C347EB /* ZenKeyboard.m in Sources */,
+				3F38DDA51953C42E00BADCC8 /* NormalCircle.m in Sources */,
 				3FBCE752191719F900B674C3 /* member.m in Sources */,
 				3FBCE74F191718B200B674C3 /* spendingType.m in Sources */,
+				3F38DDA71953C42E00BADCC8 /* SPLockOverlay.m in Sources */,
 				0289419D19338C2C00A07065 /* UIColor+RGBValues.m in Sources */,
 				3F88B9401945A24600C5875A /* MonthShowViewController.m in Sources */,
 				3F323A2A193EC3CD007BBCFD /* SubEcitChildViewController.m in Sources */,
@@ -628,9 +668,12 @@
 				3FAC17CD194024A20051E6BC /* EFloatBox.m in Sources */,
 				3F892409191C77CC00E6B429 /* EditViewController.m in Sources */,
 				0289419C19338C2C00A07065 /* LDProgressView.m in Sources */,
+				3F38DDA61953C42E00BADCC8 /* SPLine.m in Sources */,
 				3FAC17CF194024A20051E6BC /* EColumnChartLabel.m in Sources */,
 				0205317E19309275000B1C5B /* DatabaseManager.m in Sources */,
+				3F38DDB41953C4FF00BADCC8 /* TestViewController.m in Sources */,
 				3F88B93A1945886000C5875A /* ShowViewController.m in Sources */,
+				3F38DDA81953C42E00BADCC8 /* SPLockScreen.m in Sources */,
 				3FA06F95195029BF003456E4 /* CustomShowViewController.m in Sources */,
 				3FAC17D2194024AF0051E6BC /* EColumnChart.m in Sources */,
 				3F4E249D1918B20A00A4A12F /* MainViewController.m in Sources */,

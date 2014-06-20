@@ -7,6 +7,7 @@
 //
 
 #import "CustomShowViewController.h"
+#import "TestViewController.h"
 #define kPasswordIdentifier @"password"
 #define kAboutUsIdentifier @"aboutUs"
 
@@ -31,6 +32,16 @@
 	// Do any additional setup after loading the view.
     if ([self.password isEqualToString:kPasswordIdentifier]) {
         
+//        TestViewController *lockVc1 = [[TestViewController alloc]init];
+//        lockVc1.infoLabelStatus = InfoStatusNormal;
+        
+        TestViewController *lockVc = [[TestViewController alloc]init];
+        lockVc.infoLabelStatus = InfoStatusFirstTimeSetting;
+
+        [self.navigationController presentViewController:lockVc animated:YES completion:^{
+        [self.navigationController popViewControllerAnimated:YES];
+                
+        }];
     }
     if ([self.aboutUs isEqualToString:kAboutUsIdentifier]) {
      
