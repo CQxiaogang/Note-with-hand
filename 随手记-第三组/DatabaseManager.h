@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "Bill.h"
+#import "Password.h"
 #import "spendingType.h"
 #import "member.h"
 #import "budget.h"

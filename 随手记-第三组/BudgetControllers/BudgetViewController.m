@@ -14,6 +14,7 @@
 {
     int _i;
     float _budgetTotalMoney;
+    float _totalBuget;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)trashButton:(UIBarButtonItem *)sender;
@@ -60,45 +61,88 @@
 
 #pragma mark - tableView
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return 2;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section == 0) {
+        return 1;
+    }
     return self.fatherType.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    spendingType *aType=self.fatherType[indexPath.row];
-    UILabel *typeLabel=(UILabel *)[cell viewWithTag:1];
-    typeLabel.text=aType.spendName;
-    
-    UILabel *moneyLabel=(UILabel *)[cell viewWithTag:2];
-    moneyLabel.text=aType.budgetMoneyValue.stringValue;
-    
-    UILabel *balanceLabel = (UILabel *)[cell viewWithTag:3];//余额
-    balanceLabel.text = @"";
-    
-//    float totalMoney = [self balanceCompute:aType];
-    
-    //自定义progressView
-    self.progressViews = [NSMutableArray array];
-    LDProgressView *progressView = [[LDProgressView alloc] initWithFrame:CGRectMake(120, 14, self.view.frame.size.width-200, 15)];
-    //    progressView.showText = @NO;//progressView中得值
-    
-    
-//    progressView.progress = 0.80;//设置值
-    _budgetTotalMoney=aType.budgetMoneyValue.floatValue;
-    float money = _budgetTotalMoney/_budgetTotalMoney;
-    progressView.progress = [NSString stringWithFormat:@"%2f",money].floatValue;
-    progressView.borderRadius = @0;//设置progressView的外形
-    progressView.type = LDProgressSolid;//设置progressView的type
-    progressView.color = [UIColor greenColor];
-    [self.progressViews addObject:progressView];
-    [cell addSubview:progressView];
-    
-    
-    
+    static NSString *CellIdentifier1 = @"Cell1";
+    UITableViewCell *cell;
+    if (indexPath.section==0) {
+        cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier1 forIndexPath:indexPath];
+        //总预算
+        UILabel *totalBugetLabel = (UILabel *)[cell viewWithTag:11];
+        float totalBuget = 0.0;
+        
+        for (spendingType *aType in self.fatherType) {
+            totalBuget+=aType.budgetMoneyValue.floatValue;
+        }
+        _totalBuget = totalBuget;
+        totalBugetLabel.text = [NSString stringWithFormat:@"%.2f",totalBuget];
+        //已用
+        float payout = 0.0;
+        NSDate *now=[NSDate date];
+        NSString *date;
+        NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"yyyy-MM"];
+        date = [formatter stringFromDate:now];
+        NSLog(@"%@",date);
+        NSDictionary *dic = [[DatabaseManager ShareDBManager]billDicInMonth:date];
+        NSArray *list = dic[@"billList"];
+        UILabel *userLabel = (UILabel *)[cell viewWithTag:12];
+        for (Bill *aBill in list) {
+            payout+=aBill.moneyAmount;
+        }
+        userLabel.text = [NSString stringWithFormat:@"%.2f",payout];
+        //可用
+        float doUser = 0.0;
+        UILabel *doUserLabel = (UILabel *)[cell viewWithTag:13];
+        doUser = totalBuget - payout;
+        doUserLabel.text = [NSString stringWithFormat:@"%.2f",doUser];
+        
+    }else{
+        cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        spendingType *aType=self.fatherType[indexPath.row];
+        UILabel *typeLabel=(UILabel *)[cell viewWithTag:1];
+        typeLabel.text=aType.spendName;
+        
+        UILabel *moneyLabel=(UILabel *)[cell viewWithTag:2];
+        moneyLabel.text=aType.budgetMoneyValue.stringValue;
+        
+//        UILabel *balanceLabel = (UILabel *)[cell viewWithTag:3];//余额
+//        balanceLabel.text = @"";
+        
+    //    float totalMoney = [self balanceCompute:aType];
+        
+        //自定义progressView
+        self.progressViews = [NSMutableArray array];
+        LDProgressView *progressView = [[LDProgressView alloc] initWithFrame:CGRectMake(120, 14, self.view.frame.size.width-200, 15)];
+        //    progressView.showText = @NO;//progressView中得值
+        
+        
+    //    progressView.progress = 0.80;//设置值
+        _budgetTotalMoney=aType.budgetMoneyValue.floatValue;
+        float money = _budgetTotalMoney/_totalBuget;
+        progressView.progress = [NSString stringWithFormat:@"%2f",money].floatValue;
+        progressView.borderRadius = @0;//设置progressView的外形
+        progressView.type = LDProgressSolid;//设置progressView的type
+        progressView.color = [UIColor cyanColor];
+        [self.progressViews addObject:progressView];
+        [cell addSubview:progressView];
+    }
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==0) {
+        return 86;
+    }
+    return 56;
 }
 
 //点击cell完成事件,此方法如同把cell变成一个button。可以进行点击操作
@@ -130,6 +174,9 @@
     UIAlertView *alert  = [[UIAlertView alloc]initWithTitle:@"信息" message:@"确定清空本月预算" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
     alert.tag = 1000;
     [alert show];
+    spendingType *aType = [[spendingType alloc]init];
+    aType.budgetMoneyValue = nil;
+    [[DatabaseManager ShareDBManager]modifySpendType:aType];
 }
 
 #pragma mark - UIAlertViewDelegate

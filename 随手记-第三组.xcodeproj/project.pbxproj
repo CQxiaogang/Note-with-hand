@@ -14,6 +14,12 @@
 		0289419D19338C2C00A07065 /* UIColor+RGBValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 0289419B19338C2C00A07065 /* UIColor+RGBValues.m */; };
 		028941A119338CAC00A07065 /* BudgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 028941A019338CAC00A07065 /* BudgetViewController.m */; };
 		3F04E34F191B29C900D69E0D /* ProvincesAndCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F04E34E191B29C900D69E0D /* ProvincesAndCities.plist */; };
+		3F1F11E1195827C7001AA4E9 /* MJPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F11DC195827C7001AA4E9 /* MJPasswordView.m */; };
+		3F1F11E2195827C7001AA4E9 /* MJCircleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F11DE195827C7001AA4E9 /* MJCircleLayer.m */; };
+		3F1F11E3195827C7001AA4E9 /* MJPathLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F11E0195827C7001AA4E9 /* MJPathLayer.m */; };
+		3F1F11E7195828D2001AA4E9 /* Password.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F11E6195828D2001AA4E9 /* Password.m */; };
+		3F1F11EC19582A4E001AA4E9 /* UnlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F11E919582A4E001AA4E9 /* UnlockViewController.m */; };
+		3F1F11ED19582A4E001AA4E9 /* MJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F11EB19582A4E001AA4E9 /* MJViewController.m */; };
 		3F1FBC7219511F1E003FEE26 /* shuiShouji.db in Resources */ = {isa = PBXBuildFile; fileRef = 3F1FBC7119511F1E003FEE26 /* shuiShouji.db */; };
 		3F1FBC7519512682003FEE26 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3F1FBC7319512682003FEE26 /* IQKeyboardManager.bundle */; };
 		3F1FBC7619512682003FEE26 /* KeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1FBC7419512682003FEE26 /* KeyboardManager.framework */; };
@@ -103,6 +109,18 @@
 		0289419F19338CAC00A07065 /* BudgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BudgetViewController.h; path = BudgetControllers/BudgetViewController.h; sourceTree = "<group>"; };
 		028941A019338CAC00A07065 /* BudgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BudgetViewController.m; path = BudgetControllers/BudgetViewController.m; sourceTree = "<group>"; };
 		3F04E34E191B29C900D69E0D /* ProvincesAndCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProvincesAndCities.plist; sourceTree = "<group>"; };
+		3F1F11DB195827C7001AA4E9 /* MJPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPasswordView.h; sourceTree = "<group>"; };
+		3F1F11DC195827C7001AA4E9 /* MJPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPasswordView.m; sourceTree = "<group>"; };
+		3F1F11DD195827C7001AA4E9 /* MJCircleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJCircleLayer.h; sourceTree = "<group>"; };
+		3F1F11DE195827C7001AA4E9 /* MJCircleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJCircleLayer.m; sourceTree = "<group>"; };
+		3F1F11DF195827C7001AA4E9 /* MJPathLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPathLayer.h; sourceTree = "<group>"; };
+		3F1F11E0195827C7001AA4E9 /* MJPathLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPathLayer.m; sourceTree = "<group>"; };
+		3F1F11E5195828D2001AA4E9 /* Password.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Password.h; sourceTree = "<group>"; };
+		3F1F11E6195828D2001AA4E9 /* Password.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Password.m; sourceTree = "<group>"; };
+		3F1F11E819582A4E001AA4E9 /* UnlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnlockViewController.h; sourceTree = "<group>"; };
+		3F1F11E919582A4E001AA4E9 /* UnlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnlockViewController.m; sourceTree = "<group>"; };
+		3F1F11EA19582A4E001AA4E9 /* MJViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJViewController.h; sourceTree = "<group>"; };
+		3F1F11EB19582A4E001AA4E9 /* MJViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJViewController.m; sourceTree = "<group>"; };
 		3F1FBC7119511F1E003FEE26 /* shuiShouji.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = shuiShouji.db; sourceTree = "<group>"; };
 		3F1FBC7319512682003FEE26 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		3F1FBC7419512682003FEE26 /* KeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeyboardManager.framework; sourceTree = "<group>"; };
@@ -277,6 +295,19 @@
 			path = "随手记-第三组";
 			sourceTree = "<group>";
 		};
+		3F1F11E4195827CD001AA4E9 /* 密码 */ = {
+			isa = PBXGroup;
+			children = (
+				3F1F11DB195827C7001AA4E9 /* MJPasswordView.h */,
+				3F1F11DC195827C7001AA4E9 /* MJPasswordView.m */,
+				3F1F11DD195827C7001AA4E9 /* MJCircleLayer.h */,
+				3F1F11DE195827C7001AA4E9 /* MJCircleLayer.m */,
+				3F1F11DF195827C7001AA4E9 /* MJPathLayer.h */,
+				3F1F11E0195827C7001AA4E9 /* MJPathLayer.m */,
+			);
+			name = "密码";
+			sourceTree = "<group>";
+		};
 		3F38DD9C1953C42E00BADCC8 /* SPLockScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +390,10 @@
 				3FA06F94195029BF003456E4 /* CustomShowViewController.m */,
 				3F38DDB21953C4FF00BADCC8 /* TestViewController.h */,
 				3F38DDB31953C4FF00BADCC8 /* TestViewController.m */,
+				3F1F11E819582A4E001AA4E9 /* UnlockViewController.h */,
+				3F1F11E919582A4E001AA4E9 /* UnlockViewController.m */,
+				3F1F11EA19582A4E001AA4E9 /* MJViewController.h */,
+				3F1F11EB19582A4E001AA4E9 /* MJViewController.m */,
 			);
 			name = CustomViewController;
 			sourceTree = "<group>";
@@ -422,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				3FBCE7171917168100B674C3 /* 随手记-第三组 */,
+				3F1F11E4195827CD001AA4E9 /* 密码 */,
 				3F38DD9C1953C42E00BADCC8 /* SPLockScreen */,
 				023FA960192502EC00340EA6 /* DatePickerView */,
 				3F92AE0919346CCA0003F7B2 /* Components */,
@@ -505,6 +541,8 @@
 		3FBCE7461917168D00B674C3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3F1F11E5195828D2001AA4E9 /* Password.h */,
+				3F1F11E6195828D2001AA4E9 /* Password.m */,
 				3FBCE74A1917181A00B674C3 /* Bill.h */,
 				3FBCE74B1917181A00B674C3 /* Bill.m */,
 				3FBCE74D191718B200B674C3 /* spendingType.h */,
@@ -653,6 +691,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F1F11E2195827C7001AA4E9 /* MJCircleLayer.m in Sources */,
+				3F1F11E7195828D2001AA4E9 /* Password.m in Sources */,
 				3FBCE74C1917181A00B674C3 /* Bill.m in Sources */,
 				3FBCE7221917168100B674C3 /* AppDelegate.m in Sources */,
 				3F6BA19D192C47D000C347EB /* ZenKeyboard.m in Sources */,
@@ -667,6 +707,7 @@
 				3FAD301119259331003B1792 /* MXSCycleScrollView.m in Sources */,
 				3FAC17CD194024A20051E6BC /* EFloatBox.m in Sources */,
 				3F892409191C77CC00E6B429 /* EditViewController.m in Sources */,
+				3F1F11E3195827C7001AA4E9 /* MJPathLayer.m in Sources */,
 				0289419C19338C2C00A07065 /* LDProgressView.m in Sources */,
 				3F38DDA61953C42E00BADCC8 /* SPLine.m in Sources */,
 				3FAC17CF194024A20051E6BC /* EColumnChartLabel.m in Sources */,
@@ -677,6 +718,7 @@
 				3FA06F95195029BF003456E4 /* CustomShowViewController.m in Sources */,
 				3FAC17D2194024AF0051E6BC /* EColumnChart.m in Sources */,
 				3F4E249D1918B20A00A4A12F /* MainViewController.m in Sources */,
+				3F1F11E1195827C7001AA4E9 /* MJPasswordView.m in Sources */,
 				3FBCE75519171A1500B674C3 /* budget.m in Sources */,
 				3F4E24951918B0C500A4A12F /* FMDatabaseAdditions.m in Sources */,
 				3FAC17CC194024A20051E6BC /* EColumn.m in Sources */,
@@ -684,6 +726,7 @@
 				3FBCE71E1917168100B674C3 /* main.m in Sources */,
 				0219E9BF194722B100142ECB /* CharShowViewController.m in Sources */,
 				3F4B9643193582EA005794D0 /* BillShowViewController.m in Sources */,
+				3F1F11ED19582A4E001AA4E9 /* MJViewController.m in Sources */,
 				3FAD301219259331003B1792 /* RBCustomDatePickerView.m in Sources */,
 				3F92AE0D19346D650003F7B2 /* ChartViewController.m in Sources */,
 				3F88B93D1945A22B00C5875A /* WeekShowViewController.m in Sources */,
@@ -693,6 +736,7 @@
 				3F4E24961918B0C500A4A12F /* FMDatabasePool.m in Sources */,
 				3F88B9431945A88100C5875A /* CustomViewController.m in Sources */,
 				3F4E24971918B0C500A4A12F /* FMDatabaseQueue.m in Sources */,
+				3F1F11EC19582A4E001AA4E9 /* UnlockViewController.m in Sources */,
 				3F89240C191C870300E6B429 /* EditChildViewController.m in Sources */,
 				028941A119338CAC00A07065 /* BudgetViewController.m in Sources */,
 				3F4E24941918B0C500A4A12F /* FMDatabase.m in Sources */,

@@ -19,12 +19,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#x968f;&#x624b;&#x8bb0;-&#x7b2c;&#x4e09;&#x7ec4;/DatabaseManager.m"
-            timestampString = "424317149.514042"
+            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/DatabaseManager.m"
+            timestampString = "425208220.125654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "521"
-            endingLineNumber = "521"
+            startingLineNumber = "525"
+            endingLineNumber = "525"
             landmarkName = "-selectMemberID:"
             landmarkType = "5">
          </BreakpointContent>
@@ -35,7 +35,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#x968f;&#x624b;&#x8bb0;-&#x7b2c;&#x4e09;&#x7ec4;/ChartViewControllers/ChartViewController.m"
+            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/ChartViewControllers/ChartViewController.m"
             timestampString = "424678720.209662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -49,7 +49,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#x968f;&#x624b;&#x8bb0;-&#x7b2c;&#x4e09;&#x7ec4;/ChartViewControllers/ChartViewController.m"
+            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/ChartViewControllers/ChartViewController.m"
             timestampString = "424324946.597938"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -65,12 +65,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#x968f;&#x624b;&#x8bb0;-&#x7b2c;&#x4e09;&#x7ec4;/DatabaseManager.m"
-            timestampString = "424597992.751226"
+            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/DatabaseManager.m"
+            timestampString = "425208220.125654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "-modifyBill:"
             landmarkType = "5">
          </BreakpointContent>
@@ -81,13 +81,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#x968f;&#x624b;&#x8bb0;-&#x7b2c;&#x4e09;&#x7ec4;/Controllers/AddBillViewController.m"
-            timestampString = "424600786.701724"
+            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/Controllers/AddBillViewController.m"
+            timestampString = "425207296.289588"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "-editBillButton:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#38543;&#25163;&#35760;-&#31532;&#19977;&#32452;/BudgetControllers/BudgetViewController.m"
+            timestampString = "425204725.608488"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

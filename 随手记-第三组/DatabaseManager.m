@@ -12,6 +12,7 @@
 #define kSpendTypeName @"SpengdTypeTable"
 #define kMemberName @"MemberTable"
 #define kBudgetName @"BudgetTable"
+#define kPassword @"password"
 
 @interface DatabaseManager ()
 
@@ -70,6 +71,9 @@ static DatabaseManager *sharedManager=nil;
         if (![self.databade executeUpdate:createSql]) {
             NSLog(@"建表/打开表: %@ 失败",kMemberName);
         }
+        
+        NSString *passwordTable = [NSString stringWithFormat:@"create table if not exists %@ (passwordID integer primary key autoincrement,password text)",kPassword];
+        [self.databade executeUpdate:passwordTable];
     }
     return self;
 }
@@ -560,4 +564,38 @@ static DatabaseManager *sharedManager=nil;
     return difference;
 }
 
+//TODO:密码操作
+//添加密码
+-(BOOL)addPassword:(Password *)aPassword{
+    NSString *addPassword = [NSString stringWithFormat:@"insert into %@ (password) values(?)",kPassword];
+    [self.databade executeUpdate:addPassword,aPassword.password];
+    return YES;
+}
+
+//删除密码
+-(BOOL)deletePassword{
+    NSString *deletePassword = [NSString stringWithFormat:@"delete from %@",kPassword];
+    [self.databade executeUpdate:deletePassword];
+    return YES;
+}
+
+//修改密码
+-(BOOL)updatePassword:(Password *)aPassword{
+    NSString *updatePassword = [NSString stringWithFormat:@"update %@ set password = ? where passwordID = ?",kPassword];
+    [self.databade executeUpdate:updatePassword,aPassword.password,aPassword.PasswordID];
+    return YES;
+}
+
+//根据number找到一排
+-(Password *)searchPassword:(int)number{
+    NSString *searchPassword = [NSString stringWithFormat:@"select * from %@ limit 1 offset ?",kPassword];
+    FMResultSet *rs = [self.databade executeQuery:searchPassword,@(number)];
+    Password *aPassword;
+    while ([rs next]) {
+        aPassword = [[Password alloc]init];
+        aPassword.PasswordID = @([rs intForColumn:@"passwordID"]);
+        aPassword.password = [rs stringForColumn:@"password"];
+    }
+    return aPassword;
+}
 @end

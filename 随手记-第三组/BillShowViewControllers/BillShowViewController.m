@@ -184,7 +184,7 @@
         return cell;
         
     }
-    else{
+    else{//第一个cell
         static NSString *CellIdentifier = @"Cell1";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
        
@@ -192,7 +192,21 @@
         
         //日期显示
         NSString *aBilltimeStr = self.timeList[indexPath.section];
+    
         monthLabel.text = [NSString stringWithFormat:@"%@月",aBilltimeStr];
+        UILabel *isPayout = (UILabel *)[cell viewWithTag:12];
+        UILabel *notPayout = (UILabel *)[cell viewWithTag:13];
+        UILabel *remain = (UILabel *)[cell viewWithTag:14];
+        if (aBilltimeStr.intValue<10) {
+            notPayout.text=[NSString stringWithFormat:@"%.2f",[[DatabaseManager ShareDBManager] billInDay:nil InWeek:nil InMonth:[NSString stringWithFormat:@"2014-0%@",aBilltimeStr] IsPayOut:YES]];
+            isPayout.text=[NSString stringWithFormat:@"%.2f",[[DatabaseManager ShareDBManager] billInDay:nil InWeek:nil InMonth:[NSString stringWithFormat:@"2014-0%@",aBilltimeStr] IsPayOut:NO]];
+            remain.text=[NSString stringWithFormat:@"%.2f",notPayout.text.doubleValue-isPayout.text.doubleValue];
+        }else{
+            notPayout.text=[NSString stringWithFormat:@"%.2f",[[DatabaseManager ShareDBManager] billInDay:nil InWeek:nil InMonth:[NSString stringWithFormat:@"2014-%@",aBilltimeStr] IsPayOut:YES]];
+            isPayout.text=[NSString stringWithFormat:@"%.2f",[[DatabaseManager ShareDBManager] billInDay:nil InWeek:nil InMonth:[NSString stringWithFormat:@"2014-%@",aBilltimeStr] IsPayOut:NO]];
+            remain.text=[NSString stringWithFormat:@"%.2f",notPayout.text.doubleValue-isPayout.text.doubleValue];
+        }
+       
         
 //        //判断是否有这个类
 //        int section = self.selectIndex.section;

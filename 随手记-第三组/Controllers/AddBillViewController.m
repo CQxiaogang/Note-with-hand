@@ -180,6 +180,9 @@
         self.saveBill.hidden = YES;
         self.comeBackBill.hidden =YES;
     }
+//    if (1 == self.isPayoutSegment.selectedSegmentIndex ) {
+//        self.classText.text = @"工资";
+//    }
 }
 
 //- (void)viewWillAppear:(BOOL)animated {//此方法为 当push时调用
@@ -196,8 +199,22 @@
 //选择收入支出按钮值改变时响应函数
 - (IBAction)isPayoutSegmentButton:(UISegmentedControl *)sender {
     
-    self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:[sender selectedSegmentIndex]];
-    self.typeList = self.typeDic[kDicOfTypeKey];
+    BOOL isPayout;
+    if (self.isPayoutSegment.selectedSegmentIndex == 0) {
+        isPayout = YES;
+    }else{
+        isPayout = NO;
+    }
+    if (1 == self.isPayoutSegment.selectedSegmentIndex ) {
+        self.classText.text = @"工资";
+        self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:isPayout];
+        self.typeList = self.typeDic[kDicOfTypeKey];
+    }
+    if (0 == self.isPayoutSegment.selectedSegmentIndex) {
+        self.classText.text = @"食品酒水>早午晚餐";
+        self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:isPayout];
+        self.typeList = self.typeDic[kDicOfTypeKey];
+    }
     
     [self.pickerView reloadAllComponents];
 }
