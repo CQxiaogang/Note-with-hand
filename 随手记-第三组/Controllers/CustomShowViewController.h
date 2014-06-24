@@ -10,7 +10,5 @@
 
 @interface CustomShowViewController : UIViewController
 
-@property (nonatomic,strong) NSString *password;
-@property (nonatomic,strong) NSString *aboutUs;
 
 @end

@@ -7,15 +7,14 @@
 //
 
 #import "CustomShowViewController.h"
-#import "TestViewController.h"
-#define kPasswordIdentifier @"password"
-#define kAboutUsIdentifier @"aboutUs"
 
 @interface CustomShowViewController ()
+
 
 @end
 
 @implementation CustomShowViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,20 +29,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    if ([self.password isEqualToString:kPasswordIdentifier]) {
-        
-//        TestViewController *lockVc1 = [[TestViewController alloc]init];
-//        lockVc1.infoLabelStatus = InfoStatusNormal;
-        
-        TestViewController *lockVc = [[TestViewController alloc]init];
-        lockVc.infoLabelStatus = InfoStatusFirstTimeSetting;
-
-        [self.navigationController presentViewController:lockVc animated:YES completion:^{
-        [self.navigationController popViewControllerAnimated:YES];
-                
-        }];
-    }
-    if ([self.aboutUs isEqualToString:kAboutUsIdentifier]) {
      
         UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(126, 200, 68, 21)];
         nameLabel.text = @"关于我们";
@@ -70,7 +55,6 @@
         [self.view addSubview:nameLabel21];
         [self.view addSubview:nameLabel3];
         [self.view addSubview:nameLabel31];
-    }
 }
 
 - (void)didReceiveMemoryWarning

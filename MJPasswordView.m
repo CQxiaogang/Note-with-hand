@@ -33,10 +33,10 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        self.backgroundColor = [UIColor orangeColor];
-        self.circleFillColour = [UIColor redColor];
-        self.circleFillColourHighlighted = [UIColor grayColor];
-        self.pathColour = [UIColor grayColor];
+        self.backgroundColor = [UIColor clearColor];
+        self.circleFillColour = [UIColor whiteColor];
+        self.circleFillColourHighlighted = [UIColor lightGrayColor];
+        self.pathColour = [UIColor whiteColor];//线
         
         self.circleLayers = [NSMutableArray arrayWithCapacity:9];
         self.trackingIds = [NSMutableArray arrayWithCapacity:9];

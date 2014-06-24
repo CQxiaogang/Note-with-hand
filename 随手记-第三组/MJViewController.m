@@ -8,20 +8,19 @@
 
 #import "MJViewController.h"
 #import "MJPasswordView.h"
-#import "UserManager.h"
+#import "DatabaseManager.h"
 @interface MJViewController ()
 
 @property (nonatomic,assign) ePasswordSate state;
 
 @property (nonatomic,copy) NSString* password;
 
-@property (nonatomic,retain) UIButton* clearButton;
-- (IBAction)clearButton:(id)sender;
+@property (nonatomic,retain) UIButton* clearButton;;
 
 @property (nonatomic,retain) UILabel* infoLabel;
 
 @property (nonatomic,retain) MJPasswordView* passwordView;
-@property(nonatomic,strong)UserManager *userManger;
+@property(nonatomic,strong)DatabaseManager *userManger;
 @property(nonatomic,strong)Password *aPassword;
 @property(nonatomic,assign)BOOL switchViewIsOn;
 @property(nonatomic,strong)NSString *judgmentString;
@@ -41,7 +40,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.state = ePasswordUnset;
-    self.view.backgroundColor=[UIColor orangeColor];
+    self.view.backgroundColor=[UIColor lightGrayColor];
     self.infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 150, 300, 30)];
     self.infoLabel.backgroundColor = [UIColor clearColor];
     self.infoLabel.textAlignment =  NSTextAlignmentCenter;
@@ -53,7 +52,7 @@
     self.passwordView.delegate = self;
     [self.view addSubview:self.passwordView];
     self.aPassword = [[Password alloc]init];
-    self.aPassword = [[NoteManager shareDatabaseManager]searchPassword:0];
+    self.aPassword = [[DatabaseManager ShareDBManager]searchPassword:0];
     
     [self updateInfoLabel];
     
@@ -146,7 +145,7 @@
             }else{
                 if (self.switchViewIsOn == NO) {
                     if ([self.aPassword.password isEqualToString:password]) {
-                        [[NoteManager shareDatabaseManager]deletePassword];
+                        [[DatabaseManager ShareDBManager]deletePassword];
                         UIAlertView* view = [[UIAlertView alloc] initWithTitle:@"关闭密码成功！" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                         [view show];
                         [self.navigationController popViewControllerAnimated:YES];
@@ -171,7 +170,7 @@
             }else{
                 if (self.switchViewIsOn == NO) {
                     if ([self.aPassword.password isEqualToString:password]) {
-                        [[NoteManager shareDatabaseManager]deletePassword];
+                        [[DatabaseManager ShareDBManager]deletePassword];
                         UIAlertView* view = [[UIAlertView alloc] initWithTitle:@"关闭密码成功！" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                         [view show];
                         [self.navigationController popViewControllerAnimated:YES];
@@ -186,7 +185,7 @@
     //                    self.userManger.aUser.isProtected=YES;
                         Password *aPassword = [[Password alloc]init];
                         aPassword.password = self.password;
-                        [[NoteManager shareDatabaseManager]addPassword:aPassword];
+                        [[DatabaseManager ShareDBManager]addPassword:aPassword];
                         //[self.userManger saveUser];
                         
                         UIAlertView* view = [[UIAlertView alloc] initWithTitle:@"密码设置成功！" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
@@ -205,11 +204,11 @@
         case ePasswordExist:
             if ([self.judgmentString isEqualToString:@"修改"]) {
                 if ([password isEqualToString:self.password]) {
-                    [[NoteManager shareDatabaseManager]deletePassword];
+                    [[DatabaseManager ShareDBManager]deletePassword];
                     
                     Password *aPassword = [[Password alloc]init];
                     aPassword.password = password;
-                    [[NoteManager shareDatabaseManager]addPassword:aPassword];
+                    [[DatabaseManager ShareDBManager]addPassword:aPassword];
                     UIAlertView* view = [[UIAlertView alloc] initWithTitle:@"修改密码成功！" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                     [view show];
                     [self.navigationController popViewControllerAnimated:YES];
@@ -230,10 +229,6 @@
             break;
     }
     
-    [self updateInfoLabel];
-}
-- (IBAction)clearButton:(id)sender {
-    self.state = ePasswordUnset;
     [self updateInfoLabel];
 }
 @end

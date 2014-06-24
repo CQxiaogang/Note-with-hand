@@ -56,6 +56,7 @@
 @property(nonatomic,strong)UIDatePicker *TimePicker;//自定义datePicker
 
 - (IBAction)edit:(id)sender;//编辑按钮
+- (IBAction)moneyAmountFiled:(id)sender;
 
 
 
@@ -124,7 +125,7 @@
     
     self.keyboardView.textField = self.tfIncomeText;
     self.automaticallyAdjustsScrollViewInsets=NO;
-    self. extendedLayoutIncludesOpaqueBars=NO;
+    self.extendedLayoutIncludesOpaqueBars=NO;
 //    [self.tfIncomeText becomeFirstResponder];//某个输入框变为第一响应者，准备接受输入
     // Do any additional setup after loading the view.
     
@@ -180,9 +181,12 @@
         self.saveBill.hidden = YES;
         self.comeBackBill.hidden =YES;
     }
-//    if (1 == self.isPayoutSegment.selectedSegmentIndex ) {
-//        self.classText.text = @"工资";
-//    }
+
+    //定义view的外形
+    self.imageView.layer.cornerRadius=15;//定义控件的圆角
+    self.imageView.layer.borderColor=[UIColor blackColor].CGColor;//定义边框颜色
+    self.imageView.layer.borderWidth=0.5;//定义边框大小
+    self.imageView.layer.masksToBounds=YES;//定义边界 不越界
 }
 
 //- (void)viewWillAppear:(BOOL)animated {//此方法为 当push时调用
@@ -463,12 +467,17 @@
     _isTypePicker = YES;
     [self.pickerView reloadAllComponents];
     self.subView.hidden=NO;
+    
+    [self.tfIncomeText resignFirstResponder];
+    
 }
 
 - (IBAction)memberButton:(id)sender {
     _isTypePicker = NO;
     [self.pickerView reloadAllComponents];
     self.subView.hidden=NO;
+    
+    [self.memberText resignFirstResponder];
 }
 
 #pragma mark - 照相、相册功能实现
@@ -559,4 +568,7 @@
     self.memberText.text = self.aMember.memberName;
 }
 
+- (IBAction)moneyAmountFiled:(id)sender {
+    self.subView.hidden=YES;
+}
 @end

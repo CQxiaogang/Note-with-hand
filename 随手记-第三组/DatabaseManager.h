@@ -53,6 +53,12 @@
 -(member *)selectMemberID:(int )memberID;//按照ID查询
 -(NSMutableArray *)readAllMemberList;
 
+//密码
+-(BOOL)addPassword:(Password *)aPassword;//添加密码
+-(BOOL)deletePassword;//删除密码
+-(BOOL)updatePassword:(Password *)aPassword;//修改密码
+-(Password *)searchPassword:(int)number;//根据number找到一排
+
 //计算函数  每个类别在支出时占这个月的比例
 -(float)calculateDifferenceWithType:(spendingType *)mainType;//单个大类别的预算和支出的差
 

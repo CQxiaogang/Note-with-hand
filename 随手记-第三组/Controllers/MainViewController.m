@@ -117,6 +117,7 @@
     self.imageView.layer.borderWidth=0.5;//定义边框大小
     self.imageView.layer.masksToBounds=YES;//定义边界 不越界
     
+    [self.navigationItem setHidesBackButton:YES animated:YES];
     
 }
 
