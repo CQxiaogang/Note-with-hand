@@ -340,7 +340,7 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		3F6A37C71921FA540094AA49 /* ZenKeyboard */ = {
+		3F6A37C71921FA540094AA49 /* 自定义数字键盘 */ = {
 			isa = PBXGroup;
 			children = (
 				3F6BA19A192C47D000C347EB /* Config.h */,
@@ -348,7 +348,7 @@
 				3F6BA19C192C47D000C347EB /* ZenKeyboard.m */,
 				3F6A379F1921FA3F0094AA49 /* Resource */,
 			);
-			name = ZenKeyboard;
+			name = "自定义数字键盘";
 			sourceTree = "<group>";
 		};
 		3F88B9441945A88500C5875A /* CustomViewController */ = {
@@ -428,7 +428,7 @@
 				3F1F11E4195827CD001AA4E9 /* 密码 */,
 				023FA960192502EC00340EA6 /* DatePickerView */,
 				3F92AE0919346CCA0003F7B2 /* Components */,
-				3F6A37C71921FA540094AA49 /* ZenKeyboard */,
+				3F6A37C71921FA540094AA49 /* 自定义数字键盘 */,
 				3F04E34D191B23A000D69E0D /* IQKeyBoardManager */,
 				3FBCE765191727C800B674C3 /* FMDB */,
 				0289419E19338C3600A07065 /* LDProgressView */,

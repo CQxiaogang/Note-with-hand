@@ -54,12 +54,17 @@
     self.aBill=[[Bill alloc]init];
 	// Do any additional setup after loading the view.
     //对第三方控件
-//    [IQKeyboardManager sharedManager].enableAutoToolbar=NO;
+    [IQKeyboardManager sharedManager].enableAutoToolbar=NO;
     
     //PickerView操作
     self.subView.hidden=YES;
     self.PickerView.delegate=self;
     self.PickerView.dataSource=self;
+    
+    self.remarksText.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.remarksText.layer.borderWidth = 1;
+    self.remarksText.delegate = self;
+    
     //plist数据读入数据库中
     /*
     NSString *path = [[NSBundle mainBundle] pathForResource:@"ProvincesAndCities" ofType:@"plist"];

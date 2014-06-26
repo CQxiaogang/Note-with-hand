@@ -30,21 +30,21 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
      
-        UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(126, 200, 68, 21)];
+        UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 68, 21)];
         nameLabel.text = @"关于我们";
-        UILabel *nameLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(90, 240, 89, 21)];
+        UILabel *nameLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(80, 240, 89, 21)];
         nameLabel1.text = @"指导老师:";
-        UILabel *nameLabel11 = [[UILabel alloc]initWithFrame:CGRectMake(172, 240, 89, 21)];
+        UILabel *nameLabel11 = [[UILabel alloc]initWithFrame:CGRectMake(162, 240, 89, 21)];
         nameLabel11.text = @"廖";
         
-        UILabel *nameLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(90, 280, 89, 21)];
+        UILabel *nameLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(80, 280, 89, 21)];
         nameLabel2.text = @"组长:";
-        UILabel *nameLabel21 = [[UILabel alloc]initWithFrame:CGRectMake(172, 280, 89, 21)];
+        UILabel *nameLabel21 = [[UILabel alloc]initWithFrame:CGRectMake(162, 280, 89, 21)];
         nameLabel21.text = @"蒋龙";
         
-        UILabel *nameLabel3 = [[UILabel alloc]initWithFrame:CGRectMake(90, 320, 89, 21)];
+        UILabel *nameLabel3 = [[UILabel alloc]initWithFrame:CGRectMake(80, 320, 89, 21)];
         nameLabel3.text = @"小组成员:";
-        UILabel *nameLabel31 = [[UILabel alloc]initWithFrame:CGRectMake(172, 320, 200, 21)];
+        UILabel *nameLabel31 = [[UILabel alloc]initWithFrame:CGRectMake(162, 320, 200, 21)];
         nameLabel31.text = @"向江英,杨玲,王孝刚";
         
         

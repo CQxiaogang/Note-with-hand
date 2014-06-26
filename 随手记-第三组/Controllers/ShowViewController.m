@@ -86,8 +86,9 @@
     Bill *aBill = self.billArray[indexPath.row];
     
     UILabel *typeLabel = (UILabel *)[cell viewWithTag:1];
-    self.typeList = [self.typeDic objectForKey:@"big"];
-    spendingType *aType = self.typeList[indexPath.row];
+    
+    spendingType *aType = [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",aBill.spendID] andIsPayout:YES];
+    aType = [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",aType.fatherType.spendID] andIsPayout:YES];
     typeLabel.text =aType.spendName;
     
     UILabel *moneyAmountLabel = (UILabel *)[cell viewWithTag:2];
@@ -153,9 +154,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];//根据tableView的cell(sender)来找到你所点击的行。
     Bill *aBill = self.billArray[indexPath.row];
     
-    spendingType *aType = self.typeList[indexPath.row];
-    NSArray *subTypeList = [self.typeDic objectForKey:aType.spendName];
-    aType = subTypeList[indexPath.row];
+   spendingType *aType = [[DatabaseManager ShareDBManager]selectTypeByTypeID:[NSString stringWithFormat:@"%d",aBill.spendID] andIsPayout:YES];
     
     member *aMember = [[DatabaseManager ShareDBManager] selectMemberID:aBill.memberID];
     

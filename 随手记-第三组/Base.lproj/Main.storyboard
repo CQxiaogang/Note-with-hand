@@ -24,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LlD-Si-x0e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1486" y="-51"/>
+            <point key="canvasLocation" x="1538" y="-51"/>
         </scene>
         <!--Chart View Controller-->
         <scene sceneID="HII-1F-1Pv">
@@ -330,7 +330,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="Xru-8L-9AW" kind="push" identifier="day2Show" id="e7c-NR-WUR"/>
                                         </connections>
@@ -444,6 +444,8 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qgf-1M-T1b">
                                 <rect key="frame" x="33" y="354" width="240" height="55"/>
+                                <color key="backgroundColor" red="0.90575175382653061" green="0.90575175382653061" blue="0.90575175382653061" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -487,9 +489,6 @@
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="Ucv-MB-ZwI" kind="push" id="irx-zw-6iH"/>
-                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -854,10 +853,10 @@
             </objects>
             <point key="canvasLocation" x="2834" y="-2540"/>
         </scene>
-        <!--Char Show View Controller-->
+        <!--Custom Show View Controller-->
         <scene sceneID="qZz-Me-zKo">
             <objects>
-                <viewController id="e0Q-ZQ-yuT" customClass="CharShowViewController" sceneMemberID="viewController">
+                <viewController id="e0Q-ZQ-yuT" customClass="CustomShowViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wwf-49-bqG"/>
                         <viewControllerLayoutGuide type="bottom" id="gPy-vu-d73"/>
@@ -1058,51 +1057,6 @@
             </objects>
             <point key="canvasLocation" x="2834" y="1122"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="GNG-gF-nyH">
-            <objects>
-                <viewController id="Rf6-Sc-JvI" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="UdJ-VZ-wMR"/>
-                        <viewControllerLayoutGuide type="bottom" id="CfW-S1-8fj"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lCd-3T-sL4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoF-ws-7Ca">
-                                <rect key="frame" x="53" y="88" width="89" height="30"/>
-                                <state key="normal" title="餐饮-早餐">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2014-4-27 星期日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjw-Lh-MnE">
-                                <rect key="frame" x="63" y="68" width="136" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfR-aj-mAG">
-                                <rect key="frame" x="53" y="120" width="89" height="30"/>
-                                <state key="normal" title="餐饮-午餐">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="分类别显示数据，如餐饮就会把这个月所以关于餐饮的数据显示出来，并且进行修改、删除、添加" translatesAutoresizingMaskIntoConstraints="NO" id="oYl-7y-b95">
-                                <rect key="frame" x="33" y="170" width="254" height="133"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="0.082887145400000001" green="0.53260869570000002" blue="0.047467436029999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="7oc-2K-aRN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s2q-Jl-HSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4823" y="-567"/>
-        </scene>
         <!--Add Bill View Controller - 编辑账务-->
         <scene sceneID="QYZ-7g-Awe">
             <objects>
@@ -1120,6 +1074,7 @@
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="00.0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q84-zx-A1b">
                                 <rect key="frame" x="189" y="80" width="75" height="43"/>
+                                <color key="textColor" red="0.55867346939999996" green="0.4756123948" blue="0.32488971319999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -1128,11 +1083,16 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N80-CA-AyC">
                                 <rect key="frame" x="77" y="149" width="156" height="28"/>
+                                <color key="textColor" red="0.55867346939999996" green="0.4756123948" blue="0.32488971319999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="dateFieldBeginEditing:" destination="mNa-CH-w97" eventType="editingDidBegin" id="Va2-YG-hyY"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="食品酒水>早午晚餐" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bd9-l3-UB5">
                                 <rect key="frame" x="77" y="180" width="156" height="26"/>
+                                <color key="textColor" red="0.55867346939999996" green="0.4756123948" blue="0.32488971319999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -1141,6 +1101,7 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="自己" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ioJ-hQ-KM5">
                                 <rect key="frame" x="77" y="210" width="97" height="30"/>
+                                <color key="textColor" red="0.55867346939999996" green="0.4756123948" blue="0.32488971319999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -1149,7 +1110,8 @@
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" indicatorStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="cZH-2n-Whh">
                                 <rect key="frame" x="40" y="260" width="240" height="128"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.90575175379999995" green="0.90575175379999995" blue="0.90575175379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.84669961729999998" green="0.84669961729999998" blue="0.84669961729999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -1166,6 +1128,8 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTb-G0-TmA">
                                 <rect key="frame" x="56" y="404" width="42" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal" title="保存">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1175,6 +1139,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FE4-S7-gGV">
                                 <rect key="frame" x="125" y="418" width="61" height="30"/>
+                                <color key="tintColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal" title="修       改">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1184,6 +1149,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dG-m4-msf">
                                 <rect key="frame" x="195" y="404" width="60" height="30"/>
+                                <color key="tintColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal" title="在记一笔">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1202,14 +1168,16 @@
                                     <segment title="支出"/>
                                     <segment title="收入"/>
                                 </segments>
+                                <color key="tintColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="isPayoutSegmentButton:" destination="mNa-CH-w97" eventType="valueChanged" id="4rk-WI-i8D"/>
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="请输入备注" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eE-Ie-m8t">
                                 <rect key="frame" x="40" y="241" width="70" height="21"/>
+                                <color key="tintColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UPz-4t-mTE">
@@ -1236,8 +1204,10 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8n-02-63B">
                                 <rect key="frame" x="77" y="176" width="109" height="30"/>
+                                <color key="tintColor" red="0.55867346939999996" green="0.4756123948" blue="0.32488971319999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.55867346939999996" green="0.4756123948" blue="0.32488971319999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.55867346939999996" green="0.4756123948" blue="0.32488971319999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="classButton:" destination="mNa-CH-w97" eventType="touchUpInside" id="ubd-ds-yq9"/>
@@ -1246,6 +1216,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLW-kG-Oav">
                                 <rect key="frame" x="77" y="208" width="34" height="30"/>
                                 <state key="normal">
+                                    <color key="titleColor" red="0.55867346939999996" green="0.4756123948" blue="0.32488971319999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1435,6 +1406,9 @@
     </scenes>
     <resources>
         <image name="camera.png" width="128" height="128"/>
+        <image name="camera.png" width="128" height="128"/>
+        <image name="camera.png" width="128" height="128"/>
+        <image name="camera.png" width="128" height="128"/>
         <image name="zhuzhuangtu.png" width="320" height="236"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -1443,6 +1417,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="QmS-ao-UHi"/>
+        <segue reference="0qx-NT-sec"/>
     </inferredMetricsTieBreakers>
 </document>

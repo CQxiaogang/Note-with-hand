@@ -82,14 +82,18 @@
     return self;
 }
 
+//-(void)viewDidAppear:(BOOL)animated{
+//    [self.dateText becomeFirstResponder];
+//}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 //    textview对象.layer.borderColor = UIColor.grayColor.CGColor;
 //    textview对象.layer.borderWidth = 5;
-    self.remarksTextView.layer.borderColor = [UIColor blackColor].CGColor;
-    self.remarksTextView.layer.borderWidth = 5;
-    self.remarksTextView.delegate = self;
+//    self.remarksTextView.layer.borderColor = [UIColor blackColor].CGColor;
+//    self.remarksTextView.layer.borderWidth = 1;
+//    self.remarksTextView.delegate = self;
+    
     
     _isTypePicker = YES;
     
@@ -469,7 +473,7 @@
     self.subView.hidden=NO;
     
     [self.tfIncomeText resignFirstResponder];
-    
+    [self.dateText resignFirstResponder];
 }
 
 - (IBAction)memberButton:(id)sender {
@@ -569,6 +573,9 @@
 }
 
 - (IBAction)moneyAmountFiled:(id)sender {
+    self.subView.hidden=YES;
+}
+- (IBAction)dateFieldBeginEditing:(id)sender {
     self.subView.hidden=YES;
 }
 @end
