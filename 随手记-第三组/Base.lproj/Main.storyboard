@@ -249,7 +249,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera.png" translatesAutoresizingMaskIntoConstraints="NO" id="aRD-gV-CFS">
-                                <rect key="frame" x="31" y="230" width="75" height="70"/>
+                                <rect key="frame" x="30" y="240" width="75" height="70"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="时间：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pna-pf-jVX">
                                 <rect key="frame" x="33" y="324" width="46" height="27"/>
@@ -265,38 +265,38 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8MV-Ix-S89">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem title="流水" id="81g-qq-AOl">
+                                    <barButtonItem image="流水.png" id="81g-qq-AOl">
                                         <color key="tintColor" red="0.89826222806831069" green="0.89324400333049891" blue="0.90328045280612246" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="Tkg-5z-Usl" kind="push" id="X2w-rA-DlQ"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Ejj-XK-7uQ"/>
-                                    <barButtonItem title="图表" id="11W-ec-lc6">
+                                    <barButtonItem image="图表.png" id="11W-ec-lc6">
                                         <color key="tintColor" red="0.92941182850000004" green="0.92941182850000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
                                             <segue destination="rxY-bW-M1t" kind="push" id="jxQ-Sg-K5F"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="PSk-82-GD5"/>
-                                    <barButtonItem title="预算" id="3Ju-Vi-Nh3">
+                                    <barButtonItem image="预算.png" id="3Ju-Vi-Nh3">
                                         <color key="tintColor" red="0.92941182850000004" green="0.92941182850000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
                                             <segue destination="kJF-gd-Gd6" kind="push" id="Q75-KO-IN4"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ZEf-7b-xgd"/>
-                                    <barButtonItem title="设置" id="HFs-Tu-hqY">
+                                    <barButtonItem image="设置.png" id="HFs-Tu-hqY">
                                         <color key="tintColor" red="0.92941182850000004" green="0.92941182850000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
                                             <segue destination="8qJ-cQ-9OO" kind="push" id="JMk-Nx-dXc"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
-                                <color key="barTintColor" red="0.98537149234693877" green="0.09661997868473482" blue="0.043124806365997366" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="1" green="0.0" blue="0.086573815128913267" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nid-9V-5MI">
-                                <rect key="frame" x="46" y="440" width="60" height="30"/>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nid-9V-5MI">
+                                <rect key="frame" x="44" y="441" width="94" height="30"/>
                                 <state key="normal" title="再记一笔">
                                     <color key="titleColor" red="0.98537149229999998" green="0.096619978679999996" blue="0.043124806369999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -306,28 +306,32 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OSU-jQ-O9W">
-                                <rect key="frame" x="0.0" y="66" width="320" height="156"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="168"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell1" id="JwN-4m-T3u">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell1" rowHeight="50" id="JwN-4m-T3u">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JwN-4m-T3u" id="jgK-qJ-3MW">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="今天：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzK-Uj-u0z">
-                                                    <rect key="frame" x="28" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="78" y="14" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="un8-jV-LaY">
-                                                    <rect key="frame" x="93" y="12" width="89" height="21"/>
+                                                    <rect key="frame" x="131" y="14" width="89" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="今天.png" translatesAutoresizingMaskIntoConstraints="NO" id="tKa-eu-8rz">
+                                                    <rect key="frame" x="20" y="5" width="42" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -335,50 +339,58 @@
                                             <segue destination="Xru-8L-9AW" kind="push" identifier="day2Show" id="e7c-NR-WUR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell2" id="zlx-7Y-hY9">
-                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell2" rowHeight="50" id="zlx-7Y-hY9">
+                                        <rect key="frame" x="0.0" y="72" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zlx-7Y-hY9" id="vkY-E1-aM0">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="本周：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2b-wm-iWx">
-                                                    <rect key="frame" x="28" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="78" y="16" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.98823535442352295" green="0.458823561668396" blue="0.42745101451873779" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5F-J1-nUd">
-                                                    <rect key="frame" x="98" y="12" width="78" height="21"/>
+                                                    <rect key="frame" x="137" y="16" width="78" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="本周.png" translatesAutoresizingMaskIntoConstraints="NO" id="yTg-dG-69b">
+                                                    <rect key="frame" x="20" y="5" width="42" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="9EC-KQ-i3Y" kind="push" identifier="week2Show" id="pnG-4w-mfH"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell3" id="RVQ-sl-OWz">
-                                        <rect key="frame" x="0.0" y="110" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell3" rowHeight="50" id="RVQ-sl-OWz">
+                                        <rect key="frame" x="0.0" y="122" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RVQ-sl-OWz" id="p4T-OF-Hsr">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="本月：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ne-5e-WHM">
-                                                    <rect key="frame" x="28" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="76" y="15" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpl-vz-gpt">
-                                                    <rect key="frame" x="101" y="11" width="71" height="21"/>
+                                                    <rect key="frame" x="139" y="15" width="71" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="本月.png" translatesAutoresizingMaskIntoConstraints="NO" id="9sO-kF-RjS">
+                                                    <rect key="frame" x="20" y="5" width="42" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -388,8 +400,8 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMI-r4-Fd0">
-                                <rect key="frame" x="234" y="440" width="30" height="30"/>
-                                <state key="normal" title="更多">
+                                <rect key="frame" x="174" y="441" width="94" height="30"/>
+                                <state key="normal" title="更     多">
                                     <color key="titleColor" red="0.98537149229999998" green="0.096619978679999996" blue="0.043124806369999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -428,7 +440,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ei5-3Q-ogA">
-                                <rect key="frame" x="31" y="231" width="75" height="70"/>
+                                <rect key="frame" x="31" y="242" width="75" height="70"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -437,7 +449,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="00.0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDA-e9-IxV">
-                                <rect key="frame" x="202" y="241" width="98" height="48"/>
+                                <rect key="frame" x="202" y="251" width="98" height="48"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="45"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -450,7 +462,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QCJ-Pp-nZn">
-                                <rect key="frame" x="-1" y="308" width="322" height="260"/>
+                                <rect key="frame" x="-2" y="308" width="322" height="260"/>
                                 <subviews>
                                     <navigationBar alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWB-q5-lZc">
                                         <rect key="frame" x="0.0" y="1" width="322" height="44"/>
@@ -496,7 +508,9 @@
                         <outlet property="PickerView" destination="XL3-vo-ISv" id="IiM-BP-7fZ"/>
                         <outlet property="TableView" destination="OSU-jQ-O9W" id="nUc-XM-Lt9"/>
                         <outlet property="classLabel" destination="f7a-MK-q63" id="rSA-fM-HSy"/>
+                        <outlet property="comeBack" destination="Nid-9V-5MI" id="xHd-Ac-KHF"/>
                         <outlet property="dateLabel" destination="nHF-ms-4Ud" id="9ky-cc-al3"/>
+                        <outlet property="evenMore" destination="oMI-r4-Fd0" id="lqX-tS-bfm"/>
                         <outlet property="imageView" destination="aRD-gV-CFS" id="UGC-Qo-Ym5"/>
                         <outlet property="remarksText" destination="qgf-1M-T1b" id="x9X-4a-NNB"/>
                         <outlet property="subView" destination="QCJ-Pp-nZn" id="Muc-Qe-WOn"/>
@@ -1126,19 +1140,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTb-G0-TmA">
-                                <rect key="frame" x="56" y="404" width="42" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
-                                <state key="normal" title="保存">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveBillToDatabase:" destination="mNa-CH-w97" eventType="touchUpInside" id="1Fa-SR-UIm"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FE4-S7-gGV">
-                                <rect key="frame" x="125" y="418" width="61" height="30"/>
+                                <rect key="frame" x="125" y="424" width="61" height="30"/>
                                 <color key="tintColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal" title="修       改">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1148,7 +1151,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dG-m4-msf">
-                                <rect key="frame" x="195" y="404" width="60" height="30"/>
+                                <rect key="frame" x="125" y="424" width="60" height="30"/>
                                 <color key="tintColor" red="0.98823535439999999" green="0.45882356169999999" blue="0.4274510145" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal" title="在记一笔">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1246,7 +1249,6 @@
                         <outlet property="memberText" destination="ioJ-hQ-KM5" id="zWu-Vn-eJD"/>
                         <outlet property="pickerView" destination="S2m-id-SRh" id="nsg-mk-D5K"/>
                         <outlet property="remarksTextView" destination="cZH-2n-Whh" id="Q8I-vd-YXN"/>
-                        <outlet property="saveBill" destination="eTb-G0-TmA" id="pbN-xC-eNn"/>
                         <outlet property="subView" destination="UPz-4t-mTE" id="ImF-sv-jRY"/>
                         <outlet property="tfIncomeText" destination="q84-zx-A1b" id="eBV-4n-6qj"/>
                     </connections>
@@ -1406,10 +1408,14 @@
     </scenes>
     <resources>
         <image name="camera.png" width="128" height="128"/>
-        <image name="camera.png" width="128" height="128"/>
-        <image name="camera.png" width="128" height="128"/>
-        <image name="camera.png" width="128" height="128"/>
         <image name="zhuzhuangtu.png" width="320" height="236"/>
+        <image name="今天.png" width="128" height="128"/>
+        <image name="图表.png" width="40" height="40"/>
+        <image name="本周.png" width="128" height="128"/>
+        <image name="本月.png" width="128" height="128"/>
+        <image name="流水.png" width="40" height="40"/>
+        <image name="设置.png" width="40" height="40"/>
+        <image name="预算.png" width="40" height="40"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -34,6 +34,8 @@
 @property (nonatomic,strong)NSMutableDictionary *typeDic;//从数据库中读出type字典
 @property (nonatomic,strong) NSMutableArray *fatherType;
 
+@property (weak, nonatomic) IBOutlet UIButton *comeBack;//在记一笔
+@property (weak, nonatomic) IBOutlet UIButton *evenMore;
 @end
 
 @implementation MainViewController
@@ -101,6 +103,7 @@
     //tableView操作
     self.TableView.delegate=self;
     self.TableView.dataSource=self;
+    self.TableView.scrollEnabled = YES;
     
     //dateLabel为当前时间
     NSDate *now=[[NSDate alloc]init];
@@ -121,6 +124,14 @@
     self.imageView.layer.borderColor=[UIColor blackColor].CGColor;//定义边框颜色
     self.imageView.layer.borderWidth=0.5;//定义边框大小
     self.imageView.layer.masksToBounds=YES;//定义边界 不越界
+    
+    self.comeBack.layer.cornerRadius = 6;
+    self.comeBack.layer.borderColor = [UIColor brownColor].CGColor;
+    self.comeBack.layer.borderWidth = 0.5;
+    
+    self.evenMore.layer.cornerRadius = 6;
+    self.evenMore.layer.borderColor = [UIColor brownColor].CGColor;
+    self.evenMore.layer.borderWidth = 0.5;
     
     [self.navigationItem setHidesBackButton:YES animated:YES];
     
@@ -285,6 +296,10 @@
     }
     
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
 }
 
 - (IBAction)SaveButton:(UIButton *)sender {

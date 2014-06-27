@@ -158,32 +158,54 @@
     
     _isTypePicker = YES;//判断是支出还是收入，好多picker的重用
     
+//    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
+//    [self.view addSubview:imageView];
+//    imageView.image = [UIImage imageNamed:@"修改"];
+    
     //判断，添加bill时不调用此函数，修改bill时调用此函数。
     if (!self.aBill.moneyAmount == 0) {
         [self editAbill];
     }
     if ([self.identifierStr isEqualToString:kMainShowIdentifier]) {
         self.editBill.hidden = YES;
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
+        [self.view addSubview:imageView];
+        imageView.image =[UIImage imageNamed:@"记一笔"];
     }
     if ([self.identifierStr isEqualToString:kCharShowIdentifier]) {
         self.saveBill.hidden = YES;
         self.comeBackBill.hidden =YES;
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
+        [self.view addSubview:imageView];
+        imageView.image =[UIImage imageNamed:@"修改"];
     }
     if ([self.identifierStr isEqualToString:kDayShowIdentifier]) {
         self.saveBill.hidden = YES;
         self.comeBackBill.hidden =YES;
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
+        [self.view addSubview:imageView];
+        imageView.image =[UIImage imageNamed:@"修改"];
     }
     if ([self.identifierStr isEqualToString:kWeekShowIdentifier]) {
         self.saveBill.hidden = YES;
         self.comeBackBill.hidden =YES;
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
+        [self.view addSubview:imageView];
+        imageView.image =[UIImage imageNamed:@"修改"];
     }
     if ([self.identifierStr isEqualToString:kMonthShowIdentifier]) {
         self.saveBill.hidden = YES;
         self.comeBackBill.hidden =YES;
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
+        [self.view addSubview:imageView];
+        imageView.image =[UIImage imageNamed:@"修改"];
     }
     if ([self.identifierStr isEqualToString:kBillShowIdentifier]) {
         self.saveBill.hidden = YES;
         self.comeBackBill.hidden =YES;
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
+        [self.view addSubview:imageView];
+        imageView.image =[UIImage imageNamed:@"修改"];
     }
 
     //定义view的外形

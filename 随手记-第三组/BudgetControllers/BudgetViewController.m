@@ -43,7 +43,7 @@
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
     
-    self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:NO];
+    self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
     self.fatherType = [self.typeDic objectForKey:@"big"];
     
     //自定义键盘

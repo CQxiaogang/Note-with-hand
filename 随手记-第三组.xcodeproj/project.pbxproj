@@ -79,6 +79,16 @@
 		3FBCE74F191718B200B674C3 /* spendingType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE74E191718B200B674C3 /* spendingType.m */; };
 		3FBCE752191719F900B674C3 /* member.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE751191719F900B674C3 /* member.m */; };
 		3FBCE75519171A1500B674C3 /* budget.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE75419171A1500B674C3 /* budget.m */; };
+		3FD43791195CFCBF007E5CE3 /* 记一笔.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD43790195CFCBF007E5CE3 /* 记一笔.png */; };
+		3FD43793195D00C4007E5CE3 /* 更多.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD43792195D00C4007E5CE3 /* 更多.png */; };
+		3FD43795195D02A1007E5CE3 /* 修改.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD43794195D02A1007E5CE3 /* 修改.png */; };
+		3FD437A7195D11D5007E5CE3 /* 流水.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD437A6195D11D5007E5CE3 /* 流水.png */; };
+		3FD437A9195D13BD007E5CE3 /* 图表.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD437A8195D13BD007E5CE3 /* 图表.png */; };
+		3FD437AB195D156E007E5CE3 /* 预算.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD437AA195D156E007E5CE3 /* 预算.png */; };
+		3FD437AD195D16A3007E5CE3 /* 设置.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD437AC195D16A3007E5CE3 /* 设置.png */; };
+		3FD437B3195D204B007E5CE3 /* 本月.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD437B0195D204B007E5CE3 /* 本月.png */; };
+		3FD437B4195D204B007E5CE3 /* 今天.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD437B1195D204B007E5CE3 /* 今天.png */; };
+		3FD437B5195D204B007E5CE3 /* 本周.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD437B2195D204B007E5CE3 /* 本周.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +221,16 @@
 		3FBCE751191719F900B674C3 /* member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = member.m; path = Models/member.m; sourceTree = "<group>"; };
 		3FBCE75319171A1500B674C3 /* budget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = budget.h; path = Models/budget.h; sourceTree = "<group>"; };
 		3FBCE75419171A1500B674C3 /* budget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = budget.m; path = Models/budget.m; sourceTree = "<group>"; };
+		3FD43790195CFCBF007E5CE3 /* 记一笔.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "记一笔.png"; sourceTree = "<group>"; };
+		3FD43792195D00C4007E5CE3 /* 更多.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "更多.png"; sourceTree = "<group>"; };
+		3FD43794195D02A1007E5CE3 /* 修改.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "修改.png"; sourceTree = "<group>"; };
+		3FD437A6195D11D5007E5CE3 /* 流水.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "流水.png"; sourceTree = "<group>"; };
+		3FD437A8195D13BD007E5CE3 /* 图表.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图表.png"; sourceTree = "<group>"; };
+		3FD437AA195D156E007E5CE3 /* 预算.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "预算.png"; sourceTree = "<group>"; };
+		3FD437AC195D16A3007E5CE3 /* 设置.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设置.png"; sourceTree = "<group>"; };
+		3FD437B0195D204B007E5CE3 /* 本月.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "本月.png"; sourceTree = "<group>"; };
+		3FD437B1195D204B007E5CE3 /* 今天.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "今天.png"; sourceTree = "<group>"; };
+		3FD437B2195D204B007E5CE3 /* 本周.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "本周.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,8 +486,7 @@
 				3FBCE7201917168100B674C3 /* AppDelegate.h */,
 				3FBCE7211917168100B674C3 /* AppDelegate.m */,
 				3FBCE7231917168100B674C3 /* Main.storyboard */,
-				3F04E34E191B29C900D69E0D /* ProvincesAndCities.plist */,
-				3F1FBC7119511F1E003FEE26 /* shuiShouji.db */,
+				3FD437B6195D2054007E5CE3 /* 素材 */,
 				3FBCE7461917168D00B674C3 /* Models */,
 				3F4E24891918B05E00A4A12F /* Controllers */,
 				3FBCE7291917168100B674C3 /* Images.xcassets */,
@@ -539,6 +558,25 @@
 				3F4E24931918B0C500A4A12F /* FMResultSet.m */,
 			);
 			name = FMDB;
+			sourceTree = "<group>";
+		};
+		3FD437B6195D2054007E5CE3 /* 素材 */ = {
+			isa = PBXGroup;
+			children = (
+				3F04E34E191B29C900D69E0D /* ProvincesAndCities.plist */,
+				3FD437B0195D204B007E5CE3 /* 本月.png */,
+				3FD437B1195D204B007E5CE3 /* 今天.png */,
+				3FD437B2195D204B007E5CE3 /* 本周.png */,
+				3FD437AC195D16A3007E5CE3 /* 设置.png */,
+				3FD437AA195D156E007E5CE3 /* 预算.png */,
+				3FD437A8195D13BD007E5CE3 /* 图表.png */,
+				3FD437A6195D11D5007E5CE3 /* 流水.png */,
+				3FD43790195CFCBF007E5CE3 /* 记一笔.png */,
+				3FD43792195D00C4007E5CE3 /* 更多.png */,
+				3FD43794195D02A1007E5CE3 /* 修改.png */,
+				3F1FBC7119511F1E003FEE26 /* shuiShouji.db */,
+			);
+			name = "素材";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -622,9 +660,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FD437AD195D16A3007E5CE3 /* 设置.png in Resources */,
 				3FBCE72A1917168100B674C3 /* Images.xcassets in Resources */,
 				3F6BA199192C45EA00C347EB /* KeyboardNumericEntryKeyTextured@2x.png in Resources */,
+				3FD43795195D02A1007E5CE3 /* 修改.png in Resources */,
 				3FBCE71C1917168100B674C3 /* InfoPlist.strings in Resources */,
+				3FD43791195CFCBF007E5CE3 /* 记一笔.png in Resources */,
 				3F6BA195192C45EA00C347EB /* KeyboardNumericEntryKeyBackspaceGlyphTextured@2x.png in Resources */,
 				3F69F9EB194946D6009CE261 /* zhuzhuangtu.png in Resources */,
 				3F6BA197192C45EA00C347EB /* KeyboardTopShadow@2x.png in Resources */,
@@ -632,14 +673,21 @@
 				3F6BA198192C45EA00C347EB /* KeyboardNumericEntryKeyPressedTextured@2x.png in Resources */,
 				3F1FBC7519512682003FEE26 /* IQKeyboardManager.bundle in Resources */,
 				3F6BA194192C45EA00C347EB /* BackgroundTexture@2x.png in Resources */,
+				3FD437B3195D204B007E5CE3 /* 本月.png in Resources */,
+				3FD437AB195D156E007E5CE3 /* 预算.png in Resources */,
 				3F04E34F191B29C900D69E0D /* ProvincesAndCities.plist in Resources */,
+				3FD43793195D00C4007E5CE3 /* 更多.png in Resources */,
 				3F6BA193192C45EA00C347EB /* KeyboardBackgroundTextured@2x.png in Resources */,
 				3F4AA97C19380C7D00D1A505 /* icon.png in Resources */,
 				0232CE24193EF844006A9314 /* img201110111340220.jpg in Resources */,
+				3FD437A7195D11D5007E5CE3 /* 流水.png in Resources */,
 				3F6BA192192C45EA00C347EB /* GenericSeparator@2x.png in Resources */,
 				3F1FBC7219511F1E003FEE26 /* shuiShouji.db in Resources */,
 				3FBCE7251917168100B674C3 /* Main.storyboard in Resources */,
 				3F6BA196192C45EA00C347EB /* KeyboardNumericEntryViewGridLinesTextured@2x.png in Resources */,
+				3FD437B5195D204B007E5CE3 /* 本周.png in Resources */,
+				3FD437A9195D13BD007E5CE3 /* 图表.png in Resources */,
+				3FD437B4195D204B007E5CE3 /* 今天.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
