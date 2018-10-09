@@ -18,10 +18,10 @@
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)trashButton:(UIBarButtonItem *)sender;
-@property (nonatomic, strong) NSMutableArray *progressViews;//进度条数组
+@property (nonatomic, strong) NSMutableArray *progressViews; //进度条数组
 @property (nonatomic,strong) NSMutableDictionary *typeDic;
 @property (nonatomic,strong)  NSMutableArray *fatherType;
-@property(nonatomic,strong)ZenKeyboard *keyboardView;//键盘
+@property(nonatomic,strong)ZenKeyboard *keyboardView; //键盘
 
 @end
 
