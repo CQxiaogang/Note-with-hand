@@ -67,39 +67,6 @@
     self.remarksText.layer.borderWidth = 1;
     self.remarksText.delegate = self;
     
-    //plist数据读入数据库中
-    /*
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"ProvincesAndCities" ofType:@"plist"];
-    
-    self.fatherType=[NSMutableArray arrayWithContentsOfFile:path];
-    
-    spendingType *aSpendingType = [[spendingType alloc] init];
-    for (int i=0; i<self.fatherType.count; i++) {
-        NSString *SpendFahterTypeNameStr = [self.fatherType[i] objectForKey:@"fatherType"];
-        aSpendingType.spendID=i+1;
-        aSpendingType.spendName=SpendFahterTypeNameStr;
-        spendingType *parentsType=[[spendingType alloc]init];
-        aSpendingType.fatherType=parentsType;
-        aSpendingType.isPayout = YES;
-        [[DatabaseManager ShareDBManager]addNewSpendType:aSpendingType];
-        
-        NSMutableArray *childType=[[NSMutableArray alloc]init];
-        childType=[self.fatherType[i]objectForKey:@"childType"];
-        for (int j=0; j<childType.count; j++) {
-            aSpendingType = [[spendingType alloc] init];
-            NSString *SpendChildTypeNameStr =[childType[j]objectForKey:@"type"];
-            NSNumber *SpendChildTypeIDStr =[childType[j]objectForKey:@"id"];
-            aSpendingType.spendID=SpendChildTypeIDStr.intValue;
-            aSpendingType.spendName=SpendChildTypeNameStr;
-            spendingType *parentsType=[[spendingType alloc]init];
-            parentsType.spendID=i+1;
-            aSpendingType.fatherType=parentsType;
-            aSpendingType.isPayout = YES;
-            [[DatabaseManager ShareDBManager] addNewSpendType:aSpendingType];
-        }
-    }
-     */
-    
     //tableView操作
     self.TableView.delegate=self;
     self.TableView.dataSource=self;

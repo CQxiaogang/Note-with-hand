@@ -94,10 +94,13 @@
         NSLog(@"%@",date);
         NSDictionary *dic = [[DatabaseManager ShareDBManager]billDicInMonth:date];
         NSArray *list = dic[@"billList"];
+                         
         UILabel *userLabel = (UILabel *)[cell viewWithTag:12];
-        for (Bill *aBill in list) {
-            payout+=aBill.moneyAmount;
-        }
+         if(list.count < 1){
+             for (Bill *aBill in list) {
+                 payout+=aBill.moneyAmount;
+             }
+         }
         userLabel.text = [NSString stringWithFormat:@"%.2f",payout];
         //可用
         float doUser = 0.0;
@@ -131,7 +134,7 @@
         progressView.progress = [NSString stringWithFormat:@"%2f",money].floatValue;
         progressView.borderRadius = @0;//设置progressView的外形
         progressView.type = LDProgressSolid;//设置progressView的type
-        progressView.color = [UIColor cyanColor];
+        progressView.color = [UIColor colorWithRed:255 green:94 blue:91 alpha:1];
         [self.progressViews addObject:progressView];
         [cell addSubview:progressView];
     }

@@ -44,7 +44,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -52,10 +51,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
     self.eColumnView.hidden = YES;
-    
     NSDate *now=[NSDate date];
     NSString *date;
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
@@ -76,7 +73,7 @@
     self.bigTypeList = typeDic[@"big"];
     self.columnDataList = [NSMutableArray array];
     
-    if (self.bigTypeList.count==0) {
+    if (self.columnDataList.count==0) {
         spendingType *aType = [[spendingType alloc] init];
         aType.spendName = @"无数据";
         self.bigTypeList = [NSMutableArray arrayWithObjects:aType, nil];
@@ -105,9 +102,6 @@
     [self.view addSubview:self.eColumnChart];//添加外面的XY坐标系
     
     self.valueLabel.layer.cornerRadius=10;//定义控件的圆角
-//    self.valueLabel.layer.borderColor=[UIColor blackColor].CGColor;//定义边框颜色
-//    self.valueLabel.layer.borderWidth=0.5;//定义边框大小
-//    self.valueLabel.layer.masksToBounds=YES;//定义边界 不越界
     
     //TODO:柱状图左右滑动手势
     //向左
@@ -120,12 +114,6 @@
     oneFingerSwipeRight.direction=UISwipeGestureRecognizerDirectionRight;
     oneFingerSwipeRight.delegate=self;
     [self.eColumnChart addGestureRecognizer:oneFingerSwipeRight];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma -mark- EColumnChartDataSource 类似tableview的显示
@@ -164,14 +152,13 @@
     return [self.columnDataList objectAtIndex:index];
 }
 
-
 #pragma -mark- EColumnChartDelegate
 
 //点击的那个柱形图，做出对应的显示
 - (void)eColumnChart:(EColumnChart *)eColumnChart
      didSelectColumn:(EColumn *)eColumn
 {
-    NSLog(@"Index: %d  Value: %f", eColumn.eColumnDataModel.index, eColumn.eColumnDataModel.value);
+    NSLog(@"Index: %ld  Value: %f", (long)eColumn.eColumnDataModel.index, eColumn.eColumnDataModel.value);
     
     if (_eColumnSelected)
     {
@@ -201,7 +188,7 @@ fingerDidEnterColumn:(EColumn *)eColumn
     /**The EFloatBox here, is just to show an example of
      taking adventage of the event handling system of the Echart.
      You can do even better effects here, according to your needs.*/
-    NSLog(@"Finger did enter %d", eColumn.eColumnDataModel.index);
+    NSLog(@"Finger did enter %ld", (long)eColumn.eColumnDataModel.index);
     CGFloat eFloatBoxX = eColumn.frame.origin.x + eColumn.frame.size.width * 1.25;
     CGFloat eFloatBoxY = eColumn.frame.origin.y + eColumn.frame.size.height * (1-eColumn.grade);
     if (_eFloatBox)
@@ -234,7 +221,7 @@ fingerDidEnterColumn:(EColumn *)eColumn
 - (void)eColumnChart:(EColumnChart *)eColumnChart
 fingerDidLeaveColumn:(EColumn *)eColumn
 {
-    NSLog(@"Finger did leave %d", eColumn.eColumnDataModel.index);
+    NSLog(@"Finger did leave %ld", (long)eColumn.eColumnDataModel.index);
     
 }
 

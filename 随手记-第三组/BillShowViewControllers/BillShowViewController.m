@@ -16,7 +16,6 @@
 @property (nonatomic,retain)NSIndexPath *selectIndex;
 @property (nonatomic,strong)NSIndexPath *deleteIndexPath;
 @property (strong,nonatomic)NSMutableArray *billList;
-
 @property (nonatomic,strong)NSMutableArray *timeList;
 
 @end
@@ -27,7 +26,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -35,8 +34,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -60,10 +57,7 @@
         }
         
         NSDictionary *dic = [[DatabaseManager ShareDBManager] billDicInMonth:[NSString stringWithFormat:@"2014-%@",time]];
-        
-        //        NSLog(@"%@",dic);
-        
-        //        NSDictionary *dic = [[DatabaseManager ShareDBManager] billDicInMonth:date];
+
         [self.timeList addObject:[NSString stringWithFormat:@"%i",i]];
         NSArray *list = dic[@"billList"];
         [self.billList addObject:list];
@@ -71,24 +65,15 @@
     [self.tableView reloadData];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return self.billList.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    // Return the number of rows in the section.
     if (self.isOpen) {
         if (self.selectIndex.section == section) {
             NSInteger ret = [[self.billList objectAtIndex:section] count]+1;
@@ -152,8 +137,8 @@
         else{
             Bill *oldBill = aBillList[indexPath.row-2];
             NSArray *dayList = [oldBill.billTime componentsSeparatedByString:@"-"];
-            int newDay = [timeStr integerValue];
-            int day = [[dayList lastObject] integerValue];
+            NSInteger newDay = [timeStr integerValue];
+            NSInteger day = [[dayList lastObject] integerValue];
             if (newDay == day) {
                 dayLabel.text = @"";
                 lineView.backgroundColor = [UIColor clearColor];
@@ -206,48 +191,9 @@
             isPayout.text=[NSString stringWithFormat:@"%.2f",[[DatabaseManager ShareDBManager] billInDay:nil InWeek:nil InMonth:[NSString stringWithFormat:@"2014-%@",aBilltimeStr] IsPayOut:NO]];
             remain.text=[NSString stringWithFormat:@"%.2f",notPayout.text.doubleValue-isPayout.text.doubleValue];
         }
-       
-        
-//        //判断是否有这个类
-//        int section = self.selectIndex.section;
-//        NSArray *array = [self.billList objectAtIndex:section];
-//        id obj = [array objectAtIndex:0];
-//        if (![obj isKindOfClass:[Bill class]]) {
-//            return cell;
-//        }
-        
-//        NSArray *aBillList=self.billList[indexPath.row];
-//        Bill *aBill = aBillList[indexPath.row];
-        
-//        NSArray *timeArray = [aBilltimeStr componentsSeparatedByString:@"-"];
-//        NSString *timeStr = timeArray[1];
-//        NSString *timeStr1 = [timeStr substringWithRange:NSMakeRange(0, 1)];
-//         NSString *timeStr2 = [timeStr substringWithRange:NSMakeRange(1, 1)];
-//        if ([timeStr1 isEqualToString:@"0"]) {
-//            NSString *time=[NSString stringWithFormat:@"%@月",timeStr2];
-//            monthLabel.text = time;
-//        }else{
-//            NSString *time=[NSString stringWithFormat:@"%@月",timeStr];
-//            monthLabel.text = time;
-//        }
-        
-//        UILabel *dateLabel = (UILabel *)[cell viewWithTag:11];//时间
-//        UILabel *spendLabel = (UILabel *)[cell viewWithTag:12];//支出
-//        NSArray *spendList=self.billList[indexPath.row];
-//        for (int i=0; i<spendList.count; i++) {
-//            NSString *spendStr = [NSString stringWithFormat:@"%.2f",[aBillList[i] moneyAmount]];
-//            spendLabel.text = spendStr;
-//        }
-        
-        
-//        UILabel *incomeLabel = (UILabel *)[cell viewWithTag:13];//收入
         
         return cell;
     }
-    
-    
-    // Configure the cell...
-    
 }
 
 - (void)didSelectCellRowFirstDo:(BOOL)firstDoInsert nextDo:(BOOL)nextDoInsert
@@ -258,10 +204,10 @@
     
 	[self.tableView beginUpdates];//重新加载tableView的数据
 	
-    int section = self.selectIndex.section;
+    NSInteger section = self.selectIndex.section;
     NSArray *array = [self.billList objectAtIndex:section];
     
-    int contentCount;
+    NSInteger contentCount;
     if (array.count == 0) {
         contentCount = 1;
     }
@@ -317,17 +263,7 @@
         }
     }
     else{
-        //        NSDictionary *dic = [_dataList objectAtIndex:indexPath.section];
-        //        NSArray *list = [dic objectForKey:@"list"];
-        //        NSString *item=[[NSString alloc]init];
-        //        if ([list[0] isKindOfClass:[NSString class]]) {
-        //            item=@"没有记录";
-        //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:item message:nil delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
-        //            [alert show];
-        //        }else{
-        //            Bill *abill=list[indexPath.row-1];
-        //            [self performSegueWithIdentifier:@"toUpdate" sender:abill];
-        //        }
+       
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -353,7 +289,7 @@
 
 //对日期进行排序
 -(NSMutableArray*)billListPaixu:(NSMutableArray*)list{
-    int count = list.count;
+    NSInteger count = list.count;
     for (int i = 0;  i < count-1; i++) {
         for (int k = 0; k < count -1; k++) {
             

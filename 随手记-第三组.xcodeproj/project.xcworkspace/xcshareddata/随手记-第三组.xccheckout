@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>25441BF5-C2E9-45CB-996E-898B40610197</string>
+	<key>IDESourceControlProjectName</key>
+	<string>随手记-第三组</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B4019145-79F4-4900-B172-6DD420195329</key>
+		<string>https://git.oschina.net/389224525/iBill.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>随手记-第三组.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B4019145-79F4-4900-B172-6DD420195329</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://git.oschina.net/389224525/iBill.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B4019145-79F4-4900-B172-6DD420195329</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B4019145-79F4-4900-B172-6DD420195329</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iBill</string>
+		</dict>
+	</array>
+</dict>
+</plist>

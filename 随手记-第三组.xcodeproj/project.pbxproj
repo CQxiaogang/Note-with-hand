@@ -13,14 +13,15 @@
 		0289419C19338C2C00A07065 /* LDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0289419919338C2C00A07065 /* LDProgressView.m */; };
 		0289419D19338C2C00A07065 /* UIColor+RGBValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 0289419B19338C2C00A07065 /* UIColor+RGBValues.m */; };
 		028941A119338CAC00A07065 /* BudgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 028941A019338CAC00A07065 /* BudgetViewController.m */; };
+		1836D711214A033900B09945 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1836D713214A033900B09945 /* InfoPlist.strings */; };
+		1836D715214A16EA00B09945 /* libIQKeyboardManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1836D716214A16EA00B09945 /* libIQKeyboardManager.a */; };
+		183919CA215C8AE100ABB9ED /* NoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 183919C9215C8AE100ABB9ED /* NoDataView.m */; };
+		18788BE321534400000ED73F /* ChessPiecesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18788BE0215343FF000ED73F /* ChessPiecesView.m */; };
+		18788BE421534400000ED73F /* ChessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18788BE221534400000ED73F /* ChessView.m */; };
+		18788BE721534681000ED73F /* recreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18788BE621534681000ED73F /* recreationViewController.m */; };
 		3F04E34F191B29C900D69E0D /* ProvincesAndCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F04E34E191B29C900D69E0D /* ProvincesAndCities.plist */; };
-		3F1F11E1195827C7001AA4E9 /* MJPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F11DC195827C7001AA4E9 /* MJPasswordView.m */; };
-		3F1F11E2195827C7001AA4E9 /* MJCircleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F11DE195827C7001AA4E9 /* MJCircleLayer.m */; };
-		3F1F11E3195827C7001AA4E9 /* MJPathLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F11E0195827C7001AA4E9 /* MJPathLayer.m */; };
 		3F1F11E7195828D2001AA4E9 /* Password.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F11E6195828D2001AA4E9 /* Password.m */; };
 		3F1FBC7219511F1E003FEE26 /* shuiShouji.db in Resources */ = {isa = PBXBuildFile; fileRef = 3F1FBC7119511F1E003FEE26 /* shuiShouji.db */; };
-		3F1FBC7519512682003FEE26 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3F1FBC7319512682003FEE26 /* IQKeyboardManager.bundle */; };
-		3F1FBC7619512682003FEE26 /* KeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1FBC7419512682003FEE26 /* KeyboardManager.framework */; };
 		3F28205A1924525D00522667 /* AddBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2820591924525D00522667 /* AddBillViewController.m */; };
 		3F323A27193EC3AA007BBCFD /* SubEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F323A26193EC3AA007BBCFD /* SubEditViewController.m */; };
 		3F323A2A193EC3CD007BBCFD /* SubEcitChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F323A29193EC3CD007BBCFD /* SubEcitChildViewController.m */; };
@@ -52,7 +53,6 @@
 		3F89240C191C870300E6B429 /* EditChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F89240B191C870300E6B429 /* EditChildViewController.m */; };
 		3F92AE0D19346D650003F7B2 /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F92AE0C19346D650003F7B2 /* ChartViewController.m */; };
 		3F99DFB9195950B800CF3637 /* UnlocViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F99DFB8195950B800CF3637 /* UnlocViewController.m */; };
-		3F99DFBC1959649600CF3637 /* MJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F99DFBB1959649600CF3637 /* MJViewController.m */; };
 		3FA06F95195029BF003456E4 /* CustomShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA06F94195029BF003456E4 /* CustomShowViewController.m */; };
 		3FAC17CB194024A20051E6BC /* EColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC17C2194024A20051E6BC /* EColor.m */; };
 		3FAC17CC194024A20051E6BC /* EColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC17C4194024A20051E6BC /* EColumn.m */; };
@@ -89,6 +89,7 @@
 		3FD437B3195D204B007E5CE3 /* 本月.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD437B0195D204B007E5CE3 /* 本月.png */; };
 		3FD437B4195D204B007E5CE3 /* 今天.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD437B1195D204B007E5CE3 /* 今天.png */; };
 		3FD437B5195D204B007E5CE3 /* 本周.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD437B2195D204B007E5CE3 /* 本周.png */; };
+		B05728F3CCD5C371C6EB8F2F /* libPods-随手记-第三组.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B44D9F67A743EBEB95D0061 /* libPods-随手记-第三组.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,18 +114,24 @@
 		0289419B19338C2C00A07065 /* UIColor+RGBValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBValues.m"; sourceTree = "<group>"; };
 		0289419F19338CAC00A07065 /* BudgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BudgetViewController.h; path = BudgetControllers/BudgetViewController.h; sourceTree = "<group>"; };
 		028941A019338CAC00A07065 /* BudgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BudgetViewController.m; path = BudgetControllers/BudgetViewController.m; sourceTree = "<group>"; };
+		1836D712214A033900B09945 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1836D714214A033C00B09945 /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		1836D716214A16EA00B09945 /* libIQKeyboardManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libIQKeyboardManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		183919C8215C8AE100ABB9ED /* NoDataView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoDataView.h; sourceTree = "<group>"; };
+		183919C9215C8AE100ABB9ED /* NoDataView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoDataView.m; sourceTree = "<group>"; };
+		18788BDF215343FF000ED73F /* ChessPiecesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChessPiecesView.h; sourceTree = "<group>"; };
+		18788BE0215343FF000ED73F /* ChessPiecesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChessPiecesView.m; sourceTree = "<group>"; };
+		18788BE121534400000ED73F /* ChessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChessView.h; sourceTree = "<group>"; };
+		18788BE221534400000ED73F /* ChessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChessView.m; sourceTree = "<group>"; };
+		18788BE521534681000ED73F /* recreationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = recreationViewController.h; sourceTree = "<group>"; };
+		18788BE621534681000ED73F /* recreationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = recreationViewController.m; sourceTree = "<group>"; };
+		29BCD6E9215BC02535231770 /* Pods-VIP-WithNotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIP-WithNotes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VIP-WithNotes/Pods-VIP-WithNotes.debug.xcconfig"; sourceTree = "<group>"; };
+		3D25B59A4BCEDD6A33795DF9 /* Pods-随手记-第三组.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-随手记-第三组.release.xcconfig"; path = "Pods/Target Support Files/Pods-随手记-第三组/Pods-随手记-第三组.release.xcconfig"; sourceTree = "<group>"; };
+		3E534E6594BD9DDD6E5C5EF4 /* libPods-VIP-WithNotes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VIP-WithNotes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F04E34E191B29C900D69E0D /* ProvincesAndCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProvincesAndCities.plist; sourceTree = "<group>"; };
-		3F1F11DB195827C7001AA4E9 /* MJPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPasswordView.h; sourceTree = "<group>"; };
-		3F1F11DC195827C7001AA4E9 /* MJPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPasswordView.m; sourceTree = "<group>"; };
-		3F1F11DD195827C7001AA4E9 /* MJCircleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJCircleLayer.h; sourceTree = "<group>"; };
-		3F1F11DE195827C7001AA4E9 /* MJCircleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJCircleLayer.m; sourceTree = "<group>"; };
-		3F1F11DF195827C7001AA4E9 /* MJPathLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPathLayer.h; sourceTree = "<group>"; };
-		3F1F11E0195827C7001AA4E9 /* MJPathLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPathLayer.m; sourceTree = "<group>"; };
 		3F1F11E5195828D2001AA4E9 /* Password.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Password.h; sourceTree = "<group>"; };
 		3F1F11E6195828D2001AA4E9 /* Password.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Password.m; sourceTree = "<group>"; };
 		3F1FBC7119511F1E003FEE26 /* shuiShouji.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = shuiShouji.db; sourceTree = "<group>"; };
-		3F1FBC7319512682003FEE26 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
-		3F1FBC7419512682003FEE26 /* KeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeyboardManager.framework; sourceTree = "<group>"; };
 		3F2820581924525D00522667 /* AddBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddBillViewController.h; path = Controllers/AddBillViewController.h; sourceTree = "<group>"; };
 		3F2820591924525D00522667 /* AddBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddBillViewController.m; path = Controllers/AddBillViewController.m; sourceTree = "<group>"; };
 		3F323A25193EC3AA007BBCFD /* SubEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubEditViewController.h; path = Controllers/SubEditViewController.h; sourceTree = "<group>"; };
@@ -176,8 +183,6 @@
 		3F92AE0C19346D650003F7B2 /* ChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartViewController.m; path = ChartViewControllers/ChartViewController.m; sourceTree = "<group>"; };
 		3F99DFB7195950B800CF3637 /* UnlocViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnlocViewController.h; path = Controllers/UnlocViewController.h; sourceTree = "<group>"; };
 		3F99DFB8195950B800CF3637 /* UnlocViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnlocViewController.m; path = Controllers/UnlocViewController.m; sourceTree = "<group>"; };
-		3F99DFBA1959649600CF3637 /* MJViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJViewController.h; sourceTree = "<group>"; };
-		3F99DFBB1959649600CF3637 /* MJViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJViewController.m; sourceTree = "<group>"; };
 		3FA06F93195029BF003456E4 /* CustomShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomShowViewController.h; path = Controllers/CustomShowViewController.h; sourceTree = "<group>"; };
 		3FA06F94195029BF003456E4 /* CustomShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomShowViewController.m; path = Controllers/CustomShowViewController.m; sourceTree = "<group>"; };
 		3FAC17C1194024A20051E6BC /* EColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EColor.h; sourceTree = "<group>"; };
@@ -231,6 +236,9 @@
 		3FD437B0195D204B007E5CE3 /* 本月.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "本月.png"; sourceTree = "<group>"; };
 		3FD437B1195D204B007E5CE3 /* 今天.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "今天.png"; sourceTree = "<group>"; };
 		3FD437B2195D204B007E5CE3 /* 本周.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "本周.png"; sourceTree = "<group>"; };
+		6B44D9F67A743EBEB95D0061 /* libPods-随手记-第三组.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-随手记-第三组.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E2F49B5C23219431C5AA894 /* Pods-VIP-WithNotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIP-WithNotes.release.xcconfig"; path = "Pods/Target Support Files/Pods-VIP-WithNotes/Pods-VIP-WithNotes.release.xcconfig"; sourceTree = "<group>"; };
+		BE72838721A9DBBB37D84D8D /* Pods-随手记-第三组.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-随手记-第三组.debug.xcconfig"; path = "Pods/Target Support Files/Pods-随手记-第三组/Pods-随手记-第三组.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,11 +246,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F1FBC7619512682003FEE26 /* KeyboardManager.framework in Frameworks */,
+				1836D715214A16EA00B09945 /* libIQKeyboardManager.a in Frameworks */,
 				3F48C17B19175E8A007DF8FC /* libsqlite3.dylib in Frameworks */,
 				3FBCE7141917168100B674C3 /* CoreGraphics.framework in Frameworks */,
 				3FBCE7161917168100B674C3 /* UIKit.framework in Frameworks */,
 				3FBCE7121917168100B674C3 /* Foundation.framework in Frameworks */,
+				B05728F3CCD5C371C6EB8F2F /* libPods-随手记-第三组.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,27 +299,13 @@
 			name = BudgetControllers;
 			sourceTree = "<group>";
 		};
-		3F04E34D191B23A000D69E0D /* IQKeyBoardManager */ = {
+		183919C7215C8A9800ABB9ED /* tools */ = {
 			isa = PBXGroup;
 			children = (
-				3F1FBC7319512682003FEE26 /* IQKeyboardManager.bundle */,
-				3F1FBC7419512682003FEE26 /* KeyboardManager.framework */,
+				183919C8215C8AE100ABB9ED /* NoDataView.h */,
+				183919C9215C8AE100ABB9ED /* NoDataView.m */,
 			);
-			name = IQKeyBoardManager;
-			path = "随手记-第三组";
-			sourceTree = "<group>";
-		};
-		3F1F11E4195827CD001AA4E9 /* 密码 */ = {
-			isa = PBXGroup;
-			children = (
-				3F1F11DB195827C7001AA4E9 /* MJPasswordView.h */,
-				3F1F11DC195827C7001AA4E9 /* MJPasswordView.m */,
-				3F1F11DD195827C7001AA4E9 /* MJCircleLayer.h */,
-				3F1F11DE195827C7001AA4E9 /* MJCircleLayer.m */,
-				3F1F11DF195827C7001AA4E9 /* MJPathLayer.h */,
-				3F1F11E0195827C7001AA4E9 /* MJPathLayer.m */,
-			);
-			name = "密码";
+			name = tools;
 			sourceTree = "<group>";
 		};
 		3F4B9644193582F7005794D0 /* BillShowViewController */ = {
@@ -330,6 +325,10 @@
 				3F92AE0A19346D1E0003F7B2 /* ChartControllers */,
 				028941A219338CB300A07065 /* BudgetControllers */,
 				3F88B9441945A88500C5875A /* CustomViewController */,
+				18788BDF215343FF000ED73F /* ChessPiecesView.h */,
+				18788BE0215343FF000ED73F /* ChessPiecesView.m */,
+				18788BE121534400000ED73F /* ChessView.h */,
+				18788BE221534400000ED73F /* ChessView.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -380,8 +379,8 @@
 				3F88B9421945A88100C5875A /* CustomViewController.m */,
 				3FA06F93195029BF003456E4 /* CustomShowViewController.h */,
 				3FA06F94195029BF003456E4 /* CustomShowViewController.m */,
-				3F99DFBA1959649600CF3637 /* MJViewController.h */,
-				3F99DFBB1959649600CF3637 /* MJViewController.m */,
+				18788BE521534681000ED73F /* recreationViewController.h */,
+				18788BE621534681000ED73F /* recreationViewController.m */,
 			);
 			name = CustomViewController;
 			sourceTree = "<group>";
@@ -444,17 +443,18 @@
 		3FBCE7051917168100B674C3 = {
 			isa = PBXGroup;
 			children = (
+				1836D713214A033900B09945 /* InfoPlist.strings */,
 				3FBCE7171917168100B674C3 /* 随手记-第三组 */,
-				3F1F11E4195827CD001AA4E9 /* 密码 */,
 				023FA960192502EC00340EA6 /* DatePickerView */,
 				3F92AE0919346CCA0003F7B2 /* Components */,
 				3F6A37C71921FA540094AA49 /* 自定义数字键盘 */,
-				3F04E34D191B23A000D69E0D /* IQKeyBoardManager */,
 				3FBCE765191727C800B674C3 /* FMDB */,
 				0289419E19338C3600A07065 /* LDProgressView */,
+				183919C7215C8A9800ABB9ED /* tools */,
 				3FBCE7361917168100B674C3 /* 随手记-第三组Tests */,
 				3FBCE7101917168100B674C3 /* Frameworks */,
 				3FBCE70F1917168100B674C3 /* Products */,
+				9AD2826B8CF2315A43A26394 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -470,11 +470,14 @@
 		3FBCE7101917168100B674C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1836D716214A16EA00B09945 /* libIQKeyboardManager.a */,
 				3F48C17A19175E8A007DF8FC /* libsqlite3.dylib */,
 				3FBCE7111917168100B674C3 /* Foundation.framework */,
 				3FBCE7131917168100B674C3 /* CoreGraphics.framework */,
 				3FBCE7151917168100B674C3 /* UIKit.framework */,
 				3FBCE7301917168100B674C3 /* XCTest.framework */,
+				3E534E6594BD9DDD6E5C5EF4 /* libPods-VIP-WithNotes.a */,
+				6B44D9F67A743EBEB95D0061 /* libPods-随手记-第三组.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -579,6 +582,17 @@
 			name = "素材";
 			sourceTree = "<group>";
 		};
+		9AD2826B8CF2315A43A26394 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				29BCD6E9215BC02535231770 /* Pods-VIP-WithNotes.debug.xcconfig */,
+				6E2F49B5C23219431C5AA894 /* Pods-VIP-WithNotes.release.xcconfig */,
+				BE72838721A9DBBB37D84D8D /* Pods-随手记-第三组.debug.xcconfig */,
+				3D25B59A4BCEDD6A33795DF9 /* Pods-随手记-第三组.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -586,9 +600,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FBCE7401917168100B674C3 /* Build configuration list for PBXNativeTarget "随手记-第三组" */;
 			buildPhases = (
+				56384360B6271B7A9FA4C4B5 /* [CP] Check Pods Manifest.lock */,
 				3FBCE70A1917168100B674C3 /* Sources */,
 				3FBCE70B1917168100B674C3 /* Frameworks */,
 				3FBCE70C1917168100B674C3 /* Resources */,
+				438590CD138592A436E04E22 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -626,6 +642,10 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "小刚";
 				TargetAttributes = {
+					3FBCE70D1917168100B674C3 = {
+						DevelopmentTeam = 6X3S5Y2CUS;
+						ProvisioningStyle = Manual;
+					};
 					3FBCE72E1917168100B674C3 = {
 						TestTargetID = 3FBCE70D1917168100B674C3;
 					};
@@ -638,10 +658,6 @@
 			knownRegions = (
 				en,
 				Base,
-				de,
-				es,
-				fr,
-				it,
 				"zh-Hans-CN",
 			);
 			mainGroup = 3FBCE7051917168100B674C3;
@@ -671,8 +687,8 @@
 				3F6BA197192C45EA00C347EB /* KeyboardTopShadow@2x.png in Resources */,
 				3F4E249A1918B14000A4A12F /* camera.png in Resources */,
 				3F6BA198192C45EA00C347EB /* KeyboardNumericEntryKeyPressedTextured@2x.png in Resources */,
-				3F1FBC7519512682003FEE26 /* IQKeyboardManager.bundle in Resources */,
 				3F6BA194192C45EA00C347EB /* BackgroundTexture@2x.png in Resources */,
+				1836D711214A033900B09945 /* InfoPlist.strings in Resources */,
 				3FD437B3195D204B007E5CE3 /* 本月.png in Resources */,
 				3FD437AB195D156E007E5CE3 /* 预算.png in Resources */,
 				3F04E34F191B29C900D69E0D /* ProvincesAndCities.plist in Resources */,
@@ -701,17 +717,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		438590CD138592A436E04E22 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-随手记-第三组/Pods-随手记-第三组-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyBoardManager/Resources/IQKeyboardManager.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-随手记-第三组/Pods-随手记-第三组-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		56384360B6271B7A9FA4C4B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-随手记-第三组-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3FBCE70A1917168100B674C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F1F11E2195827C7001AA4E9 /* MJCircleLayer.m in Sources */,
 				3F1F11E7195828D2001AA4E9 /* Password.m in Sources */,
 				3FBCE74C1917181A00B674C3 /* Bill.m in Sources */,
 				3FBCE7221917168100B674C3 /* AppDelegate.m in Sources */,
 				3F6BA19D192C47D000C347EB /* ZenKeyboard.m in Sources */,
 				3FBCE752191719F900B674C3 /* member.m in Sources */,
+				18788BE721534681000ED73F /* recreationViewController.m in Sources */,
 				3FBCE74F191718B200B674C3 /* spendingType.m in Sources */,
 				0289419D19338C2C00A07065 /* UIColor+RGBValues.m in Sources */,
 				3F88B9401945A24600C5875A /* MonthShowViewController.m in Sources */,
@@ -720,17 +775,17 @@
 				3FAD301119259331003B1792 /* MXSCycleScrollView.m in Sources */,
 				3FAC17CD194024A20051E6BC /* EFloatBox.m in Sources */,
 				3F892409191C77CC00E6B429 /* EditViewController.m in Sources */,
-				3F1F11E3195827C7001AA4E9 /* MJPathLayer.m in Sources */,
+				18788BE421534400000ED73F /* ChessView.m in Sources */,
 				0289419C19338C2C00A07065 /* LDProgressView.m in Sources */,
-				3F99DFBC1959649600CF3637 /* MJViewController.m in Sources */,
 				3FAC17CF194024A20051E6BC /* EColumnChartLabel.m in Sources */,
 				0205317E19309275000B1C5B /* DatabaseManager.m in Sources */,
+				18788BE321534400000ED73F /* ChessPiecesView.m in Sources */,
 				3F88B93A1945886000C5875A /* ShowViewController.m in Sources */,
 				3F99DFB9195950B800CF3637 /* UnlocViewController.m in Sources */,
+				183919CA215C8AE100ABB9ED /* NoDataView.m in Sources */,
 				3FA06F95195029BF003456E4 /* CustomShowViewController.m in Sources */,
 				3FAC17D2194024AF0051E6BC /* EColumnChart.m in Sources */,
 				3F4E249D1918B20A00A4A12F /* MainViewController.m in Sources */,
-				3F1F11E1195827C7001AA4E9 /* MJPasswordView.m in Sources */,
 				3FBCE75519171A1500B674C3 /* budget.m in Sources */,
 				3F4E24951918B0C500A4A12F /* FMDatabaseAdditions.m in Sources */,
 				3FAC17CC194024A20051E6BC /* EColumn.m in Sources */,
@@ -772,6 +827,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1836D713214A033900B09945 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1836D712214A033900B09945 /* en */,
+				1836D714214A033C00B09945 /* zh-Hans-CN */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		3FBCE71A1917168100B674C3 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -873,9 +937,13 @@
 		};
 		3FBCE7411917168100B674C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE72838721A9DBBB37D84D8D /* Pods-随手记-第三组.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 6X3S5Y2CUS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/student/Desktop/随手记-第三组/IQKeyboardManager",
@@ -911,16 +979,23 @@
 				GCC_PREFIX_HEADER = "随手记-第三组/随手记-第三组-Prefix.pch";
 				INFOPLIST_FILE = "随手记-第三组/随手记-第三组-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ZhaoChunMing.VIPWithNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "189949d1-9157-42c6-98ba-9fd0c432b03e";
+				PROVISIONING_PROFILE_SPECIFIER = VIPWithNotes;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		3FBCE7421917168100B674C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D25B59A4BCEDD6A33795DF9 /* Pods-随手记-第三组.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 6X3S5Y2CUS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/student/Desktop/随手记-第三组/IQKeyboardManager",
@@ -956,7 +1031,10 @@
 				GCC_PREFIX_HEADER = "随手记-第三组/随手记-第三组-Prefix.pch";
 				INFOPLIST_FILE = "随手记-第三组/随手记-第三组-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ZhaoChunMing.VIPWithNotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "189949d1-9157-42c6-98ba-9fd0c432b03e";
+				PROVISIONING_PROFILE_SPECIFIER = VIPWithNotes;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -30,7 +30,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
      
-        UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 68, 21)];
+        UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 21)];
         nameLabel.text = @"关于我们";
         UILabel *nameLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(80, 240, 89, 21)];
         nameLabel1.text = @"指导老师:";

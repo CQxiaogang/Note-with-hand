@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MJPasswordView.h"
 
-@interface UnlocViewController : UIViewController<MJPasswordDelegate>
+@interface UnlocViewController : UIViewController
 
 @property (weak,nonatomic) IBOutlet UIImageView *imageView;
 

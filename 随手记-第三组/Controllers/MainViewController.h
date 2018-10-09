@@ -13,7 +13,8 @@
 #import "ZenKeyboard.h"
 //---------------
 #import "RBCustomDatePickerView.h" //自定义的datePickerView
-#import <KeyboardManager/KeyboardManager.h>//第三方引用，对键盘的操作
+#import <IQKeyboardManager.h>
+//#import <KeyboardManager/KeyboardManager.h>//第三方引用，对键盘的操作
 
 @interface MainViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate,UITableViewDataSource,UITableViewDelegate, UIImagePickerControllerDelegate/*相机协议*/,UINavigationControllerDelegate,UIActionSheetDelegate,UITextFieldDelegate>{
     NSString *_fatherTypeStr;

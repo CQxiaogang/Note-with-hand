@@ -168,44 +168,26 @@
     }
     if ([self.identifierStr isEqualToString:kMainShowIdentifier]) {
         self.editBill.hidden = YES;
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
-        [self.view addSubview:imageView];
-        imageView.image =[UIImage imageNamed:@"记一笔"];
     }
     if ([self.identifierStr isEqualToString:kCharShowIdentifier]) {
         self.saveBill.hidden = YES;
         self.comeBackBill.hidden =YES;
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
-        [self.view addSubview:imageView];
-        imageView.image =[UIImage imageNamed:@"修改"];
     }
     if ([self.identifierStr isEqualToString:kDayShowIdentifier]) {
         self.saveBill.hidden = YES;
         self.comeBackBill.hidden =YES;
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
-        [self.view addSubview:imageView];
-        imageView.image =[UIImage imageNamed:@"修改"];
     }
     if ([self.identifierStr isEqualToString:kWeekShowIdentifier]) {
         self.saveBill.hidden = YES;
         self.comeBackBill.hidden =YES;
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
-        [self.view addSubview:imageView];
-        imageView.image =[UIImage imageNamed:@"修改"];
     }
     if ([self.identifierStr isEqualToString:kMonthShowIdentifier]) {
         self.saveBill.hidden = YES;
         self.comeBackBill.hidden =YES;
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
-        [self.view addSubview:imageView];
-        imageView.image =[UIImage imageNamed:@"修改"];
     }
     if ([self.identifierStr isEqualToString:kBillShowIdentifier]) {
         self.saveBill.hidden = YES;
         self.comeBackBill.hidden =YES;
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(184, 414, 49, 49)];
-        [self.view addSubview:imageView];
-        imageView.image =[UIImage imageNamed:@"修改"];
     }
 
     //定义view的外形
@@ -213,6 +195,14 @@
     self.imageView.layer.borderColor=[UIColor blackColor].CGColor;//定义边框颜色
     self.imageView.layer.borderWidth=0.5;//定义边框大小
     self.imageView.layer.masksToBounds=YES;//定义边界 不越界
+
+    self.editBill.layer.cornerRadius = 6;
+    self.editBill.layer.borderColor = [UIColor brownColor].CGColor;
+    self.editBill.layer.borderWidth = 0.5;
+    
+    self.comeBackBill.layer.cornerRadius = 6;
+    self.comeBackBill.layer.borderColor = [UIColor brownColor].CGColor;
+    self.comeBackBill.layer.borderWidth = 0.5;
 }
 
 //- (void)viewWillAppear:(BOOL)animated {//此方法为 当push时调用

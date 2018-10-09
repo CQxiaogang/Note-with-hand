@@ -9,6 +9,7 @@
 #import "WeekShowViewController.h"
 #import "DatabaseManager.h"
 #import "Bill.h"
+#import "NoDataView.h"
 
 @interface WeekShowViewController ()
 
@@ -24,7 +25,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -32,27 +32,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     //TODO:tableView的代理
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-   
-}
-
--(void)viewWillAppear:(BOOL)animated{
     //TODO:今天的bill数据
     NSDate *nowDate = [[NSDate alloc] init];
     NSString *weekStr = [self stringWeekForDate:nowDate];
     self.billArray = [[DatabaseManager ShareDBManager]billListInDay:nil InWeek:weekStr InMonth:nil];
     
-    [self.tableView reloadData];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    //TODO:- 有数据属性tableView，没有数据不显示tableView
+    if (self.billArray.count == 0) {
+        [self.tableView removeFromSuperview];
+        NoDataView *noDataView = [[NoDataView alloc] init];
+        [self.view addSubview: [noDataView noDataView:self.view]];
+    }else{
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - talbeView实现

@@ -36,7 +36,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     self.TableView.delegate=self;
     self.TableView.dataSource=self;
     self.textFiledList =[NSMutableArray array];
@@ -47,13 +46,7 @@
     _isPayout = YES;
 
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-#pragma mark - tableView
+//TODO:- tableView的实现
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -72,20 +65,13 @@
     fatherTypeLabel.text=aType.spendName;
     
     //改变tag的值
-    fatherTypeLabel.tag = indexPath.row+1;//indexPath.row+1==0+1
-//    [self.textFiledList addObject:fatherTypeLabel];
+    fatherTypeLabel.tag = indexPath.row+1;
     
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-//    spendingType *aType=self.fatherType[indexPath.row];
-//    NSString *str=[NSString stringWithFormat:@"确定删除%@",aType.spendName];
-//    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"确定删除" message:str delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-//    alert.tag=1000;
-//    [alert show];
     
     return YES;
 }
@@ -93,7 +79,6 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
         self._indexPath=indexPath;
         spendingType *aType=self.fatherType[indexPath.row];
         NSString *str=[NSString stringWithFormat:@"确定删除%@",aType.spendName];
@@ -101,21 +86,10 @@
         alert.tag=1001;
         alert.delegate = self;
         [alert show];
-//        spendingType *aType=self.fatherType[indexPath.row];
-        //得到数组,用于判断大类别中是否有小类别。如果有小类别就不能删除
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
 }
-//寻找tableview中得cell的值
-//-(NSIndexPath *)indexPathForView:(UIView *)view{
-//    UIView *parentView=[view superview];
-//    while (![parentView isKindOfClass:[UITableViewCell class]] && parentView!=nil) {
-//        parentView=parentView.superview;
-//    }
-//    return [self.TableView indexPathForCell:(UITableViewCell *)parentView];
-//}
 
 - (IBAction)editButton:(UIBarButtonItem *)sender {
     if ([sender.title isEqualToString:@"编辑"]) {

@@ -10,6 +10,7 @@
 #import "DatabaseManager.h"
 #import "Bill.h"
 #import "member.h"
+#import "NoDataView.h"
 
 @interface ShowViewController ()
 
@@ -26,7 +27,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -34,23 +34,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     //TODO:tableView的代理
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    //TODO:今天的bill数据
-//    NSDate *now=[NSDate date];
-//    NSString *date;
-//    NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
-//    [formatter setDateFormat:@"yyyy-MM-dd"];
-//    date = [formatter stringFromDate:now];
-//    self.billArray = [[DatabaseManager ShareDBManager]billListInDay:date InWeek:nil InMonth:nil];
-//    
-//    self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
     //TODO:今天的bill数据
     NSDate *now=[NSDate date];
     NSString *date;
@@ -61,13 +48,14 @@
     
     self.typeDic = [[DatabaseManager ShareDBManager] readSpendTypeList:nil andIsPayout:YES];
     
-    [self.tableView reloadData];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    //TODO:- 有数据属性tableView，没有数据不显示tableView
+    if (self.billArray.count == 0) {
+        [self.tableView removeFromSuperview];
+        NoDataView *noDataView = [[NoDataView alloc] init];
+        [self.view addSubview: [noDataView noDataView:self.view]];
+    }else{
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - talbeView实现

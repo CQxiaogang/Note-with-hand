@@ -134,6 +134,7 @@
                 //TODO:改变左边的label的大小
                 EColumnChartLabel *eColumnChartLabel = [[EColumnChartLabel alloc] initWithFrame:CGRectMake(-1 * Y_COORDINATE_LABEL_WIDTH, -heightGap / 2.0 + heightGap * i, Y_COORDINATE_LABEL_WIDTH, heightGap)];
                 [eColumnChartLabel setTextAlignment:NSTextAlignmentCenter];
+                
                 eColumnChartLabel.text = [[NSString stringWithFormat:@"%.1f ", valueGap * (10 - i)] stringByAppendingString:[_dataSource highestValueEColumnChart:self].unit];;
                 
                 //eColumnChartLabel.backgroundColor = ELightBlue;
